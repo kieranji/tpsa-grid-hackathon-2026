@@ -1,0 +1,2 @@
+target_label,line,bus0,bus1,rating_mva,baseline_binding_hours,baseline_max_loading_pct,baseline_dispatch_down_mwh,target_relaxed_dispatch_down_mwh,target_attributable_dispatch_down_mwh,power_search_hint_mw,usable_energy_search_hint_mwh
+5041-17010-2,5041-17010-2,Srananagh 220,Cathaleen's Fall,210.0,52,100.0,3660.5902728027463,3071.9763741646725,588.6138986380738,94.63234914432573,564.4875270585381
