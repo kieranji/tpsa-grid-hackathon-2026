@@ -1,0 +1,17 @@
+calculation_id,question,description,formula,input_evidence_ids,unrounded_result,display_result,unit,interpretation
+CALC-Q1-001,Q1,Regional dispatch-down saved by 25% rating uplift,3660.590272802746 - 3071.976374164673,EV-Q1-007;EV-Q1-008,588.6138986380734,588.613899,MWh,Regional model only
+CALC-Q1-002,Q1,Saved dispatch-down per added rating,588.613898638073 / 52.500000000000,EV-Q1-008;EV-Q1-006,11.211693307391874,11.211693,MWh/MVA,One simulated week
+CALC-Q2-001,Q2,End-of-life usable battery energy,310 × 0.8 × (0.9 - 0.1),EV-Q2-003;EV-Q2-005;EV-Q2-006;EV-Q2-007,198.4,198.400,MWh,Nameplate is not fully usable
+CALC-Q2-002,Q2,Usable equivalent full cycles,2683.312800396304 / (2 × 198.400000000000),EV-Q2-013;EV-Q2-004,6.762381049385846,6.762381,cycles/week,Health screening metric
+CALC-Q2-003,Q2,Affected-generator gain above system net improvement,850.703845942247 - 790.390535127864,EV-Q2-011;EV-Q2-010,60.313310814383385,60.313311,MWh,Shows redistribution; affected-farm gain is not total system gain
+CALC-Q3-001,Q3,Combined DLR and downsized-BESS dispatch-down saving,3660.590272802746 - 2529.746978238833,EV-Q3-001A;EV-Q3-004A,1130.8432945639138,"1,130.843295",MWh,Strongest tested regional technical case
+CALC-Q3-002,Q3,Overlap between standalone DLR and BESS benefits,575.519768029633 + 790.390535127864 - 1130.843294563914,EV-Q3-002A;EV-Q3-003A;EV-Q3-004A,235.06700859358352,235.067009,MWh,Benefits are not additive
+CALC-Q4-001,Q4,45/220 lifetime revenue less energy purchase and O&M,73927244.921422079206 - 82141383.246024549007 - 10117551.749438729137,EV-Q4-002B;EV-Q4-002C;EV-Q4-002D,-18331690.0740412,"-€18,331,690.07",EUR real 2026,Category comparison only; it is not an NPV reconstruction
+CALC-Q4-002,Q4 distributed,Mean incremental NPV penalty per added site,(-79856991.616124346852 - -82682903.847661972046) / 3,EV-Q4-D1B;EV-Q4-D4B,941970.743845875,"€941,970.74",EUR/site,Positive cost penalty; applies only to the tested equal-capacity portfolios
+CALC-Q4-003,Q4 DLR crosswalk,45/220 overlap between standalone DLR and fixed-line BESS gains,600184.900945188943 + 553004.221784587484 - 1116168.830052271020,EV-Q4-L2I;EV-Q4-L2A;EV-Q4-L2C,37020.292677505466,"37,020.292678",MWh,Positive overlap means DLR and BESS technical benefits are not additive
+CALC-Q4-004,Q4 DLR crosswalk,45/220 conditional BESS NPV change under DLR,-79580949.854553043842 - (-79856991.616124346852),EV-Q4-L2D;EV-Q4-L2E;EV-Q4-L2G,276041.761571303,"€276,041.76",EUR real 2026,"Conditional BESS-only change; DLR CAPEX, OPEX, and owner revenue are excluded"
+CALC-Q5-001,Q5,Target-flow relief from 45 MW charging,45 × 0.238395702386941,EV-Q5-003,10.727806607412331,10.727806607,MW,Relief of the observed opposite-direction constraint
+CALC-Q5-002,Q5,Full-curtailment first-order relief at Croaghonagh,139.200000000000 × 0.238395702386941,EV-Q5-001;EV-Q5-003,33.18468177226214,33.184682,MW,Linear first-order estimate
+CALC-Q6-001,Q6,Priority minus neutral total dispatch-down,3660.590272802747222 - 3660.590272802746313,EV-Q6-001;EV-Q6-002,9.094947017729282e-13,9.095e-13,MWh,Numerical noise; no material total-energy change
+CALC-Q6-002,Q6,Protected energy minus added non-priority burden,EV-Q6-005 - EV-Q6-006,EV-Q6-005;EV-Q6-006,0.0,0.000e+00,MWh,Allocation transfer balances
+CALC-Q32-001,Problem 3.2,Average overlapping memberships per represented bus,2168 / 746,EV-Q32-007;EV-Q32-008,2.9061662198391423,2.906,memberships/bus,Directional groups overlap and are not exclusive zones

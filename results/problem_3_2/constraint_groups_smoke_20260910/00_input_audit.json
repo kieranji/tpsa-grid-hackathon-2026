@@ -1,0 +1,37 @@
+{
+  "official_network": {
+    "path": "/workspaces/tpsa-grid-hackathon-2026/data/participant-kit/networks/WP2033_all-island.nc",
+    "sha256": "58cf5260839c43d9c49cdb25a7e019c7ccce771732ef5f8dfc585da0fe447164",
+    "data_class": "OFFICIAL_INPUT",
+    "loader": "gridkit.load('WP2033', 'all-island')"
+  },
+  "q5_consistency_source": {
+    "path": "/workspaces/tpsa-grid-hackathon-2026/results/problem_3_1/question_5_final/03_target_line_ranking.csv",
+    "exists": true,
+    "sha256": "aeeb73ec14983dd386aabcc6a0914f4eeb2a7dfc8e30a5cd40bfde319f3a9de9",
+    "rows": 14
+  },
+  "q3_dlr_source": {
+    "path": "/workspaces/tpsa-grid-hackathon-2026/results/problem_3_1/question_3_final/tables/06_selected_dlr_multipliers.csv",
+    "exists": true,
+    "sha256": "22eddafef15f7ae095b46dcd914db894ee3d8e244dacc899aeba2fa68fa83d6d",
+    "columns": [
+      "5041-17010-2"
+    ],
+    "rows": 168
+  },
+  "q6_crosswalk_source": {
+    "directory": "/workspaces/tpsa-grid-hackathon-2026/results/problem_3_1/question_6_final_20260910_v2",
+    "exists": false
+  },
+  "balancing_references": {
+    "primary": "load weighted and normalized independently inside each passive AC component",
+    "comparison": "uniform and normalized independently inside each passive AC component"
+  },
+  "data_class_rules": {
+    "network_topology_and_profiles": "OFFICIAL_INPUT",
+    "dispatch_ptdf_groups_and_zones": "MODEL_DERIVED",
+    "thresholds_and_status_assignments": "SCENARIO_CHOICE",
+    "cost_or_price_values": "not used by Problem 3.2 grouping"
+  }
+}

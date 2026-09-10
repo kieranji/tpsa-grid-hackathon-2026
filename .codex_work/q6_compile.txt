@@ -1,0 +1,5 @@
+  File "src/problem_3_1/q6_priority_dispatch/core.py", line 492
+    "physical_generator_cost_eur": float(
+                                        ^
+SyntaxError: '(' was never closed
+1

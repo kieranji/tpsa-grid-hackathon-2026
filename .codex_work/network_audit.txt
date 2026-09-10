@@ -1,0 +1,48 @@
+/workspaces/tpsa-grid-hackathon-2026/.venv/lib/python3.12/site-packages/pypsa/network/io.py:2082: FutureWarning: pandas infers the `str` dtype for string data since its version 3.0. PyPSA still converts it back to numpy object dtype on import, but will keep it from PyPSA 2.0 on. Set `pypsa.options.api.legacy_string_dtype` explicitly to suppress this warning.
+  new_static = _coerce_string_dtypes(new_static)
+INFO:pypsa.network.io:Imported network 'TYTFS2024_WP2033_V35 north-west (aggregated)' has buses, carriers, generators, lines, loads
+                                                        bus        carrier    p_nom  marginal_cost control
+name                                                                                                      
+boundary Cathaleen's Fall - CORRACLASSY 1  Cathaleen's Fall       boundary  210.000            0.0      PV
+boundary Corderry - AGHALEAGUE 1                   Corderry       boundary  140.000            0.0      PV
+boundary Corderry - ARIGNA_T 1                     Corderry       boundary  210.000            0.0      PV
+boundary Glenree - FIRLOUGH 1                       Glenree       boundary  210.000            0.0      PV
+boundary Letterkenny - STRA_PST 1               Letterkenny       boundary  123.000            0.0      PV
+boundary Moy - FIRLOUGH 1                               Moy       boundary  210.000            0.0      PV
+boundary Moy - LAGHTANVACK 1                            Moy       boundary  192.000            0.0      PV
+boundary Moy - TONROE 1                                 Moy       boundary  228.000            0.0      PV
+boundary Sligo - FLAGFORD 1                           Sligo       boundary  121.000            0.0      PV
+boundary Srananagh 220 - FLAGFORD 1           Srananagh 220       boundary  513.000          100.0   Slack
+Moy unknown                                             Moy        unknown  153.600           60.0      PV
+Moy wind                                                Moy           wind   36.000            0.0      PV
+Corderry wind                                      Corderry           wind  161.603            0.0      PV
+Clogher unknown                                     Clogher        unknown   60.000           60.0      PV
+Clogher wind                                        Clogher           wind   98.250            0.0      PV
+Croaghonagh wind                                Croaghonagh           wind  139.200            0.0      PV
+Cathaleen's Fall hydro                     Cathaleen's Fall          hydro   65.500            1.0      PV
+Cathaleen's Fall wind                      Cathaleen's Fall           wind   55.000            0.0      PV
+Binbane hydro                                       Binbane          hydro    4.300            1.0      PV
+Binbane wind                                        Binbane           wind   89.300            0.0      PV
+Letterkenny wind                                Letterkenny           wind   90.770            0.0      PV
+Drumkeen wind                                      Drumkeen           wind   84.960            0.0      PV
+Glenree wind                                        Glenree           wind   77.300            0.0      PV
+Sorne Hill wind                                  Sorne Hill           wind   63.250            0.0      PV
+Sligo wind                                            Sligo           wind   52.530            0.0      PV
+Trillick wind                                      Trillick           wind   44.690            0.0      PV
+Tievebrack wind                                  Tievebrack           wind   29.900            0.0      PV
+Ardnagappary wind                              Ardnagappary           wind   22.940            0.0      PV
+shed Ardnagappary                              Ardnagappary  load shedding   16.290        10000.0      PQ
+shed Binbane                                        Binbane  load shedding   31.530        10000.0      PQ
+shed Cathaleen's Fall                      Cathaleen's Fall  load shedding   28.710        10000.0      PQ
+shed Letterkenny                                Letterkenny  load shedding  111.360        10000.0      PQ
+shed Moy                                                Moy  load shedding   45.300        10000.0      PQ
+shed Sligo                                            Sligo  load shedding   91.320        10000.0      PQ
+shed Trillick                                      Trillick  load shedding   33.825        10000.0      PQ
+
+COLUMNS ['bus', 'control', 'type', 'p_nom', 'p_nom_mod', 'p_nom_extendable', 'p_nom_min', 'p_nom_max', 'p_nom_set', 'p_min_pu', 'p_max_pu', 'p_set', 'p_init', 'e_sum_min', 'e_sum_max', 'q_set', 'sign', 'carrier', 'marginal_cost', 'marginal_cost_quadratic', 'active', 'build_year', 'lifetime', 'capital_cost', 'overnight_cost', 'discount_rate', 'fom_cost', 'efficiency', 'committable', 'maintainable', 'maintenance_duration', 'maintenance_pu', 'maintenance_events', 'start_up_cost', 'shut_down_cost', 'stand_by_cost', 'min_up_time', 'min_down_time', 'up_time_before', 'down_time_before', 'ramp_limit_up', 'ramp_limit_down', 'ramp_limit_start_up', 'ramp_limit_shut_down', 'weight', 'p_nom_opt', 'capital_cost_piecewise_opt', 'p_set_tytfs']
+
+META {'scenario': 'WP2033', 'scope': 'north-west', 'tytfs_case': 'TYTFS2024_WP2033_V35', 'anchor_snapshot': '2030-01-17 18:00:00', 'profiles': 'synthetic, seed 42 - see LIMITATIONS in the README'}
+
+SNAPSHOTS 168
+
+BUSSES ['Ardnagappary', 'Binbane', "Cathaleen's Fall", 'Clogher', 'Corderry', 'Croaghonagh', 'Drumkeen', 'Glenree', 'Letterkenny', 'Moy', 'Sligo', 'Sorne Hill', 'Srananagh 220', 'Tievebrack', 'Trillick']

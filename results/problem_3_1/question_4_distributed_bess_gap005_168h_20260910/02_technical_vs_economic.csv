@@ -1,0 +1,3 @@
+technology,selection,case_id,bus,site_count,sites,allocations,wind_mw,battery_mw,battery_mwh,npv_eur,lifetime_net_renewable_gain_mwh,interpretation
+bess,technical_max_net_RE_gain,bess_f11231f128,Croaghonagh,1,Croaghonagh,1.000000,0.0,85.0,310.0,-121923701.47572485,782656.320142645,best among evaluated designs under stated operator dispatch and assumptions
+bess,economic_max_conditional_NPV,NO_BUILD,-,0,-,,0.0,0.0,0.0,0.0,0.0,best among evaluated designs under stated operator dispatch and assumptions

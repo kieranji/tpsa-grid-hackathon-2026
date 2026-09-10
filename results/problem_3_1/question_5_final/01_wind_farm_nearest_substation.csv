@@ -1,0 +1,15 @@
+wind_farm,nearest_substation,mapping_method,carrier,installed_capacity_mw,substation_voltage_kv,longitude,latitude
+Moy wind,Moy,official_model_generator_bus_assignment,wind,36.0,110.0,-9.195397150000002,54.1403967
+Corderry wind,Corderry,official_model_generator_bus_assignment,wind,161.603,110.0,-8.1950632,54.17466345
+Clogher wind,Clogher,official_model_generator_bus_assignment,wind,98.25,110.0,-7.974266485714286,54.68384601428571
+Croaghonagh wind,Croaghonagh,official_model_generator_bus_assignment,wind,139.2,110.0,-7.974266485714286,54.68384601428571
+Cathaleen's Fall wind,Cathaleen's Fall,official_model_generator_bus_assignment,wind,55.0,110.0,-8.15878725,54.49594499999999
+Binbane wind,Binbane,official_model_generator_bus_assignment,wind,89.3,110.0,-8.2634291,54.7189369
+Letterkenny wind,Letterkenny,official_model_generator_bus_assignment,wind,90.77000000000001,110.0,-7.7393866,54.91881685
+Drumkeen wind,Drumkeen,official_model_generator_bus_assignment,wind,84.96,110.0,-7.8073381,54.8654152
+Glenree wind,Glenree,official_model_generator_bus_assignment,wind,77.3,110.0,-8.9893244,54.1053454
+Sorne Hill wind,Sorne Hill,official_model_generator_bus_assignment,wind,63.24999999999999,110.0,-7.3684232,55.1313547
+Sligo wind,Sligo,official_model_generator_bus_assignment,wind,52.529999999999994,110.0,-8.527880699999999,54.19786756666667
+Trillick wind,Trillick,official_model_generator_bus_assignment,wind,44.69,110.0,-7.4186417,55.1127756
+Tievebrack wind,Tievebrack,official_model_generator_bus_assignment,wind,29.9,110.0,-8.2356174,54.8102758
+Ardnagappary wind,Ardnagappary,official_model_generator_bus_assignment,wind,22.94,110.0,-8.2688178,55.0566404

@@ -1,0 +1,5 @@
+  File "src/problem_3_1/q6_priority_dispatch/core.py", line 598
+    +) -> pd.DataFrame:
+    ^
+SyntaxError: invalid syntax
+1

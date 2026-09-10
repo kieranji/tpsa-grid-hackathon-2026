@@ -1,0 +1,4 @@
+branch,component,bus0,bus1,base_binding_hours,base_maximum_loading_pu,rating_multiplier,base_status_inefficiency_mwh,relaxed_status_inefficiency_mwh,status_inefficiency_reduction_when_relaxed_mwh,non_additive
+5041-17010-2,Line,Srananagh 220,Cathaleen's Fall,53,1.0,1000.0,4.547473508864641e-13,-4.547473508864641e-13,9.094947017729282e-13,True
+1631-5041-1,Line,Corderry,Srananagh 220,0,0.7253482122984465,1000.0,4.547473508864641e-13,4.547473508864641e-13,0.0,True
+28710-51911-1,Line,Clogher,Croaghonagh,0,0.6824954214722573,1000.0,4.547473508864641e-13,4.547473508864641e-13,0.0,True

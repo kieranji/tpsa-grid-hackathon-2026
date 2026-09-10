@@ -1,0 +1,15 @@
+generator,bus,installed_capacity_mw,priority_status,status_source,verified,data_class,assumption_note
+Moy wind,Moy,36.0,non_priority,illustrative_q4_site_priority_scenario,False,SCENARIO_CHOICE,Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status.
+Corderry wind,Corderry,161.603,non_priority,illustrative_q4_site_priority_scenario,False,SCENARIO_CHOICE,Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status.
+Clogher wind,Clogher,98.25,non_priority,illustrative_q4_site_priority_scenario,False,SCENARIO_CHOICE,Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status.
+Croaghonagh wind,Croaghonagh,139.2,priority,illustrative_q4_site_priority_scenario,False,SCENARIO_CHOICE,Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status.
+Cathaleen's Fall wind,Cathaleen's Fall,55.0,non_priority,illustrative_q4_site_priority_scenario,False,SCENARIO_CHOICE,Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status.
+Binbane wind,Binbane,89.3,priority,illustrative_q4_site_priority_scenario,False,SCENARIO_CHOICE,Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status.
+Letterkenny wind,Letterkenny,90.77000000000001,non_priority,illustrative_q4_site_priority_scenario,False,SCENARIO_CHOICE,Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status.
+Drumkeen wind,Drumkeen,84.96,priority,illustrative_q4_site_priority_scenario,False,SCENARIO_CHOICE,Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status.
+Glenree wind,Glenree,77.3,non_priority,illustrative_q4_site_priority_scenario,False,SCENARIO_CHOICE,Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status.
+Sorne Hill wind,Sorne Hill,63.24999999999999,non_priority,illustrative_q4_site_priority_scenario,False,SCENARIO_CHOICE,Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status.
+Sligo wind,Sligo,52.529999999999994,non_priority,illustrative_q4_site_priority_scenario,False,SCENARIO_CHOICE,Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status.
+Trillick wind,Trillick,44.69,non_priority,illustrative_q4_site_priority_scenario,False,SCENARIO_CHOICE,Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status.
+Tievebrack wind,Tievebrack,29.9,non_priority,illustrative_q4_site_priority_scenario,False,SCENARIO_CHOICE,Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status.
+Ardnagappary wind,Ardnagappary,22.94,priority,illustrative_q4_site_priority_scenario,False,SCENARIO_CHOICE,Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status.

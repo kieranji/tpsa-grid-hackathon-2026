@@ -1,0 +1,2 @@
+monitored_line,rating_multiplier_tested,maximum_absolute_shift_factor_change,mean_absolute_shift_factor_change,ptdf_unchanged,interpretation
+5041-17010-2,1.25,0.0,0.0,True,"DLR changes thermal capacity and headroom, not topology or reactance"

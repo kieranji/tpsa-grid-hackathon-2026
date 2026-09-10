@@ -1,0 +1,13 @@
+/workspaces/tpsa-grid-hackathon-2026/.venv/lib/python3.12/site-packages/pypsa/network/io.py:2082: FutureWarning: pandas infers the `str` dtype for string data since its version 3.0. PyPSA still converts it back to numpy object dtype on import, but will keep it from PyPSA 2.0 on. Set `pypsa.options.api.legacy_string_dtype` explicitly to suppress this warning.
+  new_static = _coerce_string_dtypes(new_static)
+INFO:pypsa.network.io:Imported network 'TYTFS2024_WP2033_V35 north-west (aggregated)' has buses, carriers, generators, lines, loads
+/home/codespace/.python/current/lib/python3.12/contextlib.py:81: FutureWarning: The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+  return func(*args, **kwds)
+<class 'linopy.objective.Objective'>
+Objective:
+----------
+LinearExpression: +0 Generator-p[2030-01-14 06:00:00, boundary Cathaleen's Fall - CORRACLASSY 1] + 0 Generator-p[2030-01-14 06:00:00, boundary Corderry - AGHALEAGUE 1] + 0 Generator-p[2030-01-14 06:00:00, boundary Corderry - ARIGNA_T 1] ... +1e+04 Generator-p[2030-01-14 06:00:00, shed Moy] + 1e+04 Generator-p[2030-01-14 06:00:00, shed Sligo] + 1e+04 Generator-p[2030-01-14 06:00:00, shed Trillick]
+Sense: min
+Value: None
+['assign', 'attrs', 'coeffs', 'coords', 'data', 'expression', 'flat', 'indexes', 'is_linear', 'is_quadratic', 'model', 'nterm', 'sel', 'sense', 'set_value', 'sizes', 'to_matrix', 'to_polars', 'value', 'vars']
+model methods ['add_constraints', 'add_objective', 'solve']

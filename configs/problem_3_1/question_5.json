@@ -1,0 +1,19 @@
+{
+  "scenario": "WP2033",
+  "scope": "north-west",
+  "monitored_lines": [
+    "5041-17010-2"
+  ],
+  "primary_reference": "load",
+  "wind_carriers": [
+    "wind"
+  ],
+  "constraint_group_threshold": 0.05,
+  "binding_tolerance_pu": 0.000001,
+  "finite_difference_delta_mw": 1.0,
+  "finite_difference_tolerance": 0.0000001,
+  "dlr_rating_multiplier_check": 1.25,
+  "q1_results_csv": "results/problem_3_1/question_1_final/tables/02_line_constraint_and_rating_results.csv",
+  "q3_dlr_csv": "results/problem_3_1/question_3_final/tables/06_selected_dlr_multipliers.csv",
+  "q4_portfolio_config": "configs/problem_3_1/question_4_distributed_bess_strict_tie_break.json"
+}

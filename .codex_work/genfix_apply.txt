@@ -1,0 +1,4 @@
+error: patch failed: tests/q6/test_q6_core.py:119
+error: tests/q6/test_q6_core.py: patch does not apply
+
+RC=1

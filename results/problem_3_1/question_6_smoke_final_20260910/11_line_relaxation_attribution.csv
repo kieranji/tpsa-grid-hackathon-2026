@@ -1,0 +1,2 @@
+branch,component,bus0,bus1,base_binding_hours,base_maximum_loading_pu,rating_multiplier,base_status_inefficiency_mwh,relaxed_status_inefficiency_mwh,status_inefficiency_reduction_when_relaxed_mwh,non_additive
+5041-17010-2,Line,Srananagh 220,Cathaleen's Fall,14,1.0,1000.0,-1.1368683772161603e-13,0.0,-1.1368683772161603e-13,True

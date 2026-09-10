@@ -1,0 +1,14 @@
+/workspaces/tpsa-grid-hackathon-2026/.venv/lib/python3.12/site-packages/pypsa/network/io.py:2082: FutureWarning: pandas infers the `str` dtype for string data since its version 3.0. PyPSA still converts it back to numpy object dtype on import, but will keep it from PyPSA 2.0 on. Set `pypsa.options.api.legacy_string_dtype` explicitly to suppress this warning.
+  new_static = _coerce_string_dtypes(new_static)
+INFO:pypsa.network.io:Imported network 'TYTFS2024_WP2033_V35 (transmission)' has buses, carriers, generators, lines, links, loads, sub_networks, transformers
+               count         mw
+carrier                        
+load shedding    213  13187.685
+wind             425  12700.593
+unknown           93   7978.040
+solar            178   3729.620
+gas                5   1659.390
+import             3   1560.000
+export             3   1560.000
+hydro              8    151.500
+biomass            1     47.110

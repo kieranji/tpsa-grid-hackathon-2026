@@ -1,0 +1,79 @@
+{
+  "assumptions_status": "illustrative_distributed_bess_architecture_comparison_mip_gap_0p5pct_not_market_quotes",
+  "years": 20,
+  "designs": {
+    "wind_mw": [],
+    "bess_mw_mwh": [
+      [
+        45,
+        220
+      ],
+      [
+        62.22,
+        226.92
+      ],
+      [
+        85,
+        310
+      ]
+    ],
+    "hybrid_wind_bess_mw_mwh": [],
+    "maintenance_policies": [
+      "replace"
+    ],
+    "bess_portfolios": [
+      {
+        "label": "one_site",
+        "sites": [
+          "Croaghonagh"
+        ],
+        "allocations": [
+          1
+        ]
+      },
+      {
+        "label": "two_site_equal",
+        "sites": [
+          "Croaghonagh",
+          "Binbane"
+        ],
+        "allocations": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "label": "three_site_equal",
+        "sites": [
+          "Croaghonagh",
+          "Binbane",
+          "Ardnagappary"
+        ],
+        "allocations": [
+          0.3333333333333333,
+          0.3333333333333333,
+          0.3333333333333334
+        ]
+      },
+      {
+        "label": "four_site_equal",
+        "sites": [
+          "Croaghonagh",
+          "Binbane",
+          "Ardnagappary",
+          "Drumkeen"
+        ],
+        "allocations": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ]
+      }
+    ]
+  },
+  "grid": {
+    "mip_gap": 0.005,
+    "solver_time_limit_s": 120
+  }
+}

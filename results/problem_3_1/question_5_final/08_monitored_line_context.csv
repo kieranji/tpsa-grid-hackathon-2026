@@ -1,0 +1,2 @@
+monitored_line,component,bus0,bus1,nominal_rating_mva,binding_hours,positive_binding_hours,negative_binding_hours,dominant_binding_flow_sign,dominant_binding_flow_direction,maximum_absolute_flow_mw,maximum_loading_pu,peak_snapshot,flow_at_peak_mw_bus0_to_bus1,rating_at_peak_mva
+5041-17010-2,Line,Srananagh 220,Cathaleen's Fall,210.0,52,0,52,-1,Cathaleen's Fall to Srananagh 220,210.00000000000045,1.0000000000000022,2030-01-19 16:00:00,-210.00000000000045,210.0

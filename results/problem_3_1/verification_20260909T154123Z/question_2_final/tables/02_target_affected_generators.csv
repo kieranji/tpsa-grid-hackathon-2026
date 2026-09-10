@@ -1,0 +1,5 @@
+generator,bus,carrier,p_nom_mw,baseline_dispatch_mwh,target_relaxed_dispatch_mwh,dispatch_gain_when_target_relaxed_mwh
+Binbane wind,Binbane,wind,89.3,5479.389577467442,5894.192486398952,414.8029089315096
+Drumkeen wind,Drumkeen,wind,84.96,4493.007566585326,4780.159804967429,287.15223838210386
+Clogher wind,Clogher,wind,98.25,5839.59624521914,5923.159459074891,83.5632138557512
+Croaghonagh wind,Croaghonagh,wind,139.2,8491.01766137486,8514.423837689994,23.406176315133052

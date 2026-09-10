@@ -1,0 +1,15 @@
+{
+  "bus": "Croaghonagh",
+  "wind_mw": 0.0,
+  "battery_mw": 67.5,
+  "battery_mwh": 330.0,
+  "maintenance": "replace",
+  "connection_export_mw": null,
+  "connection_import_mw": null,
+  "battery_placements": [
+    [
+      "Croaghonagh",
+      1.0
+    ]
+  ]
+}

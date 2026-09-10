@@ -1,0 +1,27 @@
+    for tech, group in summary.groupby("technology"):
+        vals = group["lifetime_net_renewable_gain_mwh"].to_numpy()
+        returns = group["npv_eur"].to_numpy()
+        # Include no-build when assessing dominance and the commercial decision.
+        keep = pareto_flags(np.r_[vals, 0.0], np.r_[returns, 0.0])[:-1]
+        summary.loc[group.index, "pareto_within_technology"] = keep
+        technical_max = float(group["lifetime_net_renewable_gain_mwh"].max())
+        technical_tolerance = max(1e-6, abs(technical_max) * 1e-9)
+        technical_candidates = group.loc[
+            group["lifetime_net_renewable_gain_mwh"] >= technical_max - technical_tolerance
+        ].copy()
+        technical_candidates["_tie_site_count"] = pd.to_numeric(
+            technical_candidates.get("site_count", 1), errors="coerce"
+        ).fillna(1)
+        technical_candidates["_tie_capex"] = pd.to_numeric(
+            technical_candidates.get("initial_capex_eur", np.inf), errors="coerce"
+        ).fillna(np.inf)
+        technical = technical_candidates.sort_values(
+            ["_tie_site_count", "_tie_capex", "case_id"], kind="stable"
+        ).iloc[0]
+        best = group.loc[group.npv_eur.idxmax()]
+        for label, selected in (("technical_max_net_RE_gain", technical), ("economic_max_conditional_NPV", best)):
+            no_build = (label.startswith("economic") and selected.npv_eur <= 0) or (
+                label.startswith("technical") and selected.lifetime_net_renewable_gain_mwh <= 0)
+            rows.append({"technology": tech, "selection": label,
+                "case_id": "NO_BUILD" if no_build else selected.case_id,
+                "bus": "-" if no_build else selected.bus,

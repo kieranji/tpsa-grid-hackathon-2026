@@ -1,0 +1,16 @@
+v_nom,type,x,y,carrier,unit,location,v_mag_pu_set,v_mag_pu_min,v_mag_pu_max,control,generator,sub_network,has_coordinates,station_buses,folds_in,coordinate_source,bus,display_name,eligible
+110.0,,-8.2688178,55.0566404,AC,,,1.0,0.0,inf,PQ,,,True,1571,,geocoded,Ardnagappary,Ardnagappary,True
+110.0,,-8.2634291,54.7189369,AC,,,1.0,0.0,inf,PQ,,,True,1341,,geocoded,Binbane,Binbane,True
+110.0,,-8.15878725,54.49594499999999,AC,,,1.0,0.0,inf,PQ,,,True,"1701,1761,17010,17061",Cliff,geocoded,Cathaleen's Fall,Cathaleen's Fall,True
+110.0,,-7.974266485714286,54.68384601428571,AC,,,1.0,0.0,inf,PQ,,,True,"2801,2870,2871,4091,28019,28710,28712",Golagh+Mulreavy,geocoded,Clogher,Clogher,True
+110.0,,-8.1950632,54.17466345,AC,,,1.0,0.0,inf,PQ,,,True,"1631,2671",Garvagh,geocoded,Corderry,Corderry,True
+110.0,,-7.974266485714286,54.68384601428571,AC,,,1.0,0.0,inf,PQ,,,False,51911,,neighbour mean,Croaghonagh,Croaghonagh,True
+110.0,,-7.8073381,54.8654152,AC,,,1.0,0.0,inf,PQ,,,True,"2321,4071",Meentycat,geocoded,Drumkeen,Drumkeen,True
+110.0,,-8.9893244,54.1053454,AC,,,1.0,0.0,inf,PQ,,,True,4371,,geocoded,Glenree,Glenree,True
+110.0,,-7.7393866,54.91881685,AC,,,1.0,0.0,inf,PQ,,,True,"3581,3591,35861,35862",Lenalea,geocoded,Letterkenny,Letterkenny,True
+110.0,,-9.195397150000002,54.1403967,AC,,,1.0,0.0,inf,PQ,,,True,"4041,5241,5251,40461,40462",Tawnaghmore,geocoded,Moy,Moy,True
+110.0,,-8.527880699999999,54.19786756666667,AC,,,1.0,0.0,inf,PQ,,,True,"1931,4981,49861",Cunghill,geocoded,Sligo,Sligo,True
+110.0,,-7.3684232,55.1313547,AC,,,1.0,0.0,inf,PQ,,,True,4991,,geocoded,Sorne Hill,Sorne Hill,True
+220.0,,-8.383984,54.1777596,AC,,,1.0,0.0,inf,Slack,,,True,"5041,5042",Srananagh 110,geocoded,Srananagh 220,Srananagh 220,True
+110.0,,-8.2356174,54.8102758,AC,,,1.0,0.0,inf,PQ,,,True,5191,,geocoded,Tievebrack,Tievebrack,True
+110.0,,-7.4186417,55.1127756,AC,,,1.0,0.0,inf,PQ,,,True,5361,,geocoded,Trillick,Trillick,True

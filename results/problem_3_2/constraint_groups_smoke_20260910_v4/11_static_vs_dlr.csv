@@ -1,0 +1,5 @@
+branch,flow_sign,rating_case,near_congestion_hours,binding_hours,event_weighted_severity_hours,maximum_loading_pu,mean_rating_multiplier,maximum_rating_multiplier,dispatch_treatment,ptdf_change
+5041-17010-2,1,static,0.0,0.0,0.0,0.3767306863799632,1.0,1.0,same solved flow trace; rating-only event reclassification,0.0
+5041-17010-2,1,q3_dlr_rating_only,0.0,0.0,0.0,0.33910248218681904,1.1487990588773194,1.2569787750913683,same solved flow trace; rating-only event reclassification,0.0
+5041-17010-2,-1,static,0.0,0.0,0.0,0.09688600833487895,1.0,1.0,same solved flow trace; rating-only event reclassification,0.0
+5041-17010-2,-1,q3_dlr_rating_only,0.0,0.0,0.0,0.0799669033741866,1.1487990588773194,1.2569787750913683,same solved flow trace; rating-only event reclassification,0.0

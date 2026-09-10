@@ -1,0 +1,5 @@
+permutation,seed,priority_generators,priority_capacity_mw,wind_dispatch_down_mwh,physical_generator_cost_eur,unserved_mwh
+1,42,Cathaleen's Fall wind;Corderry wind;Moy wind;Sligo wind,305.133,3660.5902728027468,-3935124.4044939755,0.0
+2,42,Ardnagappary wind;Clogher wind;Corderry wind;Croaghonagh wind,421.993,3660.5902728027468,-3935124.4044939755,0.0
+3,42,Corderry wind;Glenree wind;Sligo wind;Trillick wind,336.123,3660.5902728027468,-3935124.4044939755,0.0
+4,42,Letterkenny wind;Moy wind;Sorne Hill wind;Trillick wind,234.71,3660.5902728027468,-3935124.4044939755,0.0

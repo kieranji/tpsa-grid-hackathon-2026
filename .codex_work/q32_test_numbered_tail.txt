@@ -1,0 +1,30 @@
+    99	        self.assertEqual(set(features.index), {"A", "B", "C", "D"})
+   100	        self.assertGreaterEqual(len(summary), 1)
+   101	
+   102	    def test_nonlocal_pair_uses_geographic_and_electrical_filters(self):
+   103	        buses = pd.DataFrame(
+   104	            {"x": [-10.0, -6.0, -9.9], "y": [51.0, 55.0, 51.1]}, index=["A", "B", "C"]
+   105	        )
+   106	        components = pd.Series(0, index=buses.index, dtype=int)
+   107	        zones = pd.DataFrame(
+   108	            {"bus": buses.index, "response_zone_id": ["Z1", "Z1", "Z2"]}
+   109	        )
+   110	        features = pd.DataFrame([[1.0, 0.0], [1.0, 0.0], [-1.0, 0.0]], index=buses.index)
+   111	        pairs = nonlocal_similar_pairs(
+   112	            buses, components, zones, features,
+   113	            minimum_distance_km=100.0, minimum_cosine_similarity=0.99, limit=10
+   114	        )
+   115	        self.assertEqual(len(pairs), 1)
+   116	        self.assertEqual({pairs.iloc[0]["bus_a"], pairs.iloc[0]["bus_b"]}, {"A", "B"})
+   117	
+   118	    def test_haversine_and_config_validation(self):
+   119	        self.assertGreater(haversine_km(-10.0, 51.0, -6.0, 55.0), 400.0)
+   120	        config = load_config(None)
+   121	        validate_config(config)
+   122	        config["scope"] = "north-west"
+   123	        with self.assertRaises(ValueError):
+   124	            validate_config(config)
+   125	
+   126	
+   127	if __name__ == "__main__":
+   128	    unittest.main()

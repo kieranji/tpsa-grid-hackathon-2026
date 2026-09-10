@@ -1,0 +1,16 @@
+/workspaces/tpsa-grid-hackathon-2026/.venv/lib/python3.12/site-packages/pypsa/network/io.py:2082: FutureWarning: pandas infers the `str` dtype for string data since its version 3.0. PyPSA still converts it back to numpy object dtype on import, but will keep it from PyPSA 2.0 on. Set `pypsa.options.api.legacy_string_dtype` explicitly to suppress this warning.
+  new_static = _coerce_string_dtypes(new_static)
+INFO:pypsa.network.io:Imported network 'TYTFS2024_WP2033_V35 (transmission)' has buses, carriers, generators, lines, links, loads, sub_networks, transformers
+scenario                      WP2033
+scope                     all-island
+buses                            754
+lines                            755
+transformers                     225
+links                              4
+generators                       929
+storage_units                      0
+loads                            246
+snapshots                        168
+peak_demand_mw                8791.8
+generation_capacity_mw       42573.9
+META {'scenario': 'WP2033', 'scope': 'all-island', 'tytfs_case': 'TYTFS2024_WP2033_V35', 'anchor_snapshot': '2030-01-17 18:00:00', 'profiles': 'synthetic, seed 42 - see LIMITATIONS in the README'}

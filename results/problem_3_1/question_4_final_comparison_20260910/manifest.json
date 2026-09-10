@@ -1,0 +1,24 @@
+{
+  "fixed_run": "/workspaces/tpsa-grid-hackathon-2026/results/problem_3_1/question_4_economic_downsizing_168h_20260910",
+  "dlr_run": "/workspaces/tpsa-grid-hackathon-2026/results/problem_3_1/question_4_economic_downsizing_dlr_168h_20260910",
+  "distributed_run": "/workspaces/tpsa-grid-hackathon-2026/results/problem_3_1/question_4_distributed_bess_strict_45mw_168h_20260910",
+  "input_sha256": {
+    "fixed_manifest": "cc3f3bcf8682c756b6ecd933911227e775f0f1e13477dd03cb2bef2cd6e8cd5a",
+    "dlr_manifest": "896414891a18d785d4d43f0dc0a4c63d616248c5b50c5795eb0527b688716f3f",
+    "distributed_manifest": "50804e968a4322e577fc1d93161b37b898a2acc1649ed4d2d4b6dc46b043e1ac"
+  },
+  "network_hash": "09a142114df9f5d7e53cbd8d68331debe2c4aec489d71126509c8f67a6d7ba19",
+  "dlr_label": "q3_selected_wind_proxy_40pct",
+  "audit": {
+    "block_hours": 168,
+    "hours_per_year": 8760.0,
+    "annualisation_factor": 52.142857142857146,
+    "project_years": 20,
+    "fixed_baseline_dispatch_down_mwh_per_block": 3660.5902728027468,
+    "dlr_baseline_dispatch_down_mwh_per_block": 3085.0705047731135,
+    "dlr_standalone_gain_mwh_per_block": 575.5197680296333,
+    "dlr_standalone_lifetime_gain_mwh": 600184.900945189
+  },
+  "dlr_cost_included": false,
+  "system_savings_in_project_cashflow": false
+}

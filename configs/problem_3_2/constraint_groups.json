@@ -1,0 +1,23 @@
+{
+  "scenario": "WP2033",
+  "scope": "all-island",
+  "primary_reference": "load",
+  "comparison_reference": "uniform",
+  "renewable_carriers": ["wind", "solar", "hydro", "biomass"],
+  "near_congestion_threshold_pu": 0.9,
+  "binding_threshold_pu": 0.999,
+  "constraint_group_threshold": 0.05,
+  "mode_merge_jaccard_threshold": 0.8,
+  "mode_merge_cosine_threshold": 0.98,
+  "maximum_zones_per_component": 8,
+  "nonlocal_minimum_distance_km": 150.0,
+  "nonlocal_minimum_cosine_similarity": 0.95,
+  "nonlocal_pair_limit": 100,
+  "lpf_validation_bus_count": 6,
+  "lpf_delta_mw": 1.0,
+  "lpf_tolerance": 1e-6,
+  "q5_result_csv": "results/problem_3_1/question_5_final/03_target_line_ranking.csv",
+  "q5_target_line": "5041-17010-2",
+  "q3_dlr_csv": "results/problem_3_1/question_3_final/tables/06_selected_dlr_multipliers.csv",
+  "q6_result_dir": "results/problem_3_1/question_6_final_20260910_v2"
+}

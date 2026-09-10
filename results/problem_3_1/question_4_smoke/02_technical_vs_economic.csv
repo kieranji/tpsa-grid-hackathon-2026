@@ -1,0 +1,7 @@
+technology,selection,case_id,bus,wind_mw,battery_mw,battery_mwh,npv_eur,lifetime_net_renewable_gain_mwh,interpretation
+bess,technical_max_net_RE_gain,bess_2f44561feb,Ardnagappary,0.0,25.0,100.0,-29178369.534226306,124479.60787374925,best among evaluated designs under stated operator dispatch and assumptions
+bess,economic_max_conditional_NPV,NO_BUILD,-,0.0,0.0,0.0,0.0,0.0,best among evaluated designs under stated operator dispatch and assumptions
+hybrid,technical_max_net_RE_gain,hybrid_b02cfea631,Ardnagappary,50.0,25.0,100.0,-65364040.3592008,498766.8695881568,best among evaluated designs under stated operator dispatch and assumptions
+hybrid,economic_max_conditional_NPV,NO_BUILD,-,0.0,0.0,0.0,0.0,0.0,best among evaluated designs under stated operator dispatch and assumptions
+wind,technical_max_net_RE_gain,wind_9b2f3a3485,Ardnagappary,25.0,0.0,0.0,-19548604.283757467,184344.24386612192,best among evaluated designs under stated operator dispatch and assumptions
+wind,economic_max_conditional_NPV,NO_BUILD,-,0.0,0.0,0.0,0.0,0.0,best among evaluated designs under stated operator dispatch and assumptions

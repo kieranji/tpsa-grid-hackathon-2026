@@ -1,0 +1,10 @@
+{
+  "bus": "Ardnagappary",
+  "wind_mw": 25.0,
+  "battery_mw": 0.0,
+  "battery_mwh": 0.0,
+  "maintenance": "replace",
+  "connection_export_mw": null,
+  "connection_import_mw": null,
+  "battery_placements": []
+}

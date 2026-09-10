@@ -1,0 +1,74 @@
+{
+  "network_source": "/workspaces/tpsa-grid-hackathon-2026/data/participant-kit/networks/WP2033_north-west.nc",
+  "network_origin": "gridkit.load('WP2033', 'north-west')",
+  "network_sha256": "203f3c09c35c7a402aa63aa1c08b8cc23f118d05161a828bfc61114e3d9bbc80",
+  "wind_farm_mapping_method": "official_model_generator_bus_assignment",
+  "q1_evidence": {
+    "path": "/workspaces/tpsa-grid-hackathon-2026/results/problem_3_1/question_1_final/tables/02_line_constraint_and_rating_results.csv",
+    "sha256": "de8fba25783161ed8ee0819419de70853cf176a8b9d7deb908eb1aa1bde558cb",
+    "rows": [
+      {
+        "line": "5041-17010-2",
+        "bus0": "Srananagh 220",
+        "bus1": "Cathaleen's Fall",
+        "rating_mva": 210.0,
+        "label": "5041-17010-2: Srananagh 220 ↔ Cathaleen's Fall",
+        "binding_hours": 52,
+        "binding_share_pct": 30.952380952380956,
+        "hours_at_or_above_90_pct": 63,
+        "mean_loading_pct": 61.84687419287968,
+        "p95_loading_pct": 100.0,
+        "max_loading_pct": 100.0,
+        "peak_loading_snapshot": "2030-01-14 07:00:00",
+        "new_rating_mva": 262.5,
+        "added_rating_mva": 52.5,
+        "dispatch_down_after_plus_25_mwh": 3071.976374164673,
+        "saved_dispatch_down_plus_25_mwh": 588.6138986380734,
+        "saved_mwh_per_added_mva": 11.211693307391874,
+        "binding_hours_after_plus_25": 17,
+        "max_loading_after_plus_25_pct": 100.0,
+        "unserved_after_plus_25_mwh": 0.0,
+        "regional_rating_sensitive_recovered_pct": 100.0
+      }
+    ]
+  },
+  "q3_dlr_evidence": {
+    "path": "/workspaces/tpsa-grid-hackathon-2026/results/problem_3_1/question_3_final/tables/06_selected_dlr_multipliers.csv",
+    "exists": true,
+    "sha256": "22eddafef15f7ae095b46dcd914db894ee3d8e244dacc899aeba2fa68fa83d6d",
+    "rows": 168,
+    "monitored_line_statistics": {
+      "5041-17010-2": {
+        "count": 168,
+        "mean": 1.095551488386187,
+        "minimum": 1.0,
+        "maximum": 1.2795012677194428
+      }
+    }
+  },
+  "q4_portfolios": {
+    "path": "/workspaces/tpsa-grid-hackathon-2026/configs/problem_3_1/question_4_distributed_bess_strict_tie_break.json",
+    "sha256": "b7813af4cf7b46f977a0ea154311fd196d7dbcae0462b3841caae3706bb26fc4",
+    "site_count": 4,
+    "portfolio_count": 4,
+    "sites": [
+      "Croaghonagh",
+      "Binbane",
+      "Ardnagappary",
+      "Drumkeen"
+    ],
+    "battery_sizes_mw_mwh": [
+      [
+        45,
+        220
+      ]
+    ]
+  },
+  "assumptions": [
+    "The model generator bus is treated as the nearest substation because no independent farm coordinates are supplied.",
+    "The primary shift factor balances each injection over mean load.",
+    "Positive flow follows each branch's bus0-to-bus1 orientation.",
+    "Directional relief uses the observed binding-flow sign from the solved official network.",
+    "DLR is tested as a rating-only change; topology and reactance remain fixed."
+  ]
+}

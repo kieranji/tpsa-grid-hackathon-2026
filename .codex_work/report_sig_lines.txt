@@ -1,0 +1,19 @@
+    72	    reference_audit: pd.DataFrame,
+    73	    lpf_validation: pd.DataFrame,
+    74	    north_west_consistency: pd.DataFrame,
+    75	    dlr_comparison: pd.DataFrame,
+    76	    q6_crosswalk: pd.DataFrame,
+    77	    event_weights: pd.DataFrame,
+    78	    relief_load: pd.DataFrame,
+    79	    relief_uniform: pd.DataFrame,
+    80	    scope_gaps: pd.DataFrame,
+    81	    renewable_crosswalk: pd.DataFrame,
+    82	    similarity_matrix: pd.DataFrame,
+    83	    buses: pd.DataFrame,
+    84	    make_plots: bool,
+    85	) -> None:
+    86	    """Write deterministic tables, audit prose, and presentation calculations."""
+    87	    if output.exists() and any(output.iterdir()):
+    88	        raise ValueError(f"{output} is not empty; choose a new --out directory")
+    89	    output.mkdir(parents=True, exist_ok=True)
+    90	    (output / "00_input_audit.json").write_text(

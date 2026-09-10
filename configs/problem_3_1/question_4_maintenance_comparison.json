@@ -1,0 +1,8 @@
+{
+  "assumptions_status": "illustrative_maintenance_comparison_not_market_quotes",
+  "years": 20,
+  "designs": {
+    "bess_mw_mwh": [[25,100]],
+    "maintenance_policies": ["replace","run_down","augment"]
+  }
+}

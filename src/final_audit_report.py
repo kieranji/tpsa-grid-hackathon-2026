@@ -1,0 +1,1081 @@
+#!/usr/bin/env python3
+"""Generate the final Q1-Q6 and Problem 3.2 evidence-ledger audit package."""
+
+from __future__ import annotations
+
+import argparse
+import ast
+import csv
+from datetime import datetime, timezone
+import hashlib
+import json
+import math
+from pathlib import Path
+import platform
+import re
+import subprocess
+from typing import Any, Iterable
+
+import pandas as pd
+
+
+REPORT_VERSION = "1.1.0"
+TARGET_LINE = "5041-17010-2"
+
+Q1_LINE = Path("results/problem_3_1/question_1_final/tables/02_line_constraint_and_rating_results.csv")
+Q1_ROBUST = Path("results/problem_3_1/question_1_final/tables/05_all_island_scope_robustness.csv")
+Q2_RECOMMENDATION = Path("results/problem_3_1/question_2_final/tables/10_recommendation_summary.csv")
+Q3_COMPARISON = Path("results/problem_3_1/question_3_final/tables/11_final_scenario_comparison.csv")
+Q4_DOWNSIZING_DIR = Path("results/problem_3_1/question_4_economic_downsizing_168h_20260910_v2")
+Q4_DISTRIBUTED_DIR = Path("results/problem_3_1/question_4_distributed_bess_strict_45mw_168h_20260910_v2")
+Q4_DLR_COMPARISON_DIR = Path("results/problem_3_1/question_4_final_comparison_20260910_v3")
+Q5_DIR = Path("results/problem_3_1/question_5_final")
+Q6_DIR = Path("results/problem_3_1/question_6_final_20260910_v2")
+Q32_DIR = Path("results/problem_3_2/constraint_groups_final_20260910_v3")
+Q32_SCOPE_GAPS = Path("16_model_scope_and_gaps.csv")
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def rel(root: Path, path: Path) -> str:
+    try:
+        return path.resolve().relative_to(root.resolve()).as_posix()
+    except ValueError:
+        return str(path.resolve())
+
+
+def require(root: Path, paths: Iterable[Path]) -> None:
+    missing = [str(path) for path in paths if not (root / path).exists()]
+    if missing:
+        raise FileNotFoundError("Required final evidence is missing: " + ", ".join(missing))
+
+
+def git(root: Path, *args: str) -> str:
+    completed = subprocess.run(
+        ["git", *args], cwd=root, text=True, capture_output=True, check=False
+    )
+    if completed.returncode:
+        return f"unavailable (git {' '.join(args)} returned {completed.returncode})"
+    return completed.stdout.strip()
+
+
+def code_locator(root: Path, relative_path: str, symbol: str) -> str:
+    path = root / relative_path
+    if not path.exists():
+        return f"{relative_path}::{symbol} [file missing]"
+    try:
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+    except (SyntaxError, UnicodeDecodeError) as exc:
+        return f"{relative_path}::{symbol} [AST unavailable: {exc}]"
+    for node in ast.walk(tree):
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)) and node.name == symbol:
+            return f"{relative_path}::{symbol} lines {node.lineno}-{getattr(node, 'end_lineno', node.lineno)}"
+    return f"{relative_path}::{symbol} [symbol not found]"
+
+
+def select_one(frame: pd.DataFrame, description: str, mask: pd.Series) -> pd.Series:
+    selected = frame.loc[mask]
+    if len(selected) != 1:
+        raise ValueError(f"{description}: expected one row, found {len(selected)}")
+    return selected.iloc[0]
+
+
+def display(value: Any) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, (float, int)) and not isinstance(value, bool):
+        if not math.isfinite(float(value)):
+            return ""
+        return f"{float(value):.12g}"
+    if isinstance(value, (dict, list, tuple)):
+        return json.dumps(
+            value,
+            ensure_ascii=False,
+            sort_keys=True,
+            default=lambda item: item.item() if hasattr(item, "item") else str(item),
+        )
+    return str(value)
+
+
+def money(value: float) -> str:
+    return f"-€{abs(value):,.2f}" if value < 0 else f"€{value:,.2f}"
+
+
+def number(value: float, decimals: int = 3) -> str:
+    return f"{value:,.{decimals}f}"
+
+
+def markdown_table(headers: list[str], rows: list[list[Any]]) -> str:
+    def clean(value: Any) -> str:
+        text = str(value).replace("|", "\\|").replace("\n", " ")
+        return text
+
+    lines = [
+        "| " + " | ".join(headers) + " |",
+        "| " + " | ".join("---" for _ in headers) + " |",
+    ]
+    lines.extend("| " + " | ".join(clean(value) for value in row) + " |" for row in rows)
+    return "\n".join(lines)
+
+
+def parse_protected_hashes(root: Path) -> list[dict[str, Any]]:
+    baseline_file = root / ".codex_work/preexisting_q1_q3.sha256"
+    if not baseline_file.exists():
+        raise FileNotFoundError(baseline_file)
+    records: list[dict[str, Any]] = []
+    for raw in baseline_file.read_text(encoding="utf-8").splitlines():
+        if not raw.strip():
+            continue
+        match = re.match(r"^([0-9a-fA-F]{64})\s+(.+)$", raw.strip())
+        if not match:
+            raise ValueError(f"Malformed protected-file hash line: {raw!r}")
+        expected, relative = match.groups()
+        path = root / relative
+        actual = sha256(path) if path.exists() else "MISSING"
+        records.append(
+            {
+                "path": relative,
+                "expected_sha256": expected.lower(),
+                "actual_sha256": actual,
+                "matches_baseline": actual == expected.lower(),
+            }
+        )
+    failures = [row["path"] for row in records if not row["matches_baseline"]]
+    if failures:
+        raise RuntimeError("Protected pre-existing Q1-Q3 files changed: " + ", ".join(failures))
+    return records
+
+
+def read_rc(root: Path, path: str) -> tuple[str, int | None]:
+    target = root / path
+    if not target.exists():
+        return "MISSING", None
+    text = target.read_text(encoding="utf-8", errors="replace").strip()
+    match = re.search(r"(?:RC\s*=\s*)?(-?\d+)\s*$", text)
+    if not match:
+        return "INVALID", None
+    code = int(match.group(1))
+    return ("PASS" if code == 0 else "FAIL"), code
+
+
+def test_matrix(root: Path) -> list[dict[str, Any]]:
+    specs = [
+        ("RUN-Q4-CHECK", "Q4", "check", ".venv/bin/python -u src/problem_3_1/question_4_techno_economics.py --check", ".codex_work/final_q4_check.rc", ".codex_work/final_q4_check.log", "configuration and official network preflight"),
+        ("RUN-Q4-SMOKE", "Q4", "official-network smoke", ".venv/bin/python -u src/problem_3_1/question_4_techno_economics.py --smoke --allow-illustrative-economics --out results/problem_3_1/question_4_smoke_final_20260910_v2", ".codex_work/final_q4_smoke.rc", ".codex_work/final_q4_smoke.log", "24-hour official-network solve"),
+        ("RUN-Q4-TESTS", "Q4", "unit/regression tests", ".venv/bin/python -m unittest discover -s tests/q4 -p 'test_*.py' -v", ".codex_work/final_q4_tests.rc", ".codex_work/final_q4_tests.log", "14 tests expected"),
+        ("RUN-Q4-DOWNSIZING", "Q4", "168-hour full", ".venv/bin/python -u src/problem_3_1/question_4_techno_economics.py --config configs/problem_3_1/question_4_q2_economic_downsizing.json --run --allow-illustrative-economics --out results/problem_3_1/question_4_economic_downsizing_168h_20260910_v2", ".codex_work/q4_downsizing_v2.rc", ".codex_work/q4_downsizing_v2.log", "all configured sizes completed"),
+        ("RUN-Q4-DISTRIBUTED", "Q4", "168-hour full", ".venv/bin/python -u src/problem_3_1/question_4_techno_economics.py --config configs/problem_3_1/question_4_distributed_bess_strict_tie_break.json --run --allow-illustrative-economics --out results/problem_3_1/question_4_distributed_bess_strict_45mw_168h_20260910_v2", ".codex_work/q4_distributed_v2.rc", ".codex_work/q4_distributed_v2.log", "four portfolio cases completed"),
+        ("RUN-Q5-CHECK", "Q5", "check", ".venv/bin/python -u src/problem_3_1/question_5_shift_factors.py --check", ".codex_work/final_q5_check.rc", ".codex_work/final_q5_check.log", "topology/component preflight"),
+        ("RUN-Q5-SMOKE", "Q5", "official-network smoke", ".venv/bin/python -u src/problem_3_1/question_5_shift_factors.py --smoke --out results/problem_3_1/question_5_smoke_final_20260910", ".codex_work/final_q5_smoke.rc", ".codex_work/final_q5_smoke.log", "limited validation solve"),
+        ("RUN-Q5-TESTS", "Q5", "unit/regression tests", ".venv/bin/python -m unittest discover -s tests/q5 -p 'test_*.py' -v", ".codex_work/final_q5_tests.rc", ".codex_work/final_q5_tests.log", "9 tests expected"),
+        ("RUN-Q6-CHECK", "Q6", "check", ".venv/bin/python -u src/problem_3_1/question_6_priority_status.py --check", ".codex_work/final_q6_check.rc", ".codex_work/final_q6_check.log", "policy/status preflight"),
+        ("RUN-Q6-SMOKE", "Q6", "official-network smoke", ".venv/bin/python -u src/problem_3_1/question_6_priority_status.py --smoke --out results/problem_3_1/question_6_smoke_final_20260910", ".codex_work/final_q6_smoke.rc", ".codex_work/final_q6_smoke.log", "24-hour lexicographic solve"),
+        ("RUN-Q6-TESTS", "Q6", "unit/regression tests", ".venv/bin/python -m unittest discover -s tests/q6 -p 'test_*.py' -v", ".codex_work/final_q6_tests.rc", ".codex_work/final_q6_tests.log", "8 tests expected"),
+        ("RUN-Q6-FULL", "Q6", "168-hour full", ".venv/bin/python -u src/problem_3_1/question_6_priority_status.py --run --out results/problem_3_1/question_6_final_20260910_v2", ".codex_work/q6_full_v2.rc", ".codex_work/q6_full_v2.log", "seven scenarios completed"),
+        ("RUN-Q32-CHECK", "Problem 3.2", "check", ".venv/bin/python -u src/problem_3_2/constraint_group_generation.py --check", ".codex_work/q32_check_complete_link.rc", ".codex_work/q32_check_complete_link.log", "national topology/PTDF preflight"),
+        ("RUN-Q32-SMOKE", "Problem 3.2", "official-network smoke", ".venv/bin/python -u src/problem_3_2/constraint_group_generation.py --smoke --out results/problem_3_2/constraint_groups_smoke_20260910_v5", ".codex_work/q32_smoke_v5.rc", ".codex_work/q32_smoke_v5.log", "24-hour national solve"),
+        ("RUN-Q32-TESTS", "Problem 3.2", "unit/regression tests", ".venv/bin/python -m unittest discover -s tests/q32 -p 'test_*.py' -v", ".codex_work/final_q32_tests.rc", ".codex_work/final_q32_tests.log", "13 tests expected"),
+        ("RUN-Q32-FULL", "Problem 3.2", "168-hour national full", ".venv/bin/python -u src/problem_3_2/constraint_group_generation.py --run --out results/problem_3_2/constraint_groups_final_20260910_v3", ".codex_work/q32_full_v3.rc", ".codex_work/q32_full_v3.log", "full all-island outputs 00-18"),
+        ("RUN-AUDIT-TESTS", "Audit", "unit/regression tests", ".venv/bin/python -m unittest discover -s tests/audit -p 'test_*.py' -v", ".codex_work/final_audit_tests.rc", ".codex_work/final_audit_tests.log", "default-root and RC-marker regressions"),
+        ("RUN-ALL-TESTS", "Cross-cutting", "combined full regression", ".venv/bin/python -m unittest discover -s tests/q4 -p 'test_*.py' -v && .venv/bin/python -m unittest discover -s tests/q5 -p 'test_*.py' -v && .venv/bin/python -m unittest discover -s tests/q6 -p 'test_*.py' -v && .venv/bin/python -m unittest discover -s tests/q32 -p 'test_*.py' -v && .venv/bin/python -m unittest discover -s tests/audit -p 'test_*.py' -v", ".codex_work/final_all_tests.rc", ".codex_work/final_all_tests.log", "all Q4/Q5/Q6/Q3.2/audit tests in one fail-fast chain"),
+    ]
+    rows: list[dict[str, Any]] = []
+    for run_id, area, mode, command, rc_file, log_file, acceptance in specs:
+        status, code = read_rc(root, rc_file)
+        log_path = root / log_file
+        log_text = log_path.read_text(encoding="utf-8", errors="replace") if log_path.exists() else ""
+        test_count = None
+        matches = re.findall(r"Ran\s+(\d+)\s+tests?", log_text)
+        if matches:
+            test_count = sum(int(value) for value in matches)
+        rows.append(
+            {
+                "run_id": run_id,
+                "area": area,
+                "mode": mode,
+                "command": command,
+                "exit_code": code,
+                "status": status,
+                "test_count": test_count,
+                "acceptance": acceptance,
+                "log_file": log_file,
+            }
+        )
+    return rows
+
+
+def main(root: Path, output: Path) -> int:
+    root = root.resolve()
+    output = (root / output).resolve() if not output.is_absolute() else output.resolve()
+    required = [
+        Q1_LINE,
+        Q1_ROBUST,
+        Q2_RECOMMENDATION,
+        Q3_COMPARISON,
+        Q4_DOWNSIZING_DIR / "04_technical_revenue_cost_npv_payback.csv",
+        Q4_DOWNSIZING_DIR / "manifest.json",
+        Q4_DISTRIBUTED_DIR / "04_technical_revenue_cost_npv_payback.csv",
+        Q4_DLR_COMPARISON_DIR / "01_capacity_fixed_vs_dlr.csv",
+        Q4_DLR_COMPARISON_DIR / "PRESENTATION_CALCULATIONS.md",
+        Q4_DLR_COMPARISON_DIR / "manifest.json",
+        Q5_DIR / "03_target_line_ranking.csv",
+        Q5_DIR / "05_finite_difference_validation.csv",
+        Q5_DIR / "06_dlr_rating_invariance.csv",
+        Q6_DIR / "02_scenario_summary.csv",
+        Q6_DIR / "06_generator_status_impacts.csv",
+        Q32_DIR / "manifest.json",
+        Q32_DIR / "01_directional_constraint_modes.csv",
+        Q32_DIR / "02_overlapping_constraint_memberships.csv",
+        Q32_DIR / "04_mode_similarity_audit.csv",
+        Q32_DIR / "07_nonlocal_similar_bus_pairs.csv",
+        Q32_DIR / "09_lpf_sample_validation.csv",
+        Q32_DIR / "10_north_west_q5_consistency.csv",
+        Q32_DIR / Q32_SCOPE_GAPS,
+        Q32_DIR / "17_renewable_resource_constraint_memberships.csv",
+        Q32_DIR / "18_bus_electrical_similarity.csv.gz",
+    ]
+    require(root, required)
+    output.mkdir(parents=True, exist_ok=True)
+
+    q1 = pd.read_csv(root / Q1_LINE)
+    q1_robust = pd.read_csv(root / Q1_ROBUST)
+    q2 = pd.read_csv(root / Q2_RECOMMENDATION)
+    q3 = pd.read_csv(root / Q3_COMPARISON)
+    q4_down = pd.read_csv(root / Q4_DOWNSIZING_DIR / "04_technical_revenue_cost_npv_payback.csv")
+    q4_dist = pd.read_csv(root / Q4_DISTRIBUTED_DIR / "04_technical_revenue_cost_npv_payback.csv")
+    q4_dlr_compare = pd.read_csv(root / Q4_DLR_COMPARISON_DIR / "01_capacity_fixed_vs_dlr.csv")
+    q4_manifest = json.loads((root / Q4_DOWNSIZING_DIR / "manifest.json").read_text(encoding="utf-8"))
+    q5 = pd.read_csv(root / Q5_DIR / "03_target_line_ranking.csv")
+    q5_validation = pd.read_csv(root / Q5_DIR / "05_finite_difference_validation.csv")
+    q5_dlr = pd.read_csv(root / Q5_DIR / "06_dlr_rating_invariance.csv")
+    q6 = pd.read_csv(root / Q6_DIR / "02_scenario_summary.csv")
+    q6_impacts = pd.read_csv(root / Q6_DIR / "06_generator_status_impacts.csv")
+    q32_manifest = json.loads((root / Q32_DIR / "manifest.json").read_text(encoding="utf-8"))
+    q32_modes = pd.read_csv(root / Q32_DIR / "01_directional_constraint_modes.csv")
+    q32_memberships = pd.read_csv(root / Q32_DIR / "02_overlapping_constraint_memberships.csv")
+    q32_pairs = pd.read_csv(root / Q32_DIR / "04_mode_similarity_audit.csv")
+    q32_nonlocal = pd.read_csv(root / Q32_DIR / "07_nonlocal_similar_bus_pairs.csv")
+    q32_lpf = pd.read_csv(root / Q32_DIR / "09_lpf_sample_validation.csv")
+    q32_nw = pd.read_csv(root / Q32_DIR / "10_north_west_q5_consistency.csv")
+    q32_gaps = pd.read_csv(root / Q32_DIR / Q32_SCOPE_GAPS)
+    q32_res = pd.read_csv(root / Q32_DIR / "17_renewable_resource_constraint_memberships.csv")
+
+    q1_target = select_one(q1, "Q1 target line", q1["line"].astype(str).eq(TARGET_LINE))
+    q1_national = select_one(q1_robust, "Q1 all-island target line", q1_robust["line"].astype(str).eq(TARGET_LINE))
+    q2_final = select_one(q2, "Q2 final recommendation", q2["recommendation_type"].astype(str).eq("recommended_installed_capacity"))
+    q3_indexed = q3.set_index("scenario_label")
+    q3_base = q3_indexed.loc["baseline"]
+    q3_dlr = q3_indexed.loc["selected_wind_proxy_DLR"]
+    q3_bess = q3_indexed.loc["q2_protected_battery_only"]
+    q3_combined = q3.loc[q3["recommendation_status"].astype(str).eq("FEASIBLE_DOWNSIZED_BESS")].iloc[0]
+    q5_croaghonagh = select_one(q5, "Q5 Croaghonagh", q5["wind_farm"].astype(str).eq("Croaghonagh wind"))
+    q5_moy = select_one(q5, "Q5 Moy", q5["wind_farm"].astype(str).eq("Moy wind"))
+    q6_indexed = q6.set_index("scenario")
+    q6_neutral = q6_indexed.loc["network_neutral_static"]
+    q6_priority = q6_indexed.loc["network_priority_static"]
+    q6_neutral_dlr = q6_indexed.loc["network_neutral_dlr"]
+    q6_priority_dlr = q6_indexed.loc["network_priority_dlr"]
+
+    required_sizes = [(22.5, 110.0), (45.0, 220.0), (67.5, 330.0), (90.0, 440.0)]
+    q4_rows: dict[tuple[float, float], pd.Series] = {}
+    for power, energy in required_sizes:
+        mask = q4_down["battery_mw"].sub(power).abs().lt(1e-8) & q4_down["battery_mwh"].sub(energy).abs().lt(1e-8)
+        q4_rows[(power, energy)] = select_one(q4_down, f"Q4 {power}/{energy}", mask)
+    q4_no_build = select_one(q4_down, "Q4 no-build", q4_down["case_id"].astype(str).eq("NO_BUILD"))
+    q4_built = q4_down.loc[q4_down["technology"].astype(str).eq("bess")].copy()
+    q4_best_built = q4_built.loc[q4_built["npv_eur"].idxmax()]
+    q4_best_project = q4_down.loc[q4_down["npv_eur"].idxmax()]
+    q4_dist_built = q4_dist.loc[q4_dist["technology"].astype(str).eq("bess")].sort_values("site_count")
+    q4_dlr_sizes = [(22.5, 110.0), (45.0, 220.0), (62.22, 226.92), (67.5, 330.0), (85.0, 310.0), (90.0, 440.0)]
+    q4_dlr_rows: dict[tuple[float, float], pd.Series] = {}
+    for power, energy in q4_dlr_sizes:
+        mask = q4_dlr_compare["battery_mw"].sub(power).abs().lt(1e-8) & q4_dlr_compare["battery_mwh"].sub(energy).abs().lt(1e-8)
+        q4_dlr_rows[(power, energy)] = select_one(q4_dlr_compare, f"Q4 DLR crosswalk {power}/{energy}", mask)
+    q4_dlr_45 = q4_dlr_rows[(45.0, 220.0)]
+    if q4_dlr_compare["dlr_cost_included_in_conditional_bess_npv"].astype(str).str.lower().eq("true").any():
+        raise ValueError("The final DLR crosswalk unexpectedly includes DLR cost in conditional BESS NPV")
+    if q4_dlr_compare["dlr_standalone_lifetime_gain_mwh"].max() - q4_dlr_compare["dlr_standalone_lifetime_gain_mwh"].min() > 1e-6:
+        raise ValueError("DLR standalone lifetime gain must be common across matched capacity rows")
+
+    protected = parse_protected_hashes(root)
+    tests = test_matrix(root)
+
+    q1_code = code_locator(root, "src/problem_3_1/constrained_lines.py", "line_reinforcement_trials")
+    q2_code = code_locator(root, "src/problem_3_1/question_2_battery_siting_sizing.py", "verify_lifetime_recommendation")
+    q3_code = code_locator(root, "src/problem_3_1/question_3_dynamic_line_rating.py", "search_dlr_battery_scales")
+    q4_code = code_locator(root, "src/problem_3_1/q4_techno_economic/pipeline.py", "main")
+    q4_report_code = code_locator(root, "src/problem_3_1/q4_techno_economic/reporting.py", "write_report")
+    q5_code = code_locator(root, "src/problem_3_1/q5_shift_factors/core.py", "component_adjust_reference")
+    q6_code = code_locator(root, "src/problem_3_1/q6_priority_dispatch/pipeline.py", "main")
+    q32_code = code_locator(root, "src/problem_3_2/q32_constraint_groups/core.py", "merge_similar_modes")
+
+    evidence: list[dict[str, Any]] = []
+
+    def add_evidence(
+        evidence_id: str,
+        claim_id: str,
+        question: str,
+        data_class: str,
+        description: str,
+        source: Path,
+        row_locator: str,
+        column: str,
+        raw_value: Any,
+        unit: str,
+        time_basis: str,
+        code: str,
+        config_locator: str = "",
+        validation: str = "",
+        notes: str = "",
+    ) -> None:
+        path = root / source
+        evidence.append(
+            {
+                "evidence_id": evidence_id,
+                "claim_id": claim_id,
+                "question": question,
+                "data_class": data_class,
+                "description": description,
+                "source_file": source.as_posix(),
+                "source_sha256": sha256(path),
+                "row_locator": row_locator,
+                "column_or_json_pointer": column,
+                "raw_value": display(raw_value),
+                "display_value": display(raw_value),
+                "unit": unit,
+                "time_basis": time_basis,
+                "generated_by_code": code,
+                "config_locator": config_locator,
+                "validation": validation,
+                "notes": notes,
+            }
+        )
+
+    q1_selector = f'line == "{TARGET_LINE}"'
+    for suffix, description, column, unit in [
+        ("001", "Target branch static rating", "rating_mva", "MVA"),
+        ("002", "Regional binding hours", "binding_hours", "hours"),
+        ("003", "Regional hours at or above 90% loading", "hours_at_or_above_90_pct", "hours"),
+        ("004", "Regional mean loading", "mean_loading_pct", "%"),
+        ("005", "Regional maximum loading", "max_loading_pct", "%"),
+        ("006", "Rating after 25% uplift", "new_rating_mva", "MVA"),
+        ("007", "Dispatch-down after 25% uplift", "dispatch_down_after_plus_25_mwh", "MWh"),
+        ("008", "Dispatch-down saved by 25% uplift", "saved_dispatch_down_plus_25_mwh", "MWh"),
+        ("009", "Binding hours after 25% uplift", "binding_hours_after_plus_25", "hours"),
+    ]:
+        add_evidence(f"EV-Q1-{suffix}", "CLM-Q1-001", "Q1", "MODEL_DERIVED", description, Q1_LINE, q1_selector, column, q1_target[column], unit, "168-hour North-West model", q1_code, validation="optimal dispatch and bidirectional loading calculation")
+    add_evidence("EV-Q1-010", "CLM-Q1-002", "Q1", "MODEL_DERIVED", "All-island target-line binding hours", Q1_ROBUST, q1_selector, "all_island_binding_hours", q1_national["all_island_binding_hours"], "hours", "168-hour all-island robustness run", q1_code, notes="Scope differs from the regional boundary model")
+    add_evidence("EV-Q1-011", "CLM-Q1-002", "Q1", "MODEL_DERIVED", "All-island target-line maximum loading", Q1_ROBUST, q1_selector, "all_island_max_loading_pct", q1_national["all_island_max_loading_pct"], "%", "168-hour all-island robustness run", q1_code, notes="Scope differs from the regional boundary model")
+
+    q2_selector = 'recommendation_type == "recommended_installed_capacity"'
+    for suffix, description, column, unit in [
+        ("001", "Recommended site", "recommended_sites", "bus/site"),
+        ("002", "Recommended battery power", "power_mw", "MW"),
+        ("003", "Recommended nameplate energy", "nameplate_energy_mwh", "MWh"),
+        ("004", "End-of-life usable energy", "usable_energy_mwh", "MWh"),
+        ("005", "End-of-life state of health", "state_of_health_pct", "%"),
+        ("006", "Minimum SOC", "soc_min_pct", "%"),
+        ("007", "Maximum SOC", "soc_max_pct", "%"),
+        ("008", "Round-trip efficiency", "round_trip_efficiency_pct", "%"),
+        ("009", "Total dispatch-down", "total_dispatch_down_mwh", "MWh"),
+        ("010", "Dispatch-down saved", "dispatch_down_saved_mwh", "MWh"),
+        ("011", "Affected-generator gain", "affected_generator_gain_mwh", "MWh"),
+        ("012", "Target benchmark recovery", "target_recovery_pct", "%"),
+        ("013", "Weekly battery throughput", "throughput_mwh", "MWh"),
+        ("014", "Usable equivalent full cycles", "equivalent_full_cycles_usable", "cycles"),
+        ("015", "Simultaneous charging and discharging hours", "simultaneous_charge_discharge_hours", "hours"),
+        ("016", "Target binding hours", "target_binding_hours", "hours"),
+        ("017", "Architecture reason", "architecture_reason", "text"),
+    ]:
+        add_evidence(f"EV-Q2-{suffix}", "CLM-Q2-001", "Q2", "MODEL_DERIVED", description, Q2_RECOMMENDATION, q2_selector, column, q2_final[column], unit, "168-hour North-West model", q2_code, config_locator="Q2 lifetime_eol row; 10-90% SOC and 80% EOL SoH", validation="solve_ok, unserved_ok, benchmark_success and no simultaneous operation")
+
+    q3_rows = [
+        ("001", "baseline", q3_base),
+        ("002", "selected_wind_proxy_DLR", q3_dlr),
+        ("003", "q2_protected_battery_only", q3_bess),
+        ("004", str(q3_combined["scenario_label"]), q3_combined),
+    ]
+    for suffix, selector, row in q3_rows:
+        add_evidence(f"EV-Q3-{suffix}A", "CLM-Q3-001", "Q3", "MODEL_DERIVED", f"{selector} total dispatch-down", Q3_COMPARISON, f'scenario_label == "{selector}"', "total_dispatch_down_mwh", row["total_dispatch_down_mwh"], "MWh", "168-hour North-West model", q3_code)
+        add_evidence(f"EV-Q3-{suffix}B", "CLM-Q3-001", "Q3", "MODEL_DERIVED", f"{selector} target binding hours", Q3_COMPARISON, f'scenario_label == "{selector}"', "target_binding_hours", row["target_binding_hours"], "hours", "168-hour North-West model", q3_code)
+    for suffix, description, column, unit in [
+        ("010", "Selected DLR mean multiplier", "mean_dlr_multiplier", "pu"),
+        ("011", "Selected DLR maximum multiplier", "max_dlr_multiplier", "pu"),
+        ("012", "Combined battery power", "battery_power_mw", "MW"),
+        ("013", "Combined battery nameplate energy", "battery_nameplate_energy_mwh", "MWh"),
+        ("014", "Combined battery usable energy", "battery_usable_energy_mwh", "MWh"),
+        ("015", "Combined battery scale versus Q2", "battery_scale_vs_q2", "fraction"),
+    ]:
+        row = q3_dlr if "DLR" in description else q3_combined
+        selector = "selected_wind_proxy_DLR" if row is q3_dlr else str(q3_combined["scenario_label"])
+        add_evidence(f"EV-Q3-{suffix}", "CLM-Q3-001", "Q3", "MODEL_DERIVED", description, Q3_COMPARISON, f'scenario_label == "{selector}"', column, row[column], unit, "168-hour North-West model", q3_code)
+
+    q4_table_path = Q4_DOWNSIZING_DIR / "04_technical_revenue_cost_npv_payback.csv"
+    add_evidence("EV-Q4-000", "CLM-Q4-001", "Q4", "MODEL_DERIVED", "No-build NPV", q4_table_path, 'case_id == "NO_BUILD"', "npv_eur", q4_no_build["npv_eur"], "EUR real 2026", "20-year present value", q4_code)
+    for index, ((power, energy), row) in enumerate(q4_rows.items(), 1):
+        selector = f"battery_mw == {power} and battery_mwh == {energy}"
+        for letter, description, column, unit in [
+            ("A", "Lifetime net renewable-energy gain", "lifetime_net_renewable_gain_mwh", "MWh"),
+            ("B", "Lifetime project revenue", "lifetime_project_revenue_eur", "EUR real 2026"),
+            ("C", "Lifetime energy purchase", "lifetime_energy_purchase_eur", "EUR real 2026"),
+            ("D", "Lifetime fixed and variable O&M", "lifetime_fixed_and_variable_om_eur", "EUR real 2026"),
+            ("E", "Lifetime maintenance capital", "lifetime_maintenance_capex_eur", "EUR real 2026"),
+            ("F", "Initial capital", "initial_capex_eur", "EUR real 2026"),
+            ("G", "Lifetime system dispatch-cost saving", "lifetime_system_dispatch_cost_saving_eur", "EUR real 2026"),
+            ("H", "Project NPV", "npv_eur", "EUR real 2026"),
+            ("I", "System saving included in project cash flow", "system_saving_included_in_project_cashflow", "boolean"),
+        ]:
+            add_evidence(f"EV-Q4-{index:03d}{letter}", "CLM-Q4-001", "Q4", "MODEL_DERIVED", f"{power:g} MW / {energy:g} MWh: {description}", q4_table_path, selector, column, row[column], unit, "20-year result; 168-hour block repeated to 8760 h/year", q4_code, config_locator="resolved config in Q4 manifest", validation="separate project and system accounts")
+
+    q4_cfg = q4_manifest["config"]
+    assumption_values = [
+        ("EV-Q4-A01", "Project life", "/config/years", q4_cfg.get("years"), "years"),
+        ("EV-Q4-A02", "Real discount rate", "/config/real_discount_rate", q4_cfg.get("real_discount_rate"), "fraction"),
+        ("EV-Q4-A03", "Price mode", "/config/prices/mode", q4_cfg.get("prices", {}).get("mode"), "text"),
+        ("EV-Q4-A04", "Flat energy price", "/config/prices/flat_eur_mwh", q4_cfg.get("prices", {}).get("flat_eur_mwh"), "EUR/MWh"),
+        ("EV-Q4-A05", "Annualisation", "/config/annualisation", q4_cfg.get("annualisation"), "JSON"),
+        ("EV-Q4-A06", "Assumptions status", "/config/assumptions_status", q4_cfg.get("assumptions_status"), "text"),
+        ("EV-Q4-A07", "Grid-service payment", "/config/prices/grid_service_payment_eur_kw_year", q4_cfg.get("prices", {}).get("grid_service_payment_eur_kw_year"), "EUR/kW-year"),
+        ("EV-Q4-A08", "Currency and financing basis", "/config/currency_basis", q4_cfg.get("currency_basis"), "text"),
+    ]
+    for evidence_id, description, pointer, value, unit in assumption_values:
+        add_evidence(evidence_id, "CLM-Q4-002", "Q4", "COMMERCIAL_ASSUMPTION", description, Q4_DOWNSIZING_DIR / "manifest.json", "manifest root", pointer, value, unit, "configured project horizon", q4_code, config_locator=pointer, notes="Illustrative assumption, not a market quote")
+
+    q4_dist_path = Q4_DISTRIBUTED_DIR / "04_technical_revenue_cost_npv_payback.csv"
+    for _, row in q4_dist_built.iterrows():
+        site_count = int(row["site_count"])
+        selector = f"site_count == {site_count}"
+        add_evidence(f"EV-Q4-D{site_count}A", "CLM-Q4-003", "Q4 distributed", "MODEL_DERIVED", f"{site_count}-site lifetime net renewable gain", q4_dist_path, selector, "lifetime_net_renewable_gain_mwh", row["lifetime_net_renewable_gain_mwh"], "MWh", "20-year result; repeated-week annualisation", q4_report_code, config_locator="configs/problem_3_1/question_4_distributed_bess_strict_tie_break.json")
+        add_evidence(f"EV-Q4-D{site_count}B", "CLM-Q4-003", "Q4 distributed", "MODEL_DERIVED", f"{site_count}-site project NPV", q4_dist_path, selector, "npv_eur", row["npv_eur"], "EUR real 2026", "20-year present value", q4_report_code, config_locator="configs/problem_3_1/question_4_distributed_bess_strict_tie_break.json")
+
+    q4_dlr_path = Q4_DLR_COMPARISON_DIR / "01_capacity_fixed_vs_dlr.csv"
+    for index, ((power, energy), row) in enumerate(q4_dlr_rows.items(), 1):
+        selector = f"battery_mw == {power} and battery_mwh == {energy}"
+        for letter, description, column, unit in [
+            ("A", "Fixed-line BESS lifetime net renewable gain", "fixed_lifetime_net_renewable_gain_mwh", "MWh"),
+            ("B", "Incremental BESS lifetime gain conditional on DLR", "dlr_lifetime_net_renewable_gain_mwh", "MWh"),
+            ("C", "Total DLR plus BESS lifetime gain versus fixed-line no-build", "dlr_plus_bess_total_gain_vs_fixed_mwh", "MWh"),
+            ("D", "Fixed-line BESS project NPV", "fixed_npv_eur", "EUR real 2026"),
+            ("E", "Conditional BESS project NPV with DLR", "dlr_npv_eur", "EUR real 2026"),
+            ("F", "DLR change in incremental BESS technical gain", "dlr_change_in_bess_incremental_gain_mwh", "MWh"),
+            ("G", "DLR change in conditional BESS project NPV", "dlr_change_in_conditional_bess_npv_eur", "EUR real 2026"),
+            ("H", "DLR cost included in conditional BESS NPV", "dlr_cost_included_in_conditional_bess_npv", "boolean"),
+            ("I", "DLR standalone lifetime gain", "dlr_standalone_lifetime_gain_mwh", "MWh"),
+        ]:
+            add_evidence(
+                f"EV-Q4-L{index}{letter}",
+                "CLM-Q4-004",
+                "Q4 DLR crosswalk",
+                "MODEL_DERIVED under COMMERCIAL_ASSUMPTION",
+                f"{power:g} MW / {energy:g} MWh: {description}",
+                q4_dlr_path,
+                selector,
+                column,
+                row[column],
+                unit,
+                "20-year result; 168-hour block repeated to 8760 h/year",
+                q4_code,
+                config_locator="fixed-line and q3_selected_wind_proxy_40pct matched Q4 runs",
+                validation="scenario-matched no-build counterfactual and separate project/system accounts",
+                notes="Conditional BESS NPV under the DLR network state contains BESS cash flows only; DLR CAPEX, OPEX, and owner revenue are absent",
+            )
+
+    q5_path = Q5_DIR / "03_target_line_ranking.csv"
+    q5_selector = 'wind_farm == "Croaghonagh wind"'
+    for suffix, description, column, unit in [
+        ("001", "Croaghonagh installed wind capacity", "installed_capacity_mw", "MW"),
+        ("002", "Croaghonagh target-line PTDF", "primary_shift_factor", "MW/MW injection"),
+        ("003", "Croaghonagh directional relief", "relief_mw_per_mw_curtailment", "MW/MW curtailment"),
+        ("004", "Positive line-flow orientation", "positive_flow_orientation", "text"),
+        ("005", "Dominant binding-flow direction", "dominant_binding_flow_direction", "text"),
+        ("006", "Target binding hours", "binding_hours", "hours"),
+    ]:
+        add_evidence(f"EV-Q5-{suffix}", "CLM-Q5-001", "Q5", "MODEL_DERIVED", description, q5_path, q5_selector, column, q5_croaghonagh[column], unit, "168-hour North-West model", q5_code, validation="component-local LPF finite difference")
+    add_evidence("EV-Q5-007", "CLM-Q5-002", "Q5", "MODEL_DERIVED", "Moy target-line PTDF", q5_path, 'wind_farm == "Moy wind"', "primary_shift_factor", q5_moy["primary_shift_factor"], "MW/MW injection", "static topology", q5_code, notes="Moy is in a different passive AC component")
+    add_evidence("EV-Q5-008", "CLM-Q5-003", "Q5", "MODEL_DERIVED", "Maximum LPF finite-difference error", Q5_DIR / "05_finite_difference_validation.csv", "max(absolute_error)", "absolute_error", q5_validation["absolute_error"].max(), "MW/MW", "sampled static topology", q5_code, validation="all passed <= tolerance")
+    add_evidence("EV-Q5-009", "CLM-Q5-004", "Q5", "MODEL_DERIVED", "Maximum PTDF change under rating-only DLR", Q5_DIR / "06_dlr_rating_invariance.csv", f'monitored_line == "{TARGET_LINE}"', "maximum_absolute_shift_factor_change", q5_dlr.iloc[0]["maximum_absolute_shift_factor_change"], "MW/MW", "rating-only sensitivity", q5_code)
+
+    q6_path = Q6_DIR / "02_scenario_summary.csv"
+    for suffix, selector, row in [("001", "network_neutral_static", q6_neutral), ("002", "network_priority_static", q6_priority), ("003", "network_neutral_dlr", q6_neutral_dlr), ("004", "network_priority_dlr", q6_priority_dlr)]:
+        add_evidence(f"EV-Q6-{suffix}", "CLM-Q6-001", "Q6", "MODEL_DERIVED under SCENARIO_CHOICE status labels", f"{selector} wind dispatch-down", q6_path, f'scenario == "{selector}"', "wind_dispatch_down_mwh", row["wind_dispatch_down_mwh"], "MWh", "168-hour North-West model", q6_code, config_locator="configs/problem_3_1/question_6.json", validation="lexicographic stages, balance and branch-limit checks")
+    add_evidence("EV-Q6-005", "CLM-Q6-002", "Q6", "MODEL_DERIVED under SCENARIO_CHOICE status labels", "Priority-farm protected energy", Q6_DIR / "06_generator_status_impacts.csv", "negative sum(additional_dispatch_down_mwh)", "additional_dispatch_down_mwh", -q6_impacts.loc[q6_impacts["additional_dispatch_down_mwh"] < 0, "additional_dispatch_down_mwh"].sum(), "MWh", "168-hour North-West model", q6_code, notes="Allocation transfer, not system saving or BESS revenue")
+    add_evidence("EV-Q6-006", "CLM-Q6-002", "Q6", "MODEL_DERIVED under SCENARIO_CHOICE status labels", "Non-priority additional burden", Q6_DIR / "06_generator_status_impacts.csv", "positive sum(additional_dispatch_down_mwh)", "additional_dispatch_down_mwh", q6_impacts.loc[q6_impacts["additional_dispatch_down_mwh"] > 0, "additional_dispatch_down_mwh"].sum(), "MWh", "168-hour North-West model", q6_code, notes="Allocation transfer, not system saving or BESS revenue")
+    largest_burden = q6_impacts.loc[q6_impacts["additional_dispatch_down_mwh"].idxmax()]
+    largest_protection = q6_impacts.loc[q6_impacts["additional_dispatch_down_mwh"].idxmin()]
+    add_evidence("EV-Q6-007", "CLM-Q6-003", "Q6", "MODEL_DERIVED under SCENARIO_CHOICE status labels", "Largest additional burden", Q6_DIR / "06_generator_status_impacts.csv", f'generator == "{largest_burden["generator"]}"', "additional_dispatch_down_mwh", largest_burden["additional_dispatch_down_mwh"], "MWh", "168-hour North-West model", q6_code)
+    add_evidence("EV-Q6-008", "CLM-Q6-003", "Q6", "MODEL_DERIVED under SCENARIO_CHOICE status labels", "Largest protection", Q6_DIR / "06_generator_status_impacts.csv", f'generator == "{largest_protection["generator"]}"', "additional_dispatch_down_mwh", largest_protection["additional_dispatch_down_mwh"], "MWh", "168-hour North-West model", q6_code)
+    add_evidence("EV-Q6-009", "CLM-Q6-004", "Q6", "MODEL_DERIVED", "Maximum component balance error", q6_path, 'scenario == "network_priority_static"', "maximum_component_balance_error_mw", q6_priority["maximum_component_balance_error_mw"], "MW", "168-hour North-West model", q6_code)
+
+    q32_results = q32_manifest["results"]
+    q32_network = q32_manifest["network"]
+    q32_checks = q32_manifest["numerical_checks"]
+    q32_manifest_path = Q32_DIR / "manifest.json"
+    q32_fields = [
+        ("001", "National bus count", "/network/buses", q32_network["buses"], "buses"),
+        ("002", "National line count", "/network/lines", q32_network["lines"], "lines"),
+        ("003", "National transformer count", "/network/transformers", q32_network["transformers"], "transformers"),
+        ("004", "Passive branch count", "/network/passive_branches", q32_network["passive_branches"], "branches"),
+        ("005", "Passive AC component count", "/network/passive_ac_components", q32_network["passive_ac_components"], "components"),
+        ("006", "Directional mode count", "/results/directional_mode_count", q32_results["directional_mode_count"], "modes"),
+        ("007", "Overlapping membership count", "/results/overlapping_membership_count", q32_results["overlapping_membership_count"], "memberships"),
+        ("008", "Buses in any directional group", "/results/buses_in_any_constraint_group", q32_results["buses_in_any_constraint_group"], "buses"),
+        ("009", "Maximum groups per bus", "/results/maximum_groups_per_bus", q32_results["maximum_groups_per_bus"], "groups/bus"),
+        ("010", "Complete-link merged group count", "/results/merged_constraint_group_count", q32_results["merged_constraint_group_count"], "groups"),
+        ("011", "Response-zone count", "/results/response_zone_count", q32_results["response_zone_count"], "zones"),
+        ("012", "Nonlocal similar-pair count", "/results/nonlocal_similar_pair_count", q32_results["nonlocal_similar_pair_count"], "pairs"),
+        ("013", "Renewable resource count", "/results/renewable_resource_count", q32_results["renewable_resource_count"], "resources"),
+        ("014", "Renewable resources in any group", "/results/renewable_resources_in_any_constraint_group", q32_results["renewable_resources_in_any_constraint_group"], "resources"),
+        ("015", "Maximum national LPF error", "/numerical_checks/maximum_lpf_absolute_error", q32_checks["maximum_lpf_absolute_error"], "MW/MW"),
+        ("016", "Maximum Q5 North-West recalculation error", "/numerical_checks/maximum_north_west_q5_recalculation_error", q32_checks["maximum_north_west_q5_recalculation_error"], "MW/MW"),
+        ("017", "Maximum centered reference-response change", "/numerical_checks/maximum_centered_reference_response_change", q32_checks["maximum_centered_reference_response_change"], "MW/MW"),
+    ]
+    for suffix, description, pointer, value, unit in q32_fields:
+        add_evidence(f"EV-Q32-{suffix}", "CLM-Q32-001", "Problem 3.2", "MODEL_DERIVED", description, q32_manifest_path, "manifest root", pointer, value, unit, "168-hour all-island model", q32_code, config_locator="configs/problem_3_2/constraint_groups.json", validation="optimal national dispatch, LPF/Q5/reference checks")
+
+    top_mode = q32_modes.sort_values("event_weighted_severity_hours", ascending=False).iloc[0]
+    add_evidence("EV-Q32-018", "CLM-Q32-002", "Problem 3.2", "MODEL_DERIVED", "Highest-severity directional mode", Q32_DIR / "01_directional_constraint_modes.csv", f'mode_id == "{top_mode["mode_id"]}"', "event_weighted_severity_hours", top_mode["event_weighted_severity_hours"], "severity-hours", "168-hour all-island model", q32_code)
+    if len(q32_nonlocal):
+        nonlocal_example = q32_nonlocal.iloc[0]
+        nonlocal_selector = "; ".join(f"{key}={nonlocal_example[key]}" for key in q32_nonlocal.columns[:2])
+        add_evidence("EV-Q32-019", "CLM-Q32-003", "Problem 3.2", "MODEL_DERIVED", "Example geographically nonlocal electrically similar pair", Q32_DIR / "07_nonlocal_similar_bus_pairs.csv", nonlocal_selector, "complete row", nonlocal_example.to_dict(), "mixed", "168-hour all-island model", q32_code, notes="Planning signal; not an official operational Constraint Group")
+
+    calculations = [
+        {"calculation_id": "CALC-Q1-001", "question": "Q1", "description": "Regional dispatch-down saved by 25% rating uplift", "formula": f"{q1_target['dispatch_down_after_plus_25_mwh'] + q1_target['saved_dispatch_down_plus_25_mwh']:.12f} - {q1_target['dispatch_down_after_plus_25_mwh']:.12f}", "input_evidence_ids": "EV-Q1-007;EV-Q1-008", "unrounded_result": q1_target["saved_dispatch_down_plus_25_mwh"], "display_result": number(q1_target["saved_dispatch_down_plus_25_mwh"], 6), "unit": "MWh", "interpretation": "Regional model only"},
+        {"calculation_id": "CALC-Q1-002", "question": "Q1", "description": "Saved dispatch-down per added rating", "formula": f"{q1_target['saved_dispatch_down_plus_25_mwh']:.12f} / {q1_target['added_rating_mva']:.12f}", "input_evidence_ids": "EV-Q1-008;EV-Q1-006", "unrounded_result": q1_target["saved_mwh_per_added_mva"], "display_result": number(q1_target["saved_mwh_per_added_mva"], 6), "unit": "MWh/MVA", "interpretation": "One simulated week"},
+        {"calculation_id": "CALC-Q2-001", "question": "Q2", "description": "End-of-life usable battery energy", "formula": f"{q2_final['nameplate_energy_mwh']:.6g} × {q2_final['state_of_health_pct']/100:.6g} × ({q2_final['soc_max_pct']/100:.6g} - {q2_final['soc_min_pct']/100:.6g})", "input_evidence_ids": "EV-Q2-003;EV-Q2-005;EV-Q2-006;EV-Q2-007", "unrounded_result": q2_final["usable_energy_mwh"], "display_result": number(q2_final["usable_energy_mwh"], 3), "unit": "MWh", "interpretation": "Nameplate is not fully usable"},
+        {"calculation_id": "CALC-Q2-002", "question": "Q2", "description": "Usable equivalent full cycles", "formula": f"{q2_final['throughput_mwh']:.12f} / (2 × {q2_final['usable_energy_mwh']:.12f})", "input_evidence_ids": "EV-Q2-013;EV-Q2-004", "unrounded_result": q2_final["equivalent_full_cycles_usable"], "display_result": number(q2_final["equivalent_full_cycles_usable"], 6), "unit": "cycles/week", "interpretation": "Health screening metric"},
+        {"calculation_id": "CALC-Q2-003", "question": "Q2", "description": "Affected-generator gain above system net improvement", "formula": f"{q2_final['affected_generator_gain_mwh']:.12f} - {q2_final['dispatch_down_saved_mwh']:.12f}", "input_evidence_ids": "EV-Q2-011;EV-Q2-010", "unrounded_result": q2_final["affected_generator_gain_mwh"] - q2_final["dispatch_down_saved_mwh"], "display_result": number(q2_final["affected_generator_gain_mwh"] - q2_final["dispatch_down_saved_mwh"], 6), "unit": "MWh", "interpretation": "Shows redistribution; affected-farm gain is not total system gain"},
+        {"calculation_id": "CALC-Q3-001", "question": "Q3", "description": "Combined DLR and downsized-BESS dispatch-down saving", "formula": f"{q3_base['total_dispatch_down_mwh']:.12f} - {q3_combined['total_dispatch_down_mwh']:.12f}", "input_evidence_ids": "EV-Q3-001A;EV-Q3-004A", "unrounded_result": q3_base["total_dispatch_down_mwh"] - q3_combined["total_dispatch_down_mwh"], "display_result": number(q3_base["total_dispatch_down_mwh"] - q3_combined["total_dispatch_down_mwh"], 6), "unit": "MWh", "interpretation": "Strongest tested regional technical case"},
+        {"calculation_id": "CALC-Q3-002", "question": "Q3", "description": "Overlap between standalone DLR and BESS benefits", "formula": f"{q3_dlr['total_dispatch_down_saved_mwh']:.12f} + {q3_bess['total_dispatch_down_saved_mwh']:.12f} - {q3_combined['total_dispatch_down_saved_mwh']:.12f}", "input_evidence_ids": "EV-Q3-002A;EV-Q3-003A;EV-Q3-004A", "unrounded_result": q3_dlr["total_dispatch_down_saved_mwh"] + q3_bess["total_dispatch_down_saved_mwh"] - q3_combined["total_dispatch_down_saved_mwh"], "display_result": number(q3_dlr["total_dispatch_down_saved_mwh"] + q3_bess["total_dispatch_down_saved_mwh"] - q3_combined["total_dispatch_down_saved_mwh"], 6), "unit": "MWh", "interpretation": "Benefits are not additive"},
+        {"calculation_id": "CALC-Q4-001", "question": "Q4", "description": "45/220 lifetime revenue less energy purchase and O&M", "formula": f"{q4_rows[(45.0, 220.0)]['lifetime_project_revenue_eur']:.12f} - {q4_rows[(45.0, 220.0)]['lifetime_energy_purchase_eur']:.12f} - {q4_rows[(45.0, 220.0)]['lifetime_fixed_and_variable_om_eur']:.12f}", "input_evidence_ids": "EV-Q4-002B;EV-Q4-002C;EV-Q4-002D", "unrounded_result": q4_rows[(45.0, 220.0)]["lifetime_project_revenue_eur"] - q4_rows[(45.0, 220.0)]["lifetime_energy_purchase_eur"] - q4_rows[(45.0, 220.0)]["lifetime_fixed_and_variable_om_eur"], "display_result": money(q4_rows[(45.0, 220.0)]["lifetime_project_revenue_eur"] - q4_rows[(45.0, 220.0)]["lifetime_energy_purchase_eur"] - q4_rows[(45.0, 220.0)]["lifetime_fixed_and_variable_om_eur"]), "unit": "EUR real 2026", "interpretation": "Category comparison only; it is not an NPV reconstruction"},
+        {"calculation_id": "CALC-Q4-002", "question": "Q4 distributed", "description": "Mean incremental NPV penalty per added site", "formula": f"({q4_dist_built.iloc[0]['npv_eur']:.12f} - {q4_dist_built.iloc[-1]['npv_eur']:.12f}) / 3", "input_evidence_ids": "EV-Q4-D1B;EV-Q4-D4B", "unrounded_result": (q4_dist_built.iloc[0]["npv_eur"] - q4_dist_built.iloc[-1]["npv_eur"]) / 3.0, "display_result": money((q4_dist_built.iloc[0]["npv_eur"] - q4_dist_built.iloc[-1]["npv_eur"]) / 3.0), "unit": "EUR/site", "interpretation": "Positive cost penalty; applies only to the tested equal-capacity portfolios"},
+        {"calculation_id": "CALC-Q4-003", "question": "Q4 DLR crosswalk", "description": "45/220 overlap between standalone DLR and fixed-line BESS gains", "formula": f"{q4_dlr_45['dlr_standalone_lifetime_gain_mwh']:.12f} + {q4_dlr_45['fixed_lifetime_net_renewable_gain_mwh']:.12f} - {q4_dlr_45['dlr_plus_bess_total_gain_vs_fixed_mwh']:.12f}", "input_evidence_ids": "EV-Q4-L2I;EV-Q4-L2A;EV-Q4-L2C", "unrounded_result": -q4_dlr_45["dlr_change_in_bess_incremental_gain_mwh"], "display_result": number(-q4_dlr_45["dlr_change_in_bess_incremental_gain_mwh"], 6), "unit": "MWh", "interpretation": "Positive overlap means DLR and BESS technical benefits are not additive"},
+        {"calculation_id": "CALC-Q4-004", "question": "Q4 DLR crosswalk", "description": "45/220 conditional BESS NPV change under DLR", "formula": f"{q4_dlr_45['dlr_npv_eur']:.12f} - ({q4_dlr_45['fixed_npv_eur']:.12f})", "input_evidence_ids": "EV-Q4-L2D;EV-Q4-L2E;EV-Q4-L2G", "unrounded_result": q4_dlr_45["dlr_change_in_conditional_bess_npv_eur"], "display_result": money(q4_dlr_45["dlr_change_in_conditional_bess_npv_eur"]), "unit": "EUR real 2026", "interpretation": "Conditional BESS-only change; DLR CAPEX, OPEX, and owner revenue are excluded"},
+        {"calculation_id": "CALC-Q5-001", "question": "Q5", "description": "Target-flow relief from 45 MW charging", "formula": f"45 × {q5_croaghonagh['relief_mw_per_mw_curtailment']:.15f}", "input_evidence_ids": "EV-Q5-003", "unrounded_result": 45.0 * q5_croaghonagh["relief_mw_per_mw_curtailment"], "display_result": number(45.0 * q5_croaghonagh["relief_mw_per_mw_curtailment"], 9), "unit": "MW", "interpretation": "Relief of the observed opposite-direction constraint"},
+        {"calculation_id": "CALC-Q5-002", "question": "Q5", "description": "Full-curtailment first-order relief at Croaghonagh", "formula": f"{q5_croaghonagh['installed_capacity_mw']:.12f} × {q5_croaghonagh['relief_mw_per_mw_curtailment']:.15f}", "input_evidence_ids": "EV-Q5-001;EV-Q5-003", "unrounded_result": q5_croaghonagh["installed_capacity_mw"] * q5_croaghonagh["relief_mw_per_mw_curtailment"], "display_result": number(q5_croaghonagh["installed_capacity_mw"] * q5_croaghonagh["relief_mw_per_mw_curtailment"], 6), "unit": "MW", "interpretation": "Linear first-order estimate"},
+        {"calculation_id": "CALC-Q6-001", "question": "Q6", "description": "Priority minus neutral total dispatch-down", "formula": f"{q6_priority['wind_dispatch_down_mwh']:.15f} - {q6_neutral['wind_dispatch_down_mwh']:.15f}", "input_evidence_ids": "EV-Q6-001;EV-Q6-002", "unrounded_result": q6_priority["wind_dispatch_down_mwh"] - q6_neutral["wind_dispatch_down_mwh"], "display_result": f"{q6_priority['wind_dispatch_down_mwh'] - q6_neutral['wind_dispatch_down_mwh']:.3e}", "unit": "MWh", "interpretation": "Numerical noise; no material total-energy change"},
+        {"calculation_id": "CALC-Q6-002", "question": "Q6", "description": "Protected energy minus added non-priority burden", "formula": "EV-Q6-005 - EV-Q6-006", "input_evidence_ids": "EV-Q6-005;EV-Q6-006", "unrounded_result": -q6_impacts.loc[q6_impacts["additional_dispatch_down_mwh"] < 0, "additional_dispatch_down_mwh"].sum() - q6_impacts.loc[q6_impacts["additional_dispatch_down_mwh"] > 0, "additional_dispatch_down_mwh"].sum(), "display_result": f"{-q6_impacts.loc[q6_impacts['additional_dispatch_down_mwh'] < 0, 'additional_dispatch_down_mwh'].sum() - q6_impacts.loc[q6_impacts['additional_dispatch_down_mwh'] > 0, 'additional_dispatch_down_mwh'].sum():.3e}", "unit": "MWh", "interpretation": "Allocation transfer balances"},
+        {"calculation_id": "CALC-Q32-001", "question": "Problem 3.2", "description": "Average overlapping memberships per represented bus", "formula": f"{q32_results['overlapping_membership_count']} / {q32_results['buses_in_any_constraint_group']}", "input_evidence_ids": "EV-Q32-007;EV-Q32-008", "unrounded_result": q32_results["overlapping_membership_count"] / q32_results["buses_in_any_constraint_group"], "display_result": number(q32_results["overlapping_membership_count"] / q32_results["buses_in_any_constraint_group"], 3), "unit": "memberships/bus", "interpretation": "Directional groups overlap and are not exclusive zones"},
+    ]
+
+    evidence_frame = pd.DataFrame(evidence)
+    calculation_frame = pd.DataFrame(calculations)
+    test_frame = pd.DataFrame(tests)
+    evidence_frame.to_csv(output / "EVIDENCE_LEDGER.csv", index=False, quoting=csv.QUOTE_MINIMAL)
+    calculation_frame.to_csv(output / "CALCULATION_LEDGER.csv", index=False, quoting=csv.QUOTE_MINIMAL)
+    test_frame.to_csv(output / "TEST_MATRIX.csv", index=False, quoting=csv.QUOTE_MINIMAL)
+
+    checksum_paths = {root / row["source_file"] for row in evidence}
+    checksum_paths.update(root / path for path in [
+        Path("data/participant-kit/gridkit.py"),
+        Path("data/participant-kit/networks/WP2033_north-west.nc"),
+        Path("data/participant-kit/networks/WP2033_all-island.nc"),
+        Path("configs/problem_3_1/question_4.json"),
+        Path("configs/problem_3_1/question_4_q2_economic_downsizing.json"),
+        Path("configs/problem_3_1/question_4_distributed_bess_strict_tie_break.json"),
+        Q4_DLR_COMPARISON_DIR / "PRESENTATION_CALCULATIONS.md",
+        Q4_DLR_COMPARISON_DIR / "manifest.json",
+        Path("configs/problem_3_1/question_6.json"),
+        Path("configs/problem_3_2/constraint_groups.json"),
+        Path("src/final_audit_report.py"),
+    ])
+    for pattern in [
+        "src/problem_3_1/q4_techno_economic/*.py",
+        "src/problem_3_1/q5_shift_factors/*.py",
+        "src/problem_3_1/q6_priority_dispatch/*.py",
+        "src/problem_3_2/q32_constraint_groups/*.py",
+        "tests/q4/test_*.py",
+        "tests/q5/test_*.py",
+        "tests/q6/test_*.py",
+        "tests/q32/test_*.py",
+        "tests/audit/test_*.py",
+    ]:
+        checksum_paths.update(root.glob(pattern))
+    checksum_paths.update(root / row["path"] for row in protected)
+    source_rows = []
+    official_paths = {
+        "data/participant-kit/gridkit.py",
+        "data/participant-kit/networks/WP2033_north-west.nc",
+        "data/participant-kit/networks/WP2033_all-island.nc",
+    }
+    for path in sorted(checksum_paths):
+        if not path.exists() or not path.is_file():
+            continue
+        relative = rel(root, path)
+        if relative in official_paths:
+            data_class = "OFFICIAL_INPUT"
+        elif relative.startswith("configs/"):
+            data_class = "SCENARIO_CHOICE_OR_COMMERCIAL_ASSUMPTION"
+        elif relative.startswith("results/"):
+            data_class = "MODEL_DERIVED"
+        elif relative.startswith("tests/") or relative.startswith("src/"):
+            data_class = "MODEL_IMPLEMENTATION"
+        else:
+            data_class = "AUDIT_INPUT"
+        source_rows.append({"path": relative, "sha256": sha256(path), "bytes": path.stat().st_size, "data_class": data_class})
+    source_frame = pd.DataFrame(source_rows)
+    source_frame.to_csv(output / "SOURCE_CHECKSUMS.csv", index=False)
+
+    official_diff = git(root, "status", "--porcelain", "--", *sorted(official_paths))
+    branch = git(root, "branch", "--show-current")
+    commit = git(root, "rev-parse", "HEAD")
+    status = git(root, "status", "--short", "--branch")
+    remote = git(root, "remote", "-v")
+    generated = datetime.now(timezone.utc).isoformat()
+
+    run_manifest = {
+        "report_version": REPORT_VERSION,
+        "generated_utc": generated,
+        "repository_root": str(root),
+        "branch": branch,
+        "commit": commit,
+        "dirty_worktree": bool(git(root, "status", "--porcelain")),
+        "git_status": status,
+        "git_remotes": remote,
+        "head_changed_by_report_generation": False,
+        "agent_actions": {
+            "commit_executed": False,
+            "merge_executed": False,
+            "push_executed": False,
+            "note": "Local Git metadata cannot prove that no push ever occurred; this records actions taken by this work session.",
+        },
+        "instruction_files": {
+            "AGENTS.md_at_repository_root": (root / "AGENTS.md").exists(),
+            "CODEX_Q4_HANDOFF.md_at_repository_root": (root / "CODEX_Q4_HANDOFF.md").exists(),
+        },
+        "runtime": {"python": platform.python_version(), "platform": platform.platform(), "pandas": pd.__version__},
+        "canonical_result_directories": [str(path.as_posix()) for path in [Q4_DOWNSIZING_DIR, Q4_DISTRIBUTED_DIR, Q4_DLR_COMPARISON_DIR, Q5_DIR, Q6_DIR, Q32_DIR]],
+        "runs": tests,
+        "protected_preexisting_files": protected,
+        "official_input_git_status": official_diff,
+        "source_checksum_file": "SOURCE_CHECKSUMS.csv",
+        "evidence_ledger": "EVIDENCE_LEDGER.csv",
+        "calculation_ledger": "CALCULATION_LEDGER.csv",
+        "test_matrix": "TEST_MATRIX.csv",
+    }
+    (output / "RUN_MANIFEST.json").write_text(json.dumps(run_manifest, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    q4_display_rows = [["No build", "0", "0", "0", "0", "0", "0", "0", "0", "Not applicable"]]
+    for power, energy in required_sizes:
+        row = q4_rows[(power, energy)]
+        payback = "Not reached" if pd.isna(row["discounted_payback_years"]) else number(row["discounted_payback_years"], 2)
+        q4_display_rows.append([
+            f"{power:g} MW / {energy:g} MWh",
+            number(row["lifetime_net_renewable_gain_mwh"], 3),
+            money(row["lifetime_project_revenue_eur"]),
+            money(row["lifetime_energy_purchase_eur"]),
+            money(row["lifetime_fixed_and_variable_om_eur"]),
+            money(row["lifetime_maintenance_capex_eur"]),
+            money(row["initial_capex_eur"]),
+            money(row["lifetime_system_dispatch_cost_saving_eur"]),
+            money(row["npv_eur"]),
+            payback,
+        ])
+
+    q4_dist_rows = []
+    for _, row in q4_dist_built.iterrows():
+        q4_dist_rows.append([
+            int(row["site_count"]),
+            row["sites"],
+            number(row["lifetime_net_renewable_gain_mwh"], 6),
+            money(row["initial_capex_eur"]),
+            money(row["lifetime_fixed_and_variable_om_eur"]),
+            money(row["npv_eur"]),
+        ])
+
+    q4_dlr_display_rows = []
+    for power, energy in q4_dlr_sizes:
+        row = q4_dlr_rows[(power, energy)]
+        q4_dlr_display_rows.append([
+            f"{power:g} MW / {energy:g} MWh",
+            number(row["fixed_lifetime_net_renewable_gain_mwh"], 3),
+            number(row["dlr_lifetime_net_renewable_gain_mwh"], 3),
+            number(row["dlr_plus_bess_total_gain_vs_fixed_mwh"], 3),
+            money(row["fixed_npv_eur"]),
+            money(row["dlr_npv_eur"]),
+            money(row["dlr_change_in_conditional_bess_npv_eur"]),
+        ])
+
+    q3_rows_md = []
+    for label, row in [("Baseline", q3_base), ("Selected DLR", q3_dlr), ("85/310 BESS", q3_bess), ("DLR + 62.22/226.92 BESS", q3_combined)]:
+        q3_rows_md.append([label, number(row["total_dispatch_down_mwh"], 6), number(q3_base["total_dispatch_down_mwh"] - row["total_dispatch_down_mwh"], 6), number(row["target_binding_hours"], 0)])
+
+    run_rows_md = [[row["run_id"], row["mode"], row["status"], row["exit_code"] if row["exit_code"] is not None else "missing", row["test_count"] if row["test_count"] is not None else "—", row["log_file"]] for row in tests]
+    protected_rows_md = [[row["path"], row["expected_sha256"], row["actual_sha256"], "PASS" if row["matches_baseline"] else "FAIL"] for row in protected]
+
+    nonlocal_text = "No pair met the configured nonlocal threshold."
+    if len(q32_nonlocal):
+        nonlocal_text = ", ".join(f"{column}={q32_nonlocal.iloc[0][column]}" for column in q32_nonlocal.columns)
+
+    gap_rows = [
+        ["Regional versus national target-line loading", "Partially reconciled", "North-West has 52 binding hours; the national studies do not reproduce that constraint", "Treat each claim as scope-specific; do not call the regional count national"],
+        ["Ancillary services, reserve, capacity market, congestion contracts, black start", "NOT_IMPLEMENTED", "Possible BESS revenue is absent", "Do not call current NPV a bankable revenue-stack result"],
+        ["Hourly DAM/ID/BM market prices and uncertainty", "COMMERCIAL_ASSUMPTION", "Flat price removes realistic spreads", "Replace with aligned market data and rerun"],
+        ["Capture of system dispatch-cost saving", "NOT_IMPLEMENTED", "No developer payment mechanism", "Keep system savings outside project revenue"],
+        ["AC voltage/reactive power/loss validation and N-1", "NOT_IMPLEMENTED", "PTDF/DC model is a screening model", "Run AC and contingency studies before connection decisions"],
+        ["Fully coupled physical degradation and finance", "PARTIAL", "Q2 health screening and Q4 yearly capacity model are linked conceptually, not one co-optimiser", "Do not present as a bankable lifecycle optimiser"],
+        ["Multiple seasons, years, outages, and uncertainty", "PARTIAL", "A repeated 168-hour block may not be representative", "Use multi-season chronological data"],
+        ["Wider distributed-storage search", "PARTIAL", "Only selected electrically similar sites and fixed total capacity were tested", "Do not generalise the single-site result"],
+        ["DLR investment economics", "NOT_IMPLEMENTED", "Conditional BESS NPV under DLR excludes DLR CAPEX, OPEX, and owner revenue", "Do not rank the DLR business case from the conditional BESS NPV"],
+        ["Official priority-status observation", "SCENARIO_CHOICE", "No official status field was supplied", "Q6 demonstrates allocation mechanics only"],
+        ["National DLR redispatch", "PARTIAL", "Q3.2 reclassifies the same national flow trace under changed rating", "Call it a rating-only crosswalk"],
+        ["Threshold and cluster sensitivity", "PARTIAL", "Mode/group counts depend on configured thresholds", "Rerun a threshold grid before policy adoption"],
+        ["Taxes, inflation, debt, grid charges, price impact", "NOT_IMPLEMENTED", "Illustrative unlevered NPV", "Add finance and market assumptions before investment use"],
+    ]
+
+    report = f"""# Final Technical, Economic, and Data-Lineage Audit
+
+Generated: **{generated}**  
+Repository branch: **{branch}**  
+Git commit: **{commit}**  
+Report version: **{REPORT_VERSION}**
+
+This report is the auditable handoff for Problem 3.1 Questions 1–6 and the implemented Problem 3.2 national extension. It distinguishes official project input, model-derived results, scenario choices, commercial assumptions, demonstrations, and unimplemented items. It is scenario analysis, not investment advice, a grid-connection offer, or an operational instruction.
+
+## 1. Executive decision summary
+
+1. **Q1 regional constraint [CLM-Q1-001 | MODEL_DERIVED].** In the North-West model, branch `{TARGET_LINE}` binds for **{int(q1_target['binding_hours'])} hours** at a static **{q1_target['rating_mva']:.0f} MVA** rating. A 25% uplift reduces dispatch-down by **{q1_target['saved_dispatch_down_plus_25_mwh']:.6f} MWh** [EV-Q1-001–009]. The all-island robustness run reports zero binding hours and {q1_national['all_island_max_loading_pct']:.4f}% maximum loading, so the 52-hour result is not a national claim [EV-Q1-010–011].
+
+2. **Q2 storage recommendation [CLM-Q2-001 | MODEL_DERIVED].** The health-aware recommendation is **{q2_final['recommended_sites']}, {q2_final['power_mw']:.0f} MW / {q2_final['nameplate_energy_mwh']:.0f} MWh**, with **{q2_final['usable_energy_mwh']:.1f} MWh** usable at 80% end-of-life SoH and a 10–90% SOC window [EV-Q2-001–017]. This is distinct from the 90 MW / 440 MWh Q4 comparison candidate.
+
+3. **Q3 combined technical result [CLM-Q3-001 | MODEL_DERIVED].** Selected DLR plus a **{q3_combined['battery_power_mw']:.2f} MW / {q3_combined['battery_nameplate_energy_mwh']:.2f} MWh** downsized BESS gives the strongest tested regional technical outcome: **{q3_combined['total_dispatch_down_mwh']:.6f} MWh** dispatch-down, a **{q3_base['total_dispatch_down_mwh'] - q3_combined['total_dispatch_down_mwh']:.6f} MWh** reduction from baseline [EV-Q3-001A–015]. Standalone benefits overlap by **{q3_dlr['total_dispatch_down_saved_mwh'] + q3_bess['total_dispatch_down_saved_mwh'] - q3_combined['total_dispatch_down_saved_mwh']:.6f} MWh**, so they must not be added independently.
+
+4. **Q4 economic decision [CLM-Q4-001 | MODEL_DERIVED under COMMERCIAL_ASSUMPTION].** No build has the highest tested project NPV: **{money(q4_best_project['npv_eur'])}**. Among built cases, **{q4_best_built['battery_mw']:g} MW / {q4_best_built['battery_mwh']:g} MWh** is least negative at **{money(q4_best_built['npv_eur'])}**. Larger tested batteries improve the technical metric but make project NPV more negative. System savings are kept outside project cash flow [EV-Q4-000, EV-Q4-001A–004I]. In the matched DLR crosswalk, the 45/220 conditional BESS NPV improves by **{money(q4_dlr_45['dlr_change_in_conditional_bess_npv_eur'])}** but remains negative; DLR investment cost and revenue are not included [EV-Q4-L2D–L2I].
+
+5. **Q4 distributed comparison [CLM-Q4-003 | MODEL_DERIVED].** Splitting the same 45 MW / 220 MWh across the four tested electrically equivalent buses changes lifetime net renewable gain by only **{q4_dist_built['lifetime_net_renewable_gain_mwh'].max() - q4_dist_built['lifetime_net_renewable_gain_mwh'].min():.3e} MWh**, while each additional site worsens NPV by about **{money(abs((q4_dist_built.iloc[-1]['npv_eur'] - q4_dist_built.iloc[0]['npv_eur']) / 3.0))}**. The deterministic tie rule therefore selects one site. This conclusion is limited to these candidates and this PTDF/topology [EV-Q4-D1A–D4B].
+
+6. **Q5 electrical impact [CLM-Q5-001 | MODEL_DERIVED].** Croaghonagh's target-line PTDF is **{q5_croaghonagh['primary_shift_factor']:.12f} MW/MW**. Under the observed opposite-direction congestion, 45 MW charging provides **{45 * q5_croaghonagh['relief_mw_per_mw_curtailment']:.9f} MW** of first-order relief. The maximum independent LPF reconstruction error is **{q5_validation['absolute_error'].max():.3e}** [EV-Q5-001–009].
+
+7. **Q6 priority allocation [CLM-Q6-001 | MODEL_DERIVED under SCENARIO_CHOICE].** Priority dispatch changes total wind dispatch-down by only **{q6_priority['wind_dispatch_down_mwh'] - q6_neutral['wind_dispatch_down_mwh']:.3e} MWh**, while transferring **{-q6_impacts.loc[q6_impacts['additional_dispatch_down_mwh'] < 0, 'additional_dispatch_down_mwh'].sum():.6f} MWh** away from priority farms onto non-priority farms. This is allocation, not extra energy, BESS revenue, or system saving [EV-Q6-001–009].
+
+8. **Problem 3.2 national extension [CLM-Q32-001 | MODEL_DERIVED].** The final all-island 168-hour run contains **{q32_network['buses']} buses, {q32_network['passive_branches']} passive branches, {q32_results['directional_mode_count']} directional modes, {q32_results['overlapping_membership_count']} memberships, {q32_results['merged_constraint_group_count']} complete-link groups, and {q32_results['response_zone_count']} mutually exclusive response zones**. Maximum LPF error is **{q32_checks['maximum_lpf_absolute_error']:.3e}** [EV-Q32-001–019]. These are algorithm-generated planning signals, not official operational Constraint Groups.
+
+## 2. Evidence taxonomy and accounting boundaries
+
+| Label | Meaning | Required presentation treatment |
+| --- | --- | --- |
+| OFFICIAL_INPUT | Network/resource data supplied in the participant kit | Call it official project input, not necessarily observed real-world data |
+| MODEL_DERIVED | Solver or post-processing result | Cite the exact result cell, scope, horizon, code, and validation |
+| COMMERCIAL_ASSUMPTION | Price, CAPEX, OPEX, discount rate, life, or similar input | Mark it illustrative unless sourced to a market quote |
+| SCENARIO_CHOICE | Candidate, threshold, balancing reference, or priority label | Do not present it as observed policy or fact |
+| DEMONSTRATION | Smoke or deliberately simplified run | Never use as a headline result |
+| NOT_IMPLEMENTED | Discussed capability absent from the model | Do not claim associated revenue or benefit |
+
+Three accounting lenses are deliberately separate:
+
+- **Technical:** dispatch-down, congestion, directional relief, and feasible operation.
+- **Developer/project:** project revenue, energy purchase, CAPEX, O&M, maintenance, NPV, and payback.
+- **System:** dispatch-cost saving and other physical system effects. A system saving is not developer revenue without an explicit contract or tariff.
+
+## 3. Repository and run provenance
+
+- Root: `{root}`
+- Branch: `{branch}`
+- Commit: `{commit}`
+- Dirty worktree: **yes**, because the requested implementation and pre-existing Q2/Q3 work remain uncommitted.
+- `AGENTS.md` at repository root: **{(root / 'AGENTS.md').exists()}**.
+- `CODEX_Q4_HANDOFF.md` at repository root: **{(root / 'CODEX_Q4_HANDOFF.md').exists()}**.
+- No commit, merge, or push command was executed by this work session. Local Git metadata cannot cryptographically prove the absence of a push; `RUN_MANIFEST.json` records the precise statement.
+- Official participant-kit paths have Git status: **{official_diff or 'no tracked or untracked changes reported'}**.
+
+The machine-readable provenance is in `RUN_MANIFEST.json`; source and result hashes are in `SOURCE_CHECKSUMS.csv`.
+
+### Protected pre-existing Q1–Q3 files
+
+{markdown_table(['Path', 'Baseline SHA-256', 'Final SHA-256', 'Status'], protected_rows_md)}
+
+All protected files match the task-start hashes. This preserves the user's pre-existing uncommitted Q2/Q3 work byte-for-byte.
+
+## 4. End-to-end lineage
+
+```mermaid
+flowchart LR
+    A["Official participant-kit network and profiles"] --> B["Q1 regional bottleneck"]
+    B --> C["Q2 BESS siting and health-aware sizing"]
+    C --> D["Q3 DLR and downsized BESS"]
+    C --> E["Q4 project and system accounting"]
+    D --> E
+    B --> F["Q5 component-local PTDF"]
+    F --> E
+    F --> G["Q6 priority allocation"]
+    G --> H["Q4/Q6 accounting crosswalk"]
+    F --> I["Problem 3.2 national candidate groups"]
+    G --> I
+```
+
+Q5 describes topology sensitivity; Q6 describes policy allocation. Q6 status labels are not used to construct PTDF. Q3 rating-only DLR changes capacity/headroom, not reactance or PTDF.
+
+## 5. Q1 — constrained line
+
+**Direct answer [CLM-Q1-001].** `{TARGET_LINE}` is the binding regional line, stored in the positive orientation **{q1_target['bus0']} → {q1_target['bus1']}**. The model checks absolute loading, so both directions count.
+
+- Exact result source: `{Q1_LINE.as_posix()}`, row `{q1_selector}`.
+- Static rating: {q1_target['rating_mva']:.0f} MVA [EV-Q1-001].
+- Binding: {int(q1_target['binding_hours'])} h; at/above 90%: {int(q1_target['hours_at_or_above_90_pct'])} h [EV-Q1-002–003].
+- Mean, p95, and maximum loading: {q1_target['mean_loading_pct']:.4f}%, {q1_target['p95_loading_pct']:.4f}%, {q1_target['max_loading_pct']:.4f}% [EV-Q1-004–005].
+- At 262.5 MVA: dispatch-down is {q1_target['dispatch_down_after_plus_25_mwh']:.6f} MWh and binding falls to {int(q1_target['binding_hours_after_plus_25'])} h [EV-Q1-006–009].
+
+**Worked example [CALC-Q1-001/002].** Baseline dispatch-down is reconstructed as {q1_target['dispatch_down_after_plus_25_mwh']:.6f} + {q1_target['saved_dispatch_down_plus_25_mwh']:.6f} = {q1_target['dispatch_down_after_plus_25_mwh'] + q1_target['saved_dispatch_down_plus_25_mwh']:.6f} MWh. The uplift saves {q1_target['saved_dispatch_down_plus_25_mwh']:.6f} MWh; dividing by {q1_target['added_rating_mva']:.1f} added MVA gives {q1_target['saved_mwh_per_added_mva']:.6f} MWh per added MVA.
+
+**Scope warning.** `{Q1_ROBUST.as_posix()}` reports {int(q1_national['all_island_binding_hours'])} all-island binding hours and {q1_national['all_island_max_loading_pct']:.4f}% maximum loading [EV-Q1-010–011]. This is a boundary/topology scope difference, not evidence that one result should overwrite the other.
+
+Code locator: `{q1_code}`.
+
+## 6. Q2 — BESS siting and health-aware sizing
+
+**Direct answer [CLM-Q2-001].** The recommended installed capacity is **{q2_final['recommended_sites']}, {q2_final['power_mw']:.0f} MW / {q2_final['nameplate_energy_mwh']:.0f} MWh**, based on the lifetime-aware end-of-life verification row in `{Q2_RECOMMENDATION.as_posix()}`.
+
+- SOC window: {q2_final['soc_min_pct']:.0f}–{q2_final['soc_max_pct']:.0f}%; round-trip efficiency: {q2_final['round_trip_efficiency_pct']:.0f}%; EOL SoH: {q2_final['state_of_health_pct']:.0f}% [EV-Q2-005–008].
+- Dispatch-down: {q2_final['total_dispatch_down_mwh']:.6f} MWh; net improvement: {q2_final['dispatch_down_saved_mwh']:.6f} MWh [EV-Q2-009–010].
+- Affected-generator gain: {q2_final['affected_generator_gain_mwh']:.6f} MWh; this is {q2_final['affected_generator_gain_mwh'] - q2_final['dispatch_down_saved_mwh']:.6f} MWh above the total net improvement and therefore includes redistribution [EV-Q2-011; CALC-Q2-003].
+- Target benchmark recovery: {q2_final['target_recovery_pct']:.4f}%; this means the defined benchmark is exceeded, not that more than all grid curtailment is recovered [EV-Q2-012].
+- Throughput: {q2_final['throughput_mwh']:.4f} MWh/week; {q2_final['equivalent_full_cycles_usable']:.6f} usable EFC/week; simultaneous charge/discharge: {int(q2_final['simultaneous_charge_discharge_hours'])} h [EV-Q2-013–015].
+- Target binding hours rise to {int(q2_final['target_binding_hours'])}; binding-hour count is not the sole objective because additional renewable operation can use the available line headroom more often [EV-Q2-016].
+- Architecture conclusion: {q2_final['architecture_reason']} [EV-Q2-017].
+
+**Worked example [CALC-Q2-001].** {q2_final['nameplate_energy_mwh']:.0f} × {q2_final['state_of_health_pct']/100:.2f} × ({q2_final['soc_max_pct']/100:.2f} − {q2_final['soc_min_pct']/100:.2f}) = **{q2_final['usable_energy_mwh']:.1f} MWh** usable at end of life.
+
+Code locator: `{q2_code}`.
+
+## 7. Q3 — DLR and combined intervention
+
+{markdown_table(['Scenario', 'Dispatch-down (MWh)', 'Saving vs baseline (MWh)', 'Target binding hours'], q3_rows_md)}
+
+The selected DLR mean and maximum multipliers are {q3_dlr['mean_dlr_multiplier']:.6f} and {q3_dlr['max_dlr_multiplier']:.6f} [EV-Q3-010–011]. At a 210 MVA static rating, the presentation conversion is 210 × {q3_dlr['mean_dlr_multiplier']:.6f} = {210 * q3_dlr['mean_dlr_multiplier']:.3f} MVA mean and 210 × {q3_dlr['max_dlr_multiplier']:.6f} = {210 * q3_dlr['max_dlr_multiplier']:.3f} MVA maximum.
+
+**Worked example [CALC-Q3-001].** {q3_base['total_dispatch_down_mwh']:.6f} − {q3_combined['total_dispatch_down_mwh']:.6f} = **{q3_base['total_dispatch_down_mwh'] - q3_combined['total_dispatch_down_mwh']:.6f} MWh** saved. The BESS is {q3_bess['battery_power_mw']:.0f} × {q3_combined['battery_scale_vs_q2']:.3f} = {q3_combined['battery_power_mw']:.2f} MW and {q3_bess['battery_nameplate_energy_mwh']:.0f} × {q3_combined['battery_scale_vs_q2']:.3f} = {q3_combined['battery_nameplate_energy_mwh']:.2f} MWh. Its EOL usable energy is {q3_combined['battery_nameplate_energy_mwh']:.2f} × 0.80 × 0.80 = {q3_combined['battery_usable_energy_mwh']:.4f} MWh.
+
+**Interaction warning [CALC-Q3-002].** Standalone DLR plus standalone BESS savings exceed the joint result by {q3_dlr['total_dispatch_down_saved_mwh'] + q3_bess['total_dispatch_down_saved_mwh'] - q3_combined['total_dispatch_down_saved_mwh']:.6f} MWh, calculated from unrounded source cells. Subtracting the independently rounded six-decimal values displayed above gives 235.067008 MWh. This is overlapping benefit/marginal diminishing return, so standalone improvements must not be added.
+
+Code locator: `{q3_code}`.
+
+## 8. Q4 — from technical best to economic best
+
+The following values come from the corrected final 168-hour rerun in `{q4_table_path.as_posix()}`. Monetary totals are 20-year real-2026-EUR scenario totals unless explicitly described as present value. The repeated-week annualisation and flat price are commercial/model assumptions, not observations.
+
+Configured commercial assumptions are a {q4_cfg['years']}-year project, {100 * q4_cfg['real_discount_rate']:.1f}% real discount rate, flat {money(q4_cfg['prices']['flat_eur_mwh'])}/MWh energy price, repetition of the 168-hour block to {q4_cfg['annualisation']['hours_per_year']:.0f} hours/year, {money(q4_cfg['prices']['grid_service_payment_eur_kw_year'])}/kW-year grid-service payment, and `{q4_cfg['currency_basis']}` [EV-Q4-A01–A08]. They are illustrative inputs, not market quotes.
+
+{markdown_table(['Case', '20-year lifetime net RE gain (MWh)', 'Project revenue', 'Energy purchase', 'O&M', 'Maintenance CAPEX', 'Initial CAPEX', 'System saving', 'Project NPV', 'Discounted payback'], q4_display_rows)}
+
+**Decision.** No build is the economic winner in this evaluated set. The {q4_best_built['battery_mw']:g}/{q4_best_built['battery_mwh']:g} case is only the **least-negative built case**, not a profitable or globally optimal battery. The 90/440 case is the technical maximum among the four requested Q4 candidates, but it is not the Q2 result; Q2 recommends 85/310.
+
+**Worked cash-account example [CALC-Q4-001].** For 45/220, using unrounded source values, project revenue minus energy purchase and O&M is €{q4_rows[(45.0, 220.0)]['lifetime_project_revenue_eur']:,.6f} − €{q4_rows[(45.0, 220.0)]['lifetime_energy_purchase_eur']:,.6f} − €{q4_rows[(45.0, 220.0)]['lifetime_fixed_and_variable_om_eur']:,.6f} = **-€{abs(q4_rows[(45.0, 220.0)]['lifetime_project_revenue_eur'] - q4_rows[(45.0, 220.0)]['lifetime_energy_purchase_eur'] - q4_rows[(45.0, 220.0)]['lifetime_fixed_and_variable_om_eur']):,.6f}**, reported independently to cents as {money(q4_rows[(45.0, 220.0)]['lifetime_project_revenue_eur'] - q4_rows[(45.0, 220.0)]['lifetime_energy_purchase_eur'] - q4_rows[(45.0, 220.0)]['lifetime_fixed_and_variable_om_eur'])}. This is not an NPV reconstruction; annual timing, discounting, maintenance, decommissioning, and residual values remain in the annual cash-flow files.
+
+**Accounting guard.** `system_saving_included_in_project_cashflow` is false in every case [EV-Q4-001I–004I]. System dispatch-cost saving is not added to developer revenue or project NPV.
+
+### Same-basis DLR crosswalk
+
+The matched comparison below comes from `{(Q4_DLR_COMPARISON_DIR / '01_capacity_fixed_vs_dlr.csv').as_posix()}`. “Fixed BESS gain” and “incremental BESS gain with DLR” each use their own scenario-matched no-build counterfactual; “total DLR+BESS gain” uses the fixed-line no-build counterfactual. This keeps physical baselines explicit.
+
+The Q3 table is a raw 168-hour technical comparison. This Q4 crosswalk is a 20-year lifetime aggregation in which capacity degradation and maintenance states are re-solved annually, so its MWh values are not directly comparable to the Q3 weekly MWh values even for the same 62.22 MW / 226.92 MWh design.
+
+{markdown_table(['Battery', '20-year fixed BESS gain (MWh)', '20-year incremental BESS gain with DLR (MWh)', '20-year total DLR+BESS gain vs fixed (MWh)', 'Fixed project NPV', 'Conditional BESS NPV under DLR network state', 'Conditional NPV change'], q4_dlr_display_rows)}
+
+These six rows combine two design-anchor families rather than one monotonic duration sweep: the four requested Q4 candidates are 4.8889-hour batteries, while the Q3 62.22/226.92 and Q2 85/310 anchors are approximately 3.6471-hour batteries. The energy values therefore do not increase monotonically with power.
+
+DLR standalone lifetime gain is {q4_dlr_45['dlr_standalone_lifetime_gain_mwh']:.6f} MWh in every matched row [EV-Q4-L1I–L6I].
+
+**Worked interaction example [CALC-Q4-003].** For 45/220, {q4_dlr_45['dlr_standalone_lifetime_gain_mwh']:.6f} + {q4_dlr_45['fixed_lifetime_net_renewable_gain_mwh']:.6f} − {q4_dlr_45['dlr_plus_bess_total_gain_vs_fixed_mwh']:.6f} = **{-q4_dlr_45['dlr_change_in_bess_incremental_gain_mwh']:.6f} MWh** overlap. DLR therefore reduces the battery's incremental technical gain in this matched case; the two standalone benefits must not be added.
+
+**Worked conditional-NPV example [CALC-Q4-004].** For 45/220, using unrounded source values, -€{abs(q4_dlr_45['dlr_npv_eur']):,.6f} − (-€{abs(q4_dlr_45['fixed_npv_eur']):,.6f}) = **€{q4_dlr_45['dlr_change_in_conditional_bess_npv_eur']:,.6f}**, reported independently to cents as {money(q4_dlr_45['dlr_change_in_conditional_bess_npv_eur'])}. Table deltas are calculated from unrounded source values, so subtracting two independently rounded displayed NPVs can differ by €0.01. The battery remains negative-NPV.
+
+`dlr_cost_included_in_conditional_bess_npv` is false for every row [EV-Q4-L1H–L6H]. These conditional columns contain BESS-project cash flows under the DLR network state only. They exclude DLR CAPEX, DLR OPEX, and DLR-owner revenue, so they cannot rank a DLR investment or be called an integrated project NPV.
+
+Primary code locators: `{q4_code}` and `{q4_report_code}`.
+
+## 9. Q4 — one-, two-, three-, and four-site storage
+
+All portfolios keep total capacity fixed at 45 MW / 220 MWh.
+
+{markdown_table(['Sites', 'Buses', '20-year lifetime net RE gain (MWh)', 'Initial CAPEX', 'Lifetime O&M', 'Project NPV'], q4_dist_rows)}
+
+The technical spread is {q4_dist_built['lifetime_net_renewable_gain_mwh'].max() - q4_dist_built['lifetime_net_renewable_gain_mwh'].min():.3e} MWh, below the report tie tolerance `max(1e-6, |maximum| × 1e-9)`. The tie-break then chooses fewer sites, lower initial CAPEX, and case ID. The mean incremental NPV penalty is {money(abs((q4_dist_built.iloc[-1]['npv_eur'] - q4_dist_built.iloc[0]['npv_eur']) / 3.0))} per additional site [CALC-Q4-002].
+
+Presentation-safe wording: **within the tested electrically equivalent buses and fixed total capacity, distribution adds fixed site/connection cost without material technical gain.** It is not evidence that distributed storage is universally inferior.
+
+## 10. Q5 — directional shift factors
+
+The canonical result contains {q5['wind_farm'].nunique()} wind farms and uses component-local balancing. The target line is positive from **{q5_croaghonagh['positive_flow_orientation']}**, while the dominant binding direction is **{q5_croaghonagh['dominant_binding_flow_direction']}** [EV-Q5-004–006].
+
+- Croaghonagh PTDF: {q5_croaghonagh['primary_shift_factor']:.12f} MW/MW injection [EV-Q5-002].
+- Directional relief from curtailment/charging in the observed constraint direction: {q5_croaghonagh['relief_mw_per_mw_curtailment']:.12f} MW/MW [EV-Q5-003].
+- 45 MW charging relief: 45 × {q5_croaghonagh['relief_mw_per_mw_curtailment']:.12f} = **{45 * q5_croaghonagh['relief_mw_per_mw_curtailment']:.9f} MW** [CALC-Q5-001].
+- Full-curtailment first-order relief: {q5_croaghonagh['installed_capacity_mw']:.1f} × {q5_croaghonagh['relief_mw_per_mw_curtailment']:.12f} = **{q5_croaghonagh['installed_capacity_mw'] * q5_croaghonagh['relief_mw_per_mw_curtailment']:.6f} MW** [CALC-Q5-002].
+- Moy factor: {q5_moy['primary_shift_factor']:.1f}, because Moy is in a different passive AC component [EV-Q5-007].
+- Maximum independent LPF error: {q5_validation['absolute_error'].max():.3e}; this validates linear-model implementation, not real AC-system accuracy [EV-Q5-008].
+- Maximum PTDF change after a rating-only DLR test: {q5_dlr.iloc[0]['maximum_absolute_shift_factor_change']:.1f}; rating changes headroom, not topology/reactance [EV-Q5-009].
+
+Code locator: `{q5_code}`.
+
+## 11. Q6 — priority and non-priority dispatch
+
+Priority status is a **SCENARIO_CHOICE**: the four Q4 sites are labelled priority because no official status field was supplied.
+
+- Neutral total dispatch-down: {q6_neutral['wind_dispatch_down_mwh']:.10f} MWh.
+- Priority total dispatch-down: {q6_priority['wind_dispatch_down_mwh']:.10f} MWh.
+- Difference: {q6_priority['wind_dispatch_down_mwh'] - q6_neutral['wind_dispatch_down_mwh']:.3e} MWh [CALC-Q6-001].
+- Priority farms protected: {-q6_impacts.loc[q6_impacts['additional_dispatch_down_mwh'] < 0, 'additional_dispatch_down_mwh'].sum():.6f} MWh; non-priority additional burden: {q6_impacts.loc[q6_impacts['additional_dispatch_down_mwh'] > 0, 'additional_dispatch_down_mwh'].sum():.6f} MWh [EV-Q6-005–006].
+- Largest burden: {largest_burden['generator']}, +{largest_burden['additional_dispatch_down_mwh']:.6f} MWh [EV-Q6-007].
+- Largest protection: {largest_protection['generator']}, {largest_protection['additional_dispatch_down_mwh']:.6f} MWh [EV-Q6-008].
+- Maximum component balance error: {q6_priority['maximum_component_balance_error_mw']:.3e} MW [EV-Q6-009].
+- Under DLR, priority minus neutral total dispatch-down remains {q6_priority_dlr['wind_dispatch_down_mwh'] - q6_neutral_dlr['wind_dispatch_down_mwh']:.3e} MWh.
+
+The lexicographic solve first prevents load shedding, then protects priority wind, then maximises total wind, and finally applies the physical-cost objective. The result is redistribution, not new project income. Code locator: `{q6_code}`.
+
+## 12. Q4/Q6 economic integration
+
+Q6 supplies an allocation diagnostic, not a BESS cash-flow stream. Total system dispatch-down is unchanged within numerical tolerance; protected MWh and additional burden cancel [CALC-Q6-002]. Therefore:
+
+- No Q6 allocation transfer is added to Q4 project revenue.
+- No Q6 allocation transfer is added to Q4 system saving.
+- Q4's best project remains no build under the configured illustrative economics.
+- A future owner-specific capture model would require an explicit generator-hour-to-battery contract, price, meter boundary, charging source, and settlement rule.
+
+This separation prevents double counting a redistribution between wind owners as new energy or developer revenue.
+
+## 13. Problem 3.2 — national candidate constraint groups
+
+**Scope.** The official WP2033 all-island model contains {q32_network['buses']} buses, {q32_network['lines']} lines, {q32_network['transformers']} transformers, {q32_network['passive_branches']} passive branches, {q32_network['passive_ac_components']} passive AC components, and {q32_network.get('links', '—')} links [EV-Q32-001–005]. The full result uses {q32_network['snapshots']} snapshots.
+
+**Method.** Positive and negative branch directions are separate modes. Directional relief is `flow_sign × PTDF`. Positive relief is normalised within each mode; a bus enters an overlapping group at the configured threshold. Mode clusters use deterministic complete-link acceptance: every candidate member must pass both the membership-Jaccard and relief-cosine thresholds against every existing member, preventing transitive chain merging. A separate average-linkage response-zone layer uses centered, event-weighted responses and assigns each bus exactly once inside its component.
+
+**Results.** There are {q32_results['directional_mode_count']} directional modes, {q32_results['overlapping_membership_count']} memberships covering {q32_results['buses_in_any_constraint_group']} buses, at most {q32_results['maximum_groups_per_bus']} groups per bus, {q32_results['merged_constraint_group_count']} complete-link groups, {q32_results['response_zone_count']} response zones, and {q32_results['nonlocal_similar_pair_count']} reported nonlocal pairs [EV-Q32-006–012]. The renewable crosswalk covers {q32_results['renewable_resource_count']} official-model wind, solar, hydro, and biomass resources; {q32_results['renewable_resources_in_any_constraint_group']} enter at least one active group [EV-Q32-013–014].
+
+**Validation.** Maximum LPF error is {q32_checks['maximum_lpf_absolute_error']:.3e}; maximum North-West Q5 recomputation error is {q32_checks['maximum_north_west_q5_recalculation_error']:.3e}; centered reference-response change is {q32_checks['maximum_centered_reference_response_change']:.3e} [EV-Q32-015–017]. File `04_mode_similarity_audit.csv` records pairwise threshold decisions. File `18_bus_electrical_similarity.csv.gz` is the full bus-to-bus centered response similarity matrix; cross-component and featureless comparisons are blank.
+
+**Worked mode example.** Top mode `{top_mode['mode_id']}` has maximum loading {top_mode['maximum_loading_pu']:.6f} pu and event-weighted severity {top_mode['event_weighted_severity_hours']:.6f} hours [EV-Q32-018]. Event severity is `snapshot_hours × clip((loading − near_threshold)/(1 − near_threshold), 0, 1)` and is summed across direction-consistent event hours.
+
+**Worked nonlocal example.** `{nonlocal_text}` [EV-Q32-019]. This is an electrical-response similarity example, not an operational instruction or proof that geography is irrelevant.
+
+The North-West target `{TARGET_LINE}` is not a national near-congestion mode in this run. The Q1 regional 52-hour result and the national result use different network scope/boundary dispatch and must stay separate.
+
+Code locator: `{q32_code}`.
+
+## 14. Integrated interpretation
+
+- **Technically best among the tested regional cases:** selected DLR plus the downsized 62.22 MW / 226.92 MWh BESS.
+- **Economically best among the tested Q4 project cases:** no build under the current illustrative assumptions.
+- **Best built Q4 requested-size case:** 22.5 MW / 110 MWh has the least-negative NPV, but it is not profitable.
+- **Distributed BESS:** one site wins the deterministic tie among the tested equal-total-capacity portfolios; broader distributed siting is untested.
+- **Priority policy:** changes who is curtailed, not the total curtailment in the modeled case.
+- **National extension:** identifies overlapping directional response groups and mutually exclusive analytical response zones; it does not convert the regional target into a national constraint.
+
+These are three different objectives—technical performance, developer economics, and system planning—and should not be collapsed into one undefined use of “optimal.”
+
+## 15. Implementation-gap register
+
+{markdown_table(['Gap', 'Status/class', 'Effect on conclusions', 'Required treatment'], gap_rows)}
+
+The exact program-generated scope-gap table is `{(Q32_DIR / Q32_SCOPE_GAPS).as_posix()}`. It is included in `SOURCE_CHECKSUMS.csv` and should be retained with presentations.
+
+## 16. Presentation calculation cards
+
+### Card Q1
+
+**Conclusion:** the North-West target-line uplift saves {q1_target['saved_dispatch_down_plus_25_mwh']:.6f} MWh in the modeled week.  
+**Formula:** ({q1_target['dispatch_down_after_plus_25_mwh'] + q1_target['saved_dispatch_down_plus_25_mwh']:.6f} − {q1_target['dispatch_down_after_plus_25_mwh']:.6f}) MWh.  
+**Locator:** `{Q1_LINE.as_posix()}`, `{q1_selector}`, columns `dispatch_down_after_plus_25_mwh` and `saved_dispatch_down_plus_25_mwh`.  
+**Warning:** regional scope only.
+
+### Card Q2
+
+**Conclusion:** {q2_final['power_mw']:.0f}/{q2_final['nameplate_energy_mwh']:.0f} at {q2_final['recommended_sites']} is the health-aware recommendation.  
+**Formula:** {q2_final['nameplate_energy_mwh']:.0f} × 0.80 × (0.90 − 0.10) = {q2_final['usable_energy_mwh']:.1f} MWh usable at EOL.  
+**Locator:** `{Q2_RECOMMENDATION.as_posix()}`, `{q2_selector}`.  
+**Warning:** affected-farm gain is not total system gain.
+
+### Card Q3
+
+**Conclusion:** DLR + 62.22/226.92 reduces dispatch-down by {q3_base['total_dispatch_down_mwh'] - q3_combined['total_dispatch_down_mwh']:.6f} MWh.  
+**Formula:** {q3_base['total_dispatch_down_mwh']:.6f} − {q3_combined['total_dispatch_down_mwh']:.6f}.  
+**Locator:** `{Q3_COMPARISON.as_posix()}`, baseline and `recommendation_status == FEASIBLE_DOWNSIZED_BESS`.  
+**Warning:** DLR and BESS standalone benefits overlap.
+
+### Card Q4
+
+**Conclusion:** no build wins project NPV; 22.5/110 is only the least-negative built requested case.  
+**Formula:** `NPV = -initial_capex + Σ(net_cash_flow_y / (1+r)^y)`.  
+**Locator:** `{q4_table_path.as_posix()}`, `case_id == NO_BUILD` and requested battery-size keys.  
+**DLR crosswalk:** for 45/220, standalone benefits overlap by {-q4_dlr_45['dlr_change_in_bess_incremental_gain_mwh']:.6f} MWh and conditional BESS NPV changes by {money(q4_dlr_45['dlr_change_in_conditional_bess_npv_eur'])}.  
+**DLR locator:** `{(Q4_DLR_COMPARISON_DIR / '01_capacity_fixed_vs_dlr.csv').as_posix()}`, `battery_mw == 45 and battery_mwh == 220`.  
+**Warning:** system saving is not developer revenue, and conditional BESS NPV under the DLR network state excludes DLR investment cost and revenue.
+
+### Card Q5
+
+**Conclusion:** 45 MW charging at Croaghonagh gives {45 * q5_croaghonagh['relief_mw_per_mw_curtailment']:.9f} MW first-order target relief.  
+**Formula:** 45 × {q5_croaghonagh['relief_mw_per_mw_curtailment']:.12f}.  
+**Locator:** `{q5_path.as_posix()}`, `{q5_selector}`, `relief_mw_per_mw_curtailment`.  
+**Warning:** DC/PTDF consistency is not AC-grid validation.
+
+### Card Q6
+
+**Conclusion:** {abs(q6_priority['wind_dispatch_down_mwh'] - q6_neutral['wind_dispatch_down_mwh']):.3e} MWh total difference; {abs(largest_protection['additional_dispatch_down_mwh']):.6f} MWh is the largest farm-level protection.  
+**Formula:** priority total − neutral total.  
+**Locator:** `{q6_path.as_posix()}` and `{(Q6_DIR / '06_generator_status_impacts.csv').as_posix()}`.  
+**Warning:** priority labels are scenario choices and transfers are not revenue.
+
+### Card Problem 3.2
+
+**Conclusion:** {q32_results['directional_mode_count']} directional modes generate {q32_results['overlapping_membership_count']} overlapping memberships and {q32_results['response_zone_count']} exclusive response zones.  
+**Formula:** directional relief = `flow_sign × PTDF`; membership uses normalised positive relief.  
+**Locator:** `{q32_manifest_path.as_posix()}`, pointers `/results/*`; row-level files 01–18.  
+**Warning:** candidate planning groups are not official operational Constraint Groups.
+
+## 17. Reproducibility and test matrix
+
+{markdown_table(['Run ID', 'Mode', 'Status', 'RC', 'Tests', 'Log'], run_rows_md)}
+
+Full commands are stored in `TEST_MATRIX.csv` and `RUN_MANIFEST.json`. A `PASS` requires exit code zero; full runs also require their canonical result manifest/tables, which this report reads before generation.
+
+## 18. File-level evidence index
+
+- `EVIDENCE_LEDGER.csv`: every claim-to-cell/source link, with SHA-256, row selector, column/pointer, unit, horizon, code locator, validation, and caveat.
+- `CALCULATION_LEDGER.csv`: substituted formulas and unrounded results.
+- `SOURCE_CHECKSUMS.csv`: immutable fingerprints for official inputs, model source, tests, configs, and result evidence.
+- `TEST_MATRIX.csv`: exact command, exit code, log, and acceptance purpose.
+- `RUN_MANIFEST.json`: repository, environment, result directories, protected-file audit, and run provenance.
+
+## 19. Final presentation rules
+
+1. Say “best among evaluated cases,” not “globally optimal.”
+2. Keep North-West and all-island claims visibly separated.
+3. Keep project revenue, system saving, CAPEX/OPEX, NPV, and payback in separate columns.
+4. Treat flat prices and repeated-week annualisation as illustrative assumptions.
+5. Call DLR-linked NPVs conditional BESS NPVs until DLR costs and revenues are modeled.
+6. Treat Q6 priority labels as scenario choices.
+7. Treat Problem 3.2 groups as candidate analytical groups.
+8. Cite the CSV/JSON row and column, not a chart, for every number.
+"""
+    (output / "FINAL_TECHNICAL_ECONOMIC_AUDIT.md").write_text(report, encoding="utf-8")
+
+    failed_runs = [row["run_id"] for row in tests if row["status"] != "PASS"]
+    print(f"Audit package written to {output}")
+    print(f"Evidence rows: {len(evidence_frame)} | calculations: {len(calculation_frame)} | checksums: {len(source_frame)}")
+    if failed_runs:
+        print("WARNING: run evidence is not yet complete: " + ", ".join(failed_runs))
+        return 2
+    print("All recorded final run markers passed.")
+    return 0
+
+
+def default_root() -> Path:
+    """Return the repository root for this entry point under src/."""
+    return Path(__file__).resolve().parents[1]
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=default_root())
+    parser.add_argument("--out", type=Path, default=Path("results/final_audit_20260910"))
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    arguments = parse_args()
+    raise SystemExit(main(arguments.root, arguments.out))

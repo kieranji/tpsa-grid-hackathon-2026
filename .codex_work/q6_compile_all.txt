@@ -1,0 +1,5 @@
+src/problem_3_1/q6_priority_dispatch/reporting.py:235: SyntaxWarning: invalid escape sequence '\ '
+  f"$$Annual\ wind\ value\ change = -({delta:+.9f}) "
+src/problem_3_1/q6_priority_dispatch/reporting.py:237: SyntaxWarning: invalid escape sequence '\ '
+  f"= EUR\ {annual_value:,.2f}/year$$",
+0

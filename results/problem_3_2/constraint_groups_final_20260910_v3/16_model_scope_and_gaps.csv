@@ -1,0 +1,11 @@
+topic,implemented,scope_or_required_extension
+active_power_dc_approximation,True,PTDF and LPF cover active-power redistribution only
+voltage_and_reactive_power,False,requires AC power-flow and voltage-limit study
+transient_and_frequency_stability,False,requires dynamic models and contingencies
+protection_and_fault_level,False,requires protection and short-circuit study
+n_minus_one_outages,False,base topology only; contingency screening is not implemented
+market_bidding_and_prices,False,electrical grouping does not estimate market revenue
+dlr_national_coverage,False,Q3 evidence covers only 1 supplied branch column(s)
+priority_status_observation,False,Q6 statuses are explicitly labelled SCENARIO_CHOICE
+q6_link_available,True,"policy-allocation outputs are a crosswalk, not a clustering feature"
+bus_geography,True,official model bus coordinates used; no independent substation geocoding
