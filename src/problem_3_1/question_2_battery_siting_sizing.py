@@ -18,6 +18,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from network_validation import network_input_fingerprint
 SCRIPT_PATH = Path(__file__).resolve()
 PROJECT_ROOT = SCRIPT_PATH.parents[2]
 KIT_DIR = PROJECT_ROOT / 'data' / 'participant-kit'
@@ -45,7 +46,7 @@ OUTPUT_ROOT = PROJECT_ROOT / 'results' / 'problem_3_1' / 'question_2_final'
 TABLE_DIR = OUTPUT_ROOT / 'tables'
 FIGURE_DIR = OUTPUT_ROOT / 'figures'
 CACHE_PATH = TABLE_DIR / '_trial_cache.csv'
-CACHE_SCHEMA_VERSION = 'q2-final-v2.0'
+CACHE_SCHEMA_VERSION = 'q2-final-v3.0-input-identity'
 FIRST_QUESTION_RESULT_CANDIDATES = [
     PROJECT_ROOT / 'results' / 'problem_3_1' / 'question_1_final' / 'tables' / '03_lines_ranked_by_recovered_energy.csv',
     PROJECT_ROOT / 'results' / 'problem_3_1' / 'question_1_final' / 'tables' / '02_line_constraint_and_rating_results.csv',
@@ -112,6 +113,7 @@ class StudyContext:
     excess_profile_mw: pd.Series
     power_hint_mw: float
     usable_energy_hint_mwh: float
+    input_identity: str = ''
 
 def ensure_output_directories() -> None:
     TABLE_DIR.mkdir(parents=True, exist_ok=True)
@@ -319,6 +321,7 @@ def target_line_group(network: Any, selected_line: str, target_mode: str) -> lis
 def build_study_context(scenario: str, scope: str, requested_line: str | None, target_mode: str) -> StudyContext:
     print('\n[baseline] Loading and solving the original network ...')
     baseline = gridkit.load(scenario, scope)
+    input_identity = network_input_fingerprint(baseline)
     solve_checked(baseline, 'baseline')
     selected_line, selection_reason = choose_target_line(baseline, requested_line)
     target_lines = target_line_group(baseline, selected_line, target_mode)
@@ -370,7 +373,7 @@ def build_study_context(scenario: str, scope: str, requested_line: str | None, t
     print(f'[counterfactual] Dispatch-down = {relaxed_down:,.2f} MWh; target-attributable reduction = {target_impact:,.2f} MWh')
     print(f'[counterfactual] {len(affected_generators)} weather-driven generators gain {affected_target_gain:,.2f} MWh in total.')
     print(f'[search hints] estimated power = {power_hint:,.1f} MW; continuous usable energy = {energy_hint:,.1f} MWh')
-    return StudyContext(scenario=scenario, scope=scope, target_mode=target_mode, target_lines=target_lines, target_label=target_label, target_endpoints=endpoints, original_ratings_mva=original_ratings, baseline_network=baseline, relaxed_network=relaxed, baseline_dispatch_down_mwh=baseline_down, relaxed_dispatch_down_mwh=relaxed_down, target_impact_mwh=target_impact, baseline_unserved_mwh=baseline_unserved, baseline_target_binding_hours=int(baseline_loading['target_binding_hours']), baseline_target_binding_line_hours=int(baseline_loading['target_binding_line_hours']), baseline_target_max_loading_pct=float(baseline_loading['target_max_loading_pct']), affected_generators=affected_generators, affected_target_gain_mwh=affected_target_gain, baseline_affected_dispatch_mwh=baseline_affected_dispatch, excess_profile_mw=excess_profile, power_hint_mw=power_hint, usable_energy_hint_mwh=energy_hint)
+    return StudyContext(scenario=scenario, scope=scope, target_mode=target_mode, target_lines=target_lines, target_label=target_label, target_endpoints=endpoints, original_ratings_mva=original_ratings, baseline_network=baseline, relaxed_network=relaxed, baseline_dispatch_down_mwh=baseline_down, relaxed_dispatch_down_mwh=relaxed_down, target_impact_mwh=target_impact, baseline_unserved_mwh=baseline_unserved, baseline_target_binding_hours=int(baseline_loading['target_binding_hours']), baseline_target_binding_line_hours=int(baseline_loading['target_binding_line_hours']), baseline_target_max_loading_pct=float(baseline_loading['target_max_loading_pct']), affected_generators=affected_generators, affected_target_gain_mwh=affected_target_gain, baseline_affected_dispatch_mwh=baseline_affected_dispatch, excess_profile_mw=excess_profile, power_hint_mw=power_hint, usable_energy_hint_mwh=energy_hint, input_identity=input_identity)
 
 class TrialCache:
 
@@ -443,7 +446,12 @@ def add_battery_fleet(network: Any, sites: Sequence[str], allocations: Sequence[
 
 def build_trial_key(context: StudyContext, sites: Sequence[str], allocations: Sequence[float], total_power_mw: float, total_energy_mwh: float, model: BatteryModel, recovery_target: float, success_mode: str) -> str:
     raw = '|'.join([CACHE_SCHEMA_VERSION, context.scenario, context.scope, context.target_mode, ','.join(context.target_lines), ','.join(map(str, sites)), ','.join((f'{value:.8f}' for value in allocations)), f'P={total_power_mw:.8f}', f'E={total_energy_mwh:.8f}', f'model={model.name}', f'soc={model.soc_min:.8f},{model.soc_max:.8f}', f'rte={model.round_trip_efficiency:.8f}', f'soh={model.state_of_health:.8f}', f'mc={model.marginal_cost_eur_per_mwh:.8f}', f'sl={model.standing_loss_per_hour:.8f}', f'recovery={recovery_target:.8f}', f'success={success_mode}'])
-    return stable_hash(raw, length=24)
+    # Existing labels are not enough: topology, hourly bounds/profiles, weights,
+    # loader semantics and implementation changes must all invalidate old trials.
+    identity = context.input_identity or network_input_fingerprint(context.baseline_network)
+    code_identity = hashlib.sha256(SCRIPT_PATH.read_bytes() + GRIDKIT_PATH.read_bytes()
+                                   + SCRIPT_PATH.with_name('network_validation.py').read_bytes()).hexdigest()
+    return stable_hash(raw + '|' + identity + '|' + code_identity, length=24)
 
 def evaluate_success(context: StudyContext, row: dict[str, Any], recovery_target: float, success_mode: str) -> dict[str, Any]:
     unserved_tolerance = max(0.1, context.baseline_unserved_mwh * 0.001)
@@ -468,6 +476,36 @@ def evaluate_success(context: StudyContext, row: dict[str, Any], recovery_target
         raise ValueError(f'Unknown success mode: {success_mode}')
     return {'unserved_ok': bool(unserved_ok), 'benchmark_available': bool(benchmark_available), 'benchmark_success': bool(benchmark_success), 'headroom_success': bool(headroom_success), 'success': bool(selected_success), 'effective_success_mode': effective_mode}
 
+def same_bess_target_residual(context: StudyContext, normal_network: Any,
+                              sites: Sequence[str], allocations: Sequence[float],
+                              total_power_mw: float, total_energy_mwh: float,
+                              model: BatteryModel) -> dict[str, Any]:
+    """Residual benefit of relaxing the target with exactly the same BESS installed.
+
+    This is a conditional diagnostic within the input network and its boundaries,
+    not a connection approval or merchant-dispatch feasibility certificate.
+    """
+    relaxed = gridkit.load(context.scenario, context.scope)
+    if context.input_identity and network_input_fingerprint(relaxed) != context.input_identity:
+        raise RuntimeError('Input network changed before same-BESS verification.')
+    add_battery_fleet(relaxed, sites, allocations, total_power_mw, total_energy_mwh, model)
+    for line, rating in context.original_ratings_mva.items():
+        gridkit.set_rating(relaxed, line, rating * RELAX_RATING_MULTIPLIER)
+    solve_checked(relaxed, 'same-BESS target-relaxed residual verification')
+    energy_gain = max(0.0, total_dispatch_down_mwh(normal_network) - total_dispatch_down_mwh(relaxed))
+    objective_gain = max(0.0, float(normal_network.objective) - float(relaxed.objective))
+    unserved_gain = max(0.0, total_unserved_mwh(normal_network) - total_unserved_mwh(relaxed))
+    return {'same_bess_residual_dispatch_down_mwh': energy_gain,
+            'same_bess_residual_objective_improvement': objective_gain,
+            'same_bess_residual_unserved_mwh': unserved_gain,
+            'same_bess_residual_energy_tolerance_mwh': ENERGY_TOLERANCE_MWH,
+            'same_bess_residual_objective_tolerance': 0.01,
+            'same_bess_target_residual_pass': bool(energy_gain <= ENERGY_TOLERANCE_MWH
+                                                  and objective_gain <= 0.01
+                                                  and unserved_gain <= ENERGY_TOLERANCE_MWH),
+            'site_connection_and_merchant_dispatch_validated': False}
+
+
 def run_battery_trial(context: StudyContext, sites: Sequence[str], total_power_mw: float, total_nameplate_energy_mwh: float, model: BatteryModel, recovery_target: float, success_mode: str, cache: TrialCache, allocations: Sequence[float] | None=None, force_solve: bool=False, return_network: bool=False, progress_label: str | None=None) -> tuple[dict[str, Any], Any | None, list[str]]:
     site_list = [str(site) for site in sites]
     allocation_list = normalise_allocations(len(site_list), allocations)
@@ -483,6 +521,8 @@ def run_battery_trial(context: StudyContext, sites: Sequence[str], total_power_m
     row: dict[str, Any] = {'trial_key': trial_key, 'scenario': context.scenario, 'scope': context.scope, 'target_label': context.target_label, 'target_lines': ';'.join(context.target_lines), 'site_count': len(site_list), 'sites': ';'.join(site_list), 'allocations': ';'.join((f'{value:.6f}' for value in allocation_list)), 'model': model.name, 'soc_min_pct': model.soc_min * 100.0, 'soc_max_pct': model.soc_max * 100.0, 'round_trip_efficiency_pct': model.round_trip_efficiency * 100.0, 'state_of_health_pct': model.state_of_health * 100.0, 'power_mw': float(total_power_mw), 'nameplate_energy_mwh': float(total_nameplate_energy_mwh), 'usable_energy_mwh': model.usable_energy_mwh(total_nameplate_energy_mwh), 'nameplate_duration_hours': float(total_nameplate_energy_mwh) / float(total_power_mw), 'usable_duration_hours': model.usable_energy_mwh(total_nameplate_energy_mwh) / float(total_power_mw), 'solve_ok': False, 'error': ''}
     try:
         network = gridkit.load(context.scenario, context.scope)
+        if context.input_identity and network_input_fingerprint(network) != context.input_identity:
+            raise RuntimeError('Input network changed after baseline; rebuild the study context.')
         battery_names = add_battery_fleet(network=network, sites=site_list, allocations=allocation_list, total_power_mw=total_power_mw, total_nameplate_energy_mwh=total_nameplate_energy_mwh, model=model)
         solve_checked(network, f'battery trial {trial_key}')
         trial_dispatch_down = total_dispatch_down_mwh(network)
@@ -550,6 +590,9 @@ def run_battery_trial(context: StudyContext, sites: Sequence[str], total_power_m
             soc_max_pct_observed = float('nan')
         row.update({'solve_ok': True, 'objective': float(network.objective), 'total_dispatch_down_mwh': trial_dispatch_down, 'dispatch_down_saved_mwh': dispatch_down_saved, 'affected_generator_gain_mwh': affected_gain, 'total_recovery_fraction': total_recovery_fraction, 'affected_recovery_fraction': affected_recovery_fraction, 'target_recovery_fraction': target_recovery_fraction, 'target_recovery_pct': target_recovery_fraction * 100.0, 'unserved_mwh': trial_unserved, **loading, 'charge_mwh': charge_mwh, 'discharge_mwh': discharge_mwh, 'throughput_mwh': throughput_mwh, 'equivalent_full_cycles_nameplate': efc_nameplate, 'equivalent_full_cycles_usable': efc_usable, 'simultaneous_charge_discharge_hours': simultaneous_hours, 'simultaneous_charge_discharge_mwh': simultaneous_mwh, 'average_absolute_power_mw': average_absolute_power_mw, 'average_power_utilisation_pct': average_power_utilisation_pct, 'active_hours': active_hours, 'idle_hours': idle_hours, 'observed_physical_soc_min_pct': soc_min_pct_observed, 'observed_physical_soc_mean_pct': soc_mean_pct_observed, 'observed_physical_soc_max_pct': soc_max_pct_observed})
         row.update(evaluate_success(context=context, row=row, recovery_target=recovery_target, success_mode=success_mode))
+        if return_network:
+            row.update(same_bess_target_residual(context, network, site_list,
+                       allocation_list, total_power_mw, total_nameplate_energy_mwh, model))
         cache.put(row)
         return (row, network if return_network else None, battery_names)
     except Exception as error:

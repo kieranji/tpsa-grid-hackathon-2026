@@ -1,0 +1,14 @@
+{
+  "source_url": "https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/CPM20/JSON-stat/2.0/en",
+  "source_updated_utc": "2026-09-10T11:00:00.000Z",
+  "raw_sha256": "671e5cb8316bf412683bf09b74e7419fa5d473ba1013ad87150ddd67440d0682",
+  "csv_sha256": "40adf620484be388becf2d007e093b9d8df4cb59a6dad2940249b5e963086083",
+  "statistic": "CPM20C06",
+  "commodity": "CP00",
+  "base_2024_annual_average_index": 100.7,
+  "annual_reference_url": "https://www.cso.ie/en/releasesandpublications/ep/p-cpi/consumerpriceindexdecember2025/",
+  "formula": "real_2024_EUR = nominal_EUR_in_month * 100.7 / monthly_index",
+  "last_observed_month": "2026-08",
+  "unpublished_months_policy": "Not included; any carry-forward is an explicit modelling assumption",
+  "caveat": "Consumer-price deflator normalizes purchasing-power units; it is not a BESS equipment cost index."
+}

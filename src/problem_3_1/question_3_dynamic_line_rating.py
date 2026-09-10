@@ -24,6 +24,7 @@ import networkx as nx
 import numpy as np
 import pandas as pd
 import xarray as xr
+from network_validation import scale_thermal_limits
 SCRIPT_PATH = Path(__file__).resolve()
 PROJECT_ROOT = SCRIPT_PATH.parents[2]
 KIT_DIR = PROJECT_ROOT / 'data' / 'participant-kit'
@@ -376,9 +377,7 @@ def build_study_context(scenario: str, scope: str, requested_line: str | None, t
     print(f'[counterfactual] {len(affected_generators)} weather-driven generators gain {affected_target_gain_mwh:,.2f} MWh in total')
     print('[counterfactual] Relaxing all line and transformer ratings ...')
     all_relaxed = gridkit.load(scenario, scope)
-    all_relaxed.lines.loc[:, 's_nom'] *= RELAX_RATING_MULTIPLIER
-    if not all_relaxed.transformers.empty:
-        all_relaxed.transformers.loc[:, 's_nom'] *= RELAX_RATING_MULTIPLIER
+    scale_thermal_limits(all_relaxed, RELAX_RATING_MULTIPLIER)
     solve_checked(all_relaxed, 'all-ratings-relaxed counterfactual')
     all_relaxed_down = dispatch_down_by_carrier(all_relaxed)
     target_impact_total = max(0.0, baseline_down['total'] - target_relaxed_down['total'])

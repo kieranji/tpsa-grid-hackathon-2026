@@ -1,0 +1,2357 @@
+{
+  "retrieved_at_utc": "2026-09-10T13:38:57.555928+00:00",
+  "market": "ROI-DA",
+  "unit": "EUR/MWh",
+  "currency_basis": "Observed nominal EUR at each delivery date",
+  "archive_url": "https://www.semopx.com/sites/semo/files/documents/general-publications/DAM-IDM-Market-Results.zip",
+  "archive_sha256": "e8a25b14aeef4f4508234fc79f28b91ea0c82c81e3d2ee50eaaa140057d668c8",
+  "api_query": "https://reports.semopx.com/api/v1/documents/static-reports?Group=Market+Data&DPuG_ID=EA-001&ResourceName=MarketResult_SEM-DA&page_size=500&sort_by=Date&order_by=ASC",
+  "raw_reports": [
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250911100000_20250911104501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250911100000_20250911104501.csv",
+      "publish_time": "2025-09-13T00:00:03",
+      "sha256": "ddb0b186d2cb7729e2765fd8fdf49e0a8845108b1d0d11717971e3d2036a106e"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250912100000_20250912104501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250912100000_20250912104501.csv",
+      "publish_time": "2025-09-14T00:00:03",
+      "sha256": "fcb8e148c8dfd137048180994a5225c425d15d230422835f860dd4fe159b9ba1"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250913100000_20250913104502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250913100000_20250913104502.csv",
+      "publish_time": "2025-09-15T00:00:02",
+      "sha256": "02adb558a0809bd08176290cf46f9a0f6f12ad193cf972fd8d3e531389d89984"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250914100000_20250914104941.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250914100000_20250914104941.csv",
+      "publish_time": "2025-09-16T00:00:03",
+      "sha256": "98a94b56280f193eb9569301d3759e6554bb5f0b48ca5e4a0648d0b50c7ed882"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250915100000_20250915104501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250915100000_20250915104501.csv",
+      "publish_time": "2025-09-17T00:00:03",
+      "sha256": "07f8293442cc7d2537d875ad70abba54d71168e620208679dfac83ac6b09a6a2"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250916100000_20250916104501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250916100000_20250916104501.csv",
+      "publish_time": "2025-09-18T00:00:03",
+      "sha256": "8e679f3eb6b1e72a57bf6c1d86e83aa5f38438b96c81e51a30eedfe9106e95de"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250917100000_20250917104501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250917100000_20250917104501.csv",
+      "publish_time": "2025-09-19T00:00:05",
+      "sha256": "6f19dc206ab29a8ddaf5ac4f4026ac13ba08fc027171855651b273a2771c5e66"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250918100000_20250918110311.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250918100000_20250918110311.csv",
+      "publish_time": "2025-09-20T00:00:04",
+      "sha256": "592a6d743b2289bbd7ddcff17aeffb4be2a11db5f6aad578eee41586dac8774e"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250919100000_20250919104509.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250919100000_20250919104509.csv",
+      "publish_time": "2025-09-21T00:00:04",
+      "sha256": "f843462cc07b3233df14c733e8947637cc490d6e3552bdb321f5f7a8bc3bb35f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250920100000_20250920104501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250920100000_20250920104501.csv",
+      "publish_time": "2025-09-22T00:00:04",
+      "sha256": "93d2b6a1a34f5baa61098562cada39584c750e130bfaf2aebb2b0879bf8e59a3"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250921100000_20250921104502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250921100000_20250921104502.csv",
+      "publish_time": "2025-09-23T00:00:04",
+      "sha256": "16c6d50a75dc4cc66c3840f0ad8bf7d4b32d6b24e87e766e056013b7366212f8"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250922100000_20250922104501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250922100000_20250922104501.csv",
+      "publish_time": "2025-09-24T00:00:03",
+      "sha256": "3dccbbb102bb1489790a21ad8192dea37ae73a9be3a5ba8bc3e29c04fa604caf"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250923100000_20250923104502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250923100000_20250923104502.csv",
+      "publish_time": "2025-09-25T00:00:04",
+      "sha256": "25e408070f6ed05cc6a660bce01aaf980b6524255c1d2111c0fce979deacc055"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250924100000_20250924104501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250924100000_20250924104501.csv",
+      "publish_time": "2025-09-26T00:00:04",
+      "sha256": "6ea5fd5f1319ed80df71a07e3f9c6865eb8ec9562b26d03fdca01e646094104d"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250925100000_20250925104501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250925100000_20250925104501.csv",
+      "publish_time": "2025-09-27T00:00:05",
+      "sha256": "a93214cf93e35beaaf2486b7ebf3a229983e4def82fd378bb922858e7b56628f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250926100000_20250926104502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250926100000_20250926104502.csv",
+      "publish_time": "2025-09-28T00:00:04",
+      "sha256": "c8dec893fde6671d6b450dbdea3db51d23bd4b777251d65251f42c8c0581533f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250927100000_20250927104502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250927100000_20250927104502.csv",
+      "publish_time": "2025-09-29T00:00:05",
+      "sha256": "89d27aef5b5de7c346560e527d622d2c39671d6f28bcc1c74d8555dd855b6921"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250928100000_20250928104501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250928100000_20250928104501.csv",
+      "publish_time": "2025-09-30T00:00:05",
+      "sha256": "12ffd0adfee658f97e59800216aa9a28e86f06273572b56298e3a376459226a7"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250929100000_20250929104501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250929100000_20250929104501.csv",
+      "publish_time": "2025-10-01T00:00:04",
+      "sha256": "c7c362d5503164524a90dac64f0ff58748dce1767f65c257019d5b3b72917a3f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20250930100000_20250930105930.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20250930100000_20250930105930.csv",
+      "publish_time": "2025-10-02T00:00:04",
+      "sha256": "d30a9d88e8a956ec005de888be622a89b5e187804e805e1bfa15c5aec786b6a6"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251001100000_20251001105612.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251001100000_20251001105612.csv",
+      "publish_time": "2025-10-03T00:00:04",
+      "sha256": "5de98460b562f4d5560f4fe618c0ccf76f7d7972d7b896f127c94e94eaa02430"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251002100000_20251002105512.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251002100000_20251002105512.csv",
+      "publish_time": "2025-10-04T00:00:04",
+      "sha256": "b9b3b70aa20cc3d57476cabfe40234017d93e302ada607aa379ecbf6e9db2803"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251003100000_20251003105611.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251003100000_20251003105611.csv",
+      "publish_time": "2025-10-05T00:00:05",
+      "sha256": "f1249cbfab0fcc81f92d35d93ab1ef6ac3d93a1ba3d65770c893d8749726246f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251004100000_20251004105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251004100000_20251004105501.csv",
+      "publish_time": "2025-10-06T00:00:04",
+      "sha256": "10a4069486090482bbc7678d6ca2a88f8f42e115923821531a86e843b11abe90"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251005100000_20251005105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251005100000_20251005105501.csv",
+      "publish_time": "2025-10-07T00:00:04",
+      "sha256": "674231d80ab63899311ede79318b6af5a8af4e1fceac0e15c7ff8e13b1a2bdbf"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251006100000_20251006105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251006100000_20251006105501.csv",
+      "publish_time": "2025-10-08T00:00:04",
+      "sha256": "020ff569448e916d7d8e4ab0692d92b63184e1ec27e42980be07f532379ffcaf"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251007100000_20251007123817.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251007100000_20251007123817.csv",
+      "publish_time": "2025-10-09T00:00:04",
+      "sha256": "2bc751093732604f2efe2fc1929ccaa29a8b23764767e85f9367381e701b8ddf"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251008100000_20251008105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251008100000_20251008105501.csv",
+      "publish_time": "2025-10-10T00:00:04",
+      "sha256": "b2b24a73cfcd851a615b127152e5fdb8bcaae24e2e275dfde46ae494d3175c10"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251009100000_20251009105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251009100000_20251009105501.csv",
+      "publish_time": "2025-10-11T00:00:04",
+      "sha256": "5d6b7c89f6fb5aac8014d76dd39c64245e87dbbd034ccbfc7adc459e60c81cb3"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251010100000_20251010105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251010100000_20251010105501.csv",
+      "publish_time": "2025-10-12T00:00:04",
+      "sha256": "ff740b14937ca3c933f136c5e7a53aa6be9586970ee8b78361772959d0ba1b79"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251011100000_20251011105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251011100000_20251011105501.csv",
+      "publish_time": "2025-10-13T00:00:03",
+      "sha256": "5a5c62010b5ea362e08b2572824d6a70dc5d1d5840028fbd53d15bc2fd4925f4"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251012100000_20251012105612.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251012100000_20251012105612.csv",
+      "publish_time": "2025-10-14T00:00:05",
+      "sha256": "be311ea132a9dd7a30a01541457c2061876bf8a681689f34664b696e82d1bdd5"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251013100000_20251013105711.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251013100000_20251013105711.csv",
+      "publish_time": "2025-10-15T00:00:04",
+      "sha256": "ce131982986e60dd1d9222a66b3767feee0609118a827b982e052c0c52708473"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251014100000_20251014111212.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251014100000_20251014111212.csv",
+      "publish_time": "2025-10-16T00:00:03",
+      "sha256": "6fce34d16a49a0ff9263b36bf8af9e7f62c8e68d00699f31124a38f0fc0e7ddd"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251015100000_20251015105612.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251015100000_20251015105612.csv",
+      "publish_time": "2025-10-17T00:00:05",
+      "sha256": "d3207a53e7473bb2257d36aba1eaac9408bcdf777376bd9e24296fbd2ae7a01a"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251016100000_20251016105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251016100000_20251016105501.csv",
+      "publish_time": "2025-10-18T00:00:04",
+      "sha256": "18a2e3c7bb814644994e90270ebdb66319432f23cab367b1c7a673f8830a4b95"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251017100000_20251017110319.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251017100000_20251017110319.csv",
+      "publish_time": "2025-10-19T00:00:03",
+      "sha256": "707cf75e68c6af9c2631ec4d286974d2e205b946d648feec5a56dee7a3ab7f8d"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251018100000_20251018105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251018100000_20251018105502.csv",
+      "publish_time": "2025-10-20T00:00:03",
+      "sha256": "4ca3e648f54296c0e16e6cb2f2f71aa988cd9175b4b98a7f469d228b36eeb4fb"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251019100000_20251019105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251019100000_20251019105501.csv",
+      "publish_time": "2025-10-21T00:00:04",
+      "sha256": "bb71ece743fe233f5cc60603525e1343cfaba8516557428c48477682d23eceed"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251020100000_20251020105512.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251020100000_20251020105512.csv",
+      "publish_time": "2025-10-22T00:00:04",
+      "sha256": "23abdf7800a434bd4f7b5bc4afac7df66aafa5c7bf304873afcc97772b08e159"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251021100000_20251021105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251021100000_20251021105501.csv",
+      "publish_time": "2025-10-23T00:00:04",
+      "sha256": "d2b15002fd55a38b9bd870bd3d1b6acee2c4f0c2343892b05012524f3ad3d02f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251022100000_20251022105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251022100000_20251022105501.csv",
+      "publish_time": "2025-10-24T00:00:05",
+      "sha256": "75ebd6971f2fcdf65251e5350a064244ae094aaa385eff997581fd64984a5862"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251023100000_20251023105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251023100000_20251023105501.csv",
+      "publish_time": "2025-10-25T00:00:03",
+      "sha256": "187ccfa00ba212e74f47544ac2ae4e8c416702ceb6e8c9b84fd72d0c262863e5"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251024100000_20251024105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251024100000_20251024105501.csv",
+      "publish_time": "2025-10-26T00:00:03",
+      "sha256": "ab525548af83a1bb7e8a745c6b2ccdd99524ed31c4543f119895956a5b81e52c"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251025100000_20251025105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251025100000_20251025105501.csv",
+      "publish_time": "2025-10-27T01:00:03",
+      "sha256": "bc1309cc7ed2976d1ad2b3b1383b2eac89fdd58ee13fdb5455b1b49ab79f1457"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251026110000_20251026115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251026110000_20251026115501.csv",
+      "publish_time": "2025-10-28T01:00:04",
+      "sha256": "cbaf19d0a94517913c35dcbe71285c999efe46cf2d9f201161507f1bca1b23fd"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251027110000_20251027115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251027110000_20251027115501.csv",
+      "publish_time": "2025-10-29T01:00:03",
+      "sha256": "0e0cc37041b174c807695305f43f7edc7bec88cb232b58118b2e73bd78768289"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251028110000_20251028115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251028110000_20251028115501.csv",
+      "publish_time": "2025-10-30T01:00:03",
+      "sha256": "d7e3378356bf60c36b2fbcb138bc330332954a009ace588fcba983595d1969d0"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251029110000_20251029115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251029110000_20251029115501.csv",
+      "publish_time": "2025-10-31T01:00:03",
+      "sha256": "b1b68ac66d26adb43196ca650e5b79978b0f9b98870da80768bbff27d04ec393"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251030110000_20251030115607.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251030110000_20251030115607.csv",
+      "publish_time": "2025-11-01T01:00:04",
+      "sha256": "1968f2f4bc4415320132600a4d5376526cc1bb0db559fd5d90cb0590e4bac541"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251031110000_20251031115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251031110000_20251031115501.csv",
+      "publish_time": "2025-11-02T01:00:04",
+      "sha256": "9f7ff0b34d1eccfc1239637f8e9040a79e84b657d9f2e8aa4eb5d38dc486bd42"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251101110000_20251101115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251101110000_20251101115501.csv",
+      "publish_time": "2025-11-03T01:00:03",
+      "sha256": "87d5f391b4584482a037c25a176a14f9040578775c6de1318ec3b3aee1397250"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251102110000_20251102115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251102110000_20251102115501.csv",
+      "publish_time": "2025-11-04T01:00:05",
+      "sha256": "6428e20d0f0c6c44a0e4d8a8ad6acb60d03f07faab79979f40bc37c5736ee272"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251103110000_20251103115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251103110000_20251103115501.csv",
+      "publish_time": "2025-11-05T01:00:03",
+      "sha256": "840ce0d7c3d9bf6eda44e244de60e12b3b9785f0f7bac00a135d9308d7014ee3"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251104110000_20251104115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251104110000_20251104115501.csv",
+      "publish_time": "2025-11-06T01:00:06",
+      "sha256": "6d971df696e70e40616fd1f11482f5335b2b8858d772e341533a28f3f1d5b291"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251105110000_20251105115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251105110000_20251105115501.csv",
+      "publish_time": "2025-11-07T01:00:03",
+      "sha256": "b221fff45aef8d2de1a340665cfaa68853a9e1c5b58614ce3f6bbcd07f6728d2"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251106110000_20251106115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251106110000_20251106115501.csv",
+      "publish_time": "2025-11-08T01:00:03",
+      "sha256": "620ad386f109034af4f44a0972a24a1f86650303d6c12ff974d14ce914803a69"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251107110000_20251107115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251107110000_20251107115501.csv",
+      "publish_time": "2025-11-09T01:00:03",
+      "sha256": "3e5ec9a7a277a5b733212731fe2044b28d8882cf30d1e4997339462ae9ef5b6f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251108110000_20251108115508.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251108110000_20251108115508.csv",
+      "publish_time": "2025-11-10T01:00:04",
+      "sha256": "80d76de367e3eb46cfbf9e49014b189f81b54f7657669ce368019939e586b146"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251109110000_20251109115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251109110000_20251109115501.csv",
+      "publish_time": "2025-11-11T01:00:04",
+      "sha256": "abbcfaab5dbcf63a42e6f0a7aa2dee8cb3d937d207d9f6f284e0943ce64af1c2"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251110110000_20251110115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251110110000_20251110115501.csv",
+      "publish_time": "2025-11-12T01:00:05",
+      "sha256": "595ee9f699a35e963a35c7d79525220cd3caef7f5e6478e3cdc296f01f0fa57e"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251111110000_20251111115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251111110000_20251111115501.csv",
+      "publish_time": "2025-11-13T01:00:03",
+      "sha256": "d49edb8f52a3726c8904feb858291ee31b3735c99181d56b7c60db3b79a128cd"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251112110000_20251112115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251112110000_20251112115501.csv",
+      "publish_time": "2025-11-14T01:00:04",
+      "sha256": "21e41462cae103d8f78f0f5394da990fbac54ab459643e4a5cdc6fbbe4965d43"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251113110000_20251113115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251113110000_20251113115502.csv",
+      "publish_time": "2025-11-15T01:00:03",
+      "sha256": "2b07d92d2495fa6c3ab01219166c87f85a8e0f1aaaeec908b11e12ee3cf16b60"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251114110000_20251114115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251114110000_20251114115501.csv",
+      "publish_time": "2025-11-16T01:00:03",
+      "sha256": "05fdda4fc85531547f80d7aa86413df7b0ee7350beb9f0a8af3ffd9d79df24be"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251115110000_20251115115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251115110000_20251115115502.csv",
+      "publish_time": "2025-11-17T01:00:03",
+      "sha256": "18f1d111e5e33b14fa6ebefeb9e161b6e6f54c4eb88ba70a9da80e8323289ace"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251116110000_20251116115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251116110000_20251116115501.csv",
+      "publish_time": "2025-11-18T01:00:04",
+      "sha256": "4657d465cb821782d285ee35700afd90a37d0589f32c16bba41d6da6a4370ac1"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251117110000_20251117115508.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251117110000_20251117115508.csv",
+      "publish_time": "2025-11-19T01:00:03",
+      "sha256": "2b1fda3c852055c761199a035c37ce2d48e32b360c91f2afd1aa924e8d98ab8b"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251118110000_20251118115608.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251118110000_20251118115608.csv",
+      "publish_time": "2025-11-20T01:00:03",
+      "sha256": "9f24693330d47036bd6e1a1593480bc4c9e693b3640daeb996ddbb66df51e1c7"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251119110000_20251119115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251119110000_20251119115501.csv",
+      "publish_time": "2025-11-21T01:00:02",
+      "sha256": "62df9c6427a20435dcafc361713978a4c8c04866a82faf6a7df52a163ab6b634"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251120110000_20251120115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251120110000_20251120115501.csv",
+      "publish_time": "2025-11-22T01:00:02",
+      "sha256": "dd2432f07bfd30b594843578f2306e3b6b8565ce915b3f0125e9e2c15b0f5b2d"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251121110000_20251121115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251121110000_20251121115501.csv",
+      "publish_time": "2025-11-23T01:00:03",
+      "sha256": "0f92170b1576ded1cb9b86870fc965cb34865387995bf5fc5ca33509f1d90c7c"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251122110000_20251122115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251122110000_20251122115501.csv",
+      "publish_time": "2025-11-24T01:00:03",
+      "sha256": "30ef93899c96c4847ad8de0029318a84fca52c892086069b26c64ee912dc9421"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251123110000_20251123115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251123110000_20251123115501.csv",
+      "publish_time": "2025-11-25T01:00:03",
+      "sha256": "8423e40027e317435c053dfc74128adb7f8d3b31bb9f54896d3e200a878aff43"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251124110000_20251124121731.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251124110000_20251124121731.csv",
+      "publish_time": "2025-11-26T01:00:03",
+      "sha256": "cf4adc365167ae1152aaef4574f73ecb04094d1954b3eba1ef96f846cc8c94c0"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251125110000_20251125115507.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251125110000_20251125115507.csv",
+      "publish_time": "2025-11-27T01:00:03",
+      "sha256": "0e246beb27873677301b164ddae6bdeaa410ad1835005865b05e25ed151b0a34"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251126110000_20251126115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251126110000_20251126115501.csv",
+      "publish_time": "2025-11-28T01:00:03",
+      "sha256": "4bcc8f8f2c87c880b7cbffed9cbf288a806d9a4a741cf54261eceac9c1f47892"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251127110000_20251127115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251127110000_20251127115501.csv",
+      "publish_time": "2025-11-29T01:00:03",
+      "sha256": "59cbc55830a40541cf59db60774f3b31c5a4aec09b46a445fe0fb71b0fd47ff7"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251128110000_20251128115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251128110000_20251128115501.csv",
+      "publish_time": "2025-11-30T01:00:04",
+      "sha256": "6aad5b41d3cb5a16f8a1e988008a32a513ea101d8ca67f50f29c859810f47d4f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251129110000_20251129115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251129110000_20251129115501.csv",
+      "publish_time": "2025-12-01T01:00:04",
+      "sha256": "b54349cebad25ec79dc3050a420598bca6322585dc2c77d8b43cba3bad656bfe"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251130110000_20251130115508.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251130110000_20251130115508.csv",
+      "publish_time": "2025-12-02T01:00:03",
+      "sha256": "b6d5be24c36f434fe455c3faa3f8f3f3e962df771fc6f4ba8c2655eb9be40015"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251201110000_20251201115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251201110000_20251201115502.csv",
+      "publish_time": "2025-12-03T01:00:03",
+      "sha256": "bcef88e1464f1cc35e4f1aaab6e9d20467caaf01a94a7e258beb600760db63d8"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251202110000_20251202115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251202110000_20251202115501.csv",
+      "publish_time": "2025-12-04T01:00:04",
+      "sha256": "74e9f97f80517e35ed00915125d9ad8234cd817e873d65ab64f60fd35ea8c831"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251203110000_20251203115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251203110000_20251203115501.csv",
+      "publish_time": "2025-12-05T01:00:02",
+      "sha256": "1019e09e6583984e828ae036fc8bc6b42d4093df0cbbfa57e383c44c52542234"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251204110000_20251204115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251204110000_20251204115501.csv",
+      "publish_time": "2025-12-06T01:00:03",
+      "sha256": "fda5a3a7c12e7ad162e8c695fb147e636310e281944c631bbdf45e7f196c70b1"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251205110000_20251205115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251205110000_20251205115501.csv",
+      "publish_time": "2025-12-07T01:00:03",
+      "sha256": "758915a3079f51dc0ece1723cb939b7d069e3dd57526bec1fa73bf90d2389f2c"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251206110000_20251206115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251206110000_20251206115501.csv",
+      "publish_time": "2025-12-08T01:00:03",
+      "sha256": "f2c188d5784a125b4bd06056807c5c2069ab0dfb765f74d3f7101c85162c7736"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251207110000_20251207115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251207110000_20251207115501.csv",
+      "publish_time": "2025-12-09T01:00:03",
+      "sha256": "74fed4e34e862357615cb8000092f8576ac16646e9abce95d328bd8db716eced"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251208110000_20251208120216.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251208110000_20251208120216.csv",
+      "publish_time": "2025-12-10T01:00:03",
+      "sha256": "e31334871e9d2004cbe970589c8a87959d61d0b632e8d31d8500daaf80e542d7"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251209110000_20251209115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251209110000_20251209115501.csv",
+      "publish_time": "2025-12-11T01:00:02",
+      "sha256": "da03eae9a1a457d9847ea51d9812fadc5608e9c6c5beac39c1adb87d7801bafc"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251210110000_20251210115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251210110000_20251210115501.csv",
+      "publish_time": "2025-12-12T01:00:03",
+      "sha256": "5ebde8d797eafb3639369799cffc7f8b1c0c67ce95e6aad6253e69d42f027d51"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251211110000_20251211120108.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251211110000_20251211120108.csv",
+      "publish_time": "2025-12-13T01:00:03",
+      "sha256": "68daba1abde3e8764f6ed8ee7d3aa43ebee8e0a32ea1bc57f1bfc93e7063828a"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251212110000_20251212115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251212110000_20251212115501.csv",
+      "publish_time": "2025-12-14T01:00:03",
+      "sha256": "58e76d76d155f8a296de2dc5a57f6a23f7d7d5f610ba45cb6875c72925df45fd"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251213110000_20251213115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251213110000_20251213115501.csv",
+      "publish_time": "2025-12-15T01:00:04",
+      "sha256": "295869743a6c6eb4f4da52eac4731ca69e4eeeb31182443cd9539418f36a9862"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251214110000_20251214115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251214110000_20251214115501.csv",
+      "publish_time": "2025-12-16T01:00:03",
+      "sha256": "ccba0fad22c99b36049e857bd8a3eb00c47c815392640bc3060a78abba8cd874"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251215110000_20251215115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251215110000_20251215115501.csv",
+      "publish_time": "2025-12-17T01:00:03",
+      "sha256": "0a69d4a35fb9081c0dd422b9650015c953bbf413e10fd60a48fb066928f8c2d0"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251216110000_20251216115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251216110000_20251216115501.csv",
+      "publish_time": "2025-12-18T01:00:03",
+      "sha256": "b3654554495736d5226fa0bc7ead3249c9e849f1d31c690d98466cc3dcd4a005"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251217110000_20251217115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251217110000_20251217115501.csv",
+      "publish_time": "2025-12-19T01:00:02",
+      "sha256": "00f7bb84fc1aac628801ed56f2139e0b366ada341f5b690cb14c6014fcc3051a"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251218110000_20251218115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251218110000_20251218115501.csv",
+      "publish_time": "2025-12-20T01:00:02",
+      "sha256": "035368d1b70195907e70f7bb46b60ec8bf5854c21e27009acea6d1383ee6eeef"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251219110000_20251219120003.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251219110000_20251219120003.csv",
+      "publish_time": "2025-12-21T01:00:03",
+      "sha256": "2fd81693593448ddaf1e1648b2a1b18af4cb68551cc45e35a0220681c7bf4bba"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251220110000_20251220115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251220110000_20251220115501.csv",
+      "publish_time": "2025-12-22T01:00:03",
+      "sha256": "8aa3f3a1ed207c5ea5cc9536bf191fa43a6912424241df6897b4e0b958fedf1a"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251221110000_20251221115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251221110000_20251221115501.csv",
+      "publish_time": "2025-12-23T01:00:02",
+      "sha256": "926a87e9222e84acc3e44ebcd715d5f60aed5cacf5afba165af5cfa4bba62536"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251222110000_20251222115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251222110000_20251222115501.csv",
+      "publish_time": "2025-12-24T01:00:02",
+      "sha256": "ea6740664cc309fc6899f928f5ee7f5f5aa36fdfed1bdeff4e6140c9787df6c7"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251223110000_20251223115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251223110000_20251223115501.csv",
+      "publish_time": "2025-12-25T01:00:02",
+      "sha256": "63f0599acfb78c8064aed00737932ccf54a1ffa1c02badb6069a1d2159197dca"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251224110000_20251224115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251224110000_20251224115501.csv",
+      "publish_time": "2025-12-26T01:00:03",
+      "sha256": "395b739d5dbece2faef0d33a45be0d1b173a88d1c4c70eb29dd2d53ab10a48b0"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251225110000_20251225115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251225110000_20251225115501.csv",
+      "publish_time": "2025-12-27T01:00:02",
+      "sha256": "ad66ab0b06df95ac8ad73ebcfb0246e493f1b3f3022f83de9423b3de8743e381"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251226110000_20251226115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251226110000_20251226115501.csv",
+      "publish_time": "2025-12-28T01:00:03",
+      "sha256": "2bb897495f99ff6ecc5fb35d7337525150815a00228029eb21a2a18a32144d9e"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251227110000_20251227115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251227110000_20251227115501.csv",
+      "publish_time": "2025-12-29T01:00:02",
+      "sha256": "005754e4dad34306e01d69a9eba4c1bdd262f2a957140cfa311f5a11188c41df"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251228110000_20251228115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251228110000_20251228115501.csv",
+      "publish_time": "2025-12-30T01:00:02",
+      "sha256": "bf31a4c6e53973a514690a5fc1994c6efce74d9534d300ccc80dcc97fae6d449"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251229110000_20251229115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251229110000_20251229115501.csv",
+      "publish_time": "2025-12-31T01:00:03",
+      "sha256": "f4510ee8ee4ea22d48e78bc82428861db6600037d2ae6df8a4070415832dadf5"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251230110000_20251230124513.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251230110000_20251230124513.csv",
+      "publish_time": "2026-01-01T01:00:03",
+      "sha256": "d90da272adfe74e4233662d38f6bbf4609788c112401f25e5e0e22f170fff102"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20251231110000_20251231115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20251231110000_20251231115501.csv",
+      "publish_time": "2026-01-02T01:00:03",
+      "sha256": "5678d39a3a2858ba2e91e89396b1b9ea2edfa80fa62bae997450bba08a287ee4"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260101110000_20260101115503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260101110000_20260101115503.csv",
+      "publish_time": "2026-01-03T01:00:03",
+      "sha256": "f7d73e4e122b30c73316425f6267e6765ada3980c5318f1763f550cd8d3d0e9d"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260102110000_20260102115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260102110000_20260102115501.csv",
+      "publish_time": "2026-01-04T01:00:02",
+      "sha256": "65c33b7704d8e6e3869c723730643eb29ab8bb09f5b1e1ffd3d5965be557f0bb"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260103110000_20260103115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260103110000_20260103115501.csv",
+      "publish_time": "2026-01-05T01:00:03",
+      "sha256": "ee4daea5edaed9be39951b498dc4e44f811ce6c00bf353b5e7e224714638f951"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260104110000_20260104115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260104110000_20260104115501.csv",
+      "publish_time": "2026-01-06T01:00:03",
+      "sha256": "16d50b3303456a94df525a6ac85afeb5ce2c3904ade2b9c55971c3a043e0b778"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260105110000_20260105115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260105110000_20260105115502.csv",
+      "publish_time": "2026-01-07T01:00:03",
+      "sha256": "d989680fe18a7123a0bedf687617898bec72e824be2ef87a355e1c3c77d7a657"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260106110000_20260106115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260106110000_20260106115501.csv",
+      "publish_time": "2026-01-08T01:00:03",
+      "sha256": "15019db0158ec53c923fc847aca783efc6f7598cfdad9b38961e2e64d72d2179"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260107110000_20260107115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260107110000_20260107115501.csv",
+      "publish_time": "2026-01-09T01:00:04",
+      "sha256": "5d028a4b92882bb5217750a5353f3edcd793f8ecfa5a02006e417118c7b3b3c4"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260108110000_20260108115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260108110000_20260108115501.csv",
+      "publish_time": "2026-01-10T01:00:04",
+      "sha256": "7472e0a5f6e389da8f95d9d842033944ad829168dee10c4b5ac19584bfeac737"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260109110000_20260109115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260109110000_20260109115501.csv",
+      "publish_time": "2026-01-11T01:00:04",
+      "sha256": "682a9efc86b2ead8c82013e79307eaad4eada28eded74a7764b90fc50a2a905d"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260110110000_20260110115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260110110000_20260110115502.csv",
+      "publish_time": "2026-01-12T01:00:02",
+      "sha256": "3b37058b7add9be5819b3e1a88461fad9fce94bf8b0b8c3e3c46035fd98c1f8c"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260111110000_20260111115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260111110000_20260111115501.csv",
+      "publish_time": "2026-01-13T01:00:04",
+      "sha256": "c6140f07fb1bd89bb11ec888629129326b42ac78c02118cdc651599f6abf7b84"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260112110000_20260112115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260112110000_20260112115501.csv",
+      "publish_time": "2026-01-14T01:00:04",
+      "sha256": "b7c73c0c85c14d3756a40216348465640dfa6f30d5e4193a8f86c63b28c53cdd"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260113110000_20260113115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260113110000_20260113115501.csv",
+      "publish_time": "2026-01-15T01:00:03",
+      "sha256": "185f8fc89bb9dae672933d4fa44a242c686f48ebc6d56febc2cf8e69bdc9d008"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260114110000_20260114115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260114110000_20260114115501.csv",
+      "publish_time": "2026-01-16T01:00:03",
+      "sha256": "039f7e79cb5f21d2fdccea33b5c440efd937dfa7f6772fe63f2fb61ace12395f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260115110000_20260115115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260115110000_20260115115501.csv",
+      "publish_time": "2026-01-17T01:00:03",
+      "sha256": "2b22ccb6fc012f2d3cdb42a700a7d8e6a95bbf988b7f817a8c316056d7d582d0"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260116110000_20260116115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260116110000_20260116115501.csv",
+      "publish_time": "2026-01-18T01:00:03",
+      "sha256": "3f058d0238630d25577a4bc8e20bee33186674f661f9bde5572e5efb3b366394"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260117110000_20260117115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260117110000_20260117115501.csv",
+      "publish_time": "2026-01-19T01:00:03",
+      "sha256": "a32b3797d1d08db465737f15b6873b6c1bb66b45edc23c42921ae4b158ad8541"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260118110000_20260118115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260118110000_20260118115501.csv",
+      "publish_time": "2026-01-20T01:00:03",
+      "sha256": "2e5147e630a46ec672834c394ebb6feda1d36b2d815516d3a205a649926e7fae"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260119110000_20260119115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260119110000_20260119115501.csv",
+      "publish_time": "2026-01-21T01:00:04",
+      "sha256": "6066392634fd601e56bc028ce1d89f3cc29e7a12477c0441012a63afc20c5a54"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260120110000_20260120120403.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260120110000_20260120120403.csv",
+      "publish_time": "2026-01-22T01:00:03",
+      "sha256": "3670a0cc897e0834c1f8ddac263620cf193df8bd5ba10e249c83978bbda3515f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260121110000_20260121115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260121110000_20260121115501.csv",
+      "publish_time": "2026-01-23T01:00:03",
+      "sha256": "14c118b76e4fd49954379907a59e31f2231cc3c64fcd3ac10df9f234a6b22a3d"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260122110000_20260122115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260122110000_20260122115502.csv",
+      "publish_time": "2026-01-24T01:00:02",
+      "sha256": "1491c4c6deb99da6a72857937a6cc54fb06d31f66669804181ae896b7eebb478"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260123110000_20260123115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260123110000_20260123115501.csv",
+      "publish_time": "2026-01-25T01:00:03",
+      "sha256": "9cb7ad40141df53db50a08385711aef9d7a0d9d097f7547a56c4f876d0c434d9"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260124110000_20260124115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260124110000_20260124115501.csv",
+      "publish_time": "2026-01-26T01:00:04",
+      "sha256": "7f524263f70be1a988f6562e939cb59094f9f0c63a6071fff4ac71ea12dac0d7"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260125110000_20260125115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260125110000_20260125115501.csv",
+      "publish_time": "2026-01-27T01:00:02",
+      "sha256": "b3b3d9ad464733692c23a3fdd632f745b3a1ca213ab6e45aebba9f517579f31e"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260126110000_20260126115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260126110000_20260126115501.csv",
+      "publish_time": "2026-01-28T01:00:03",
+      "sha256": "ed994241f6eadd4f4b917c3b216752b26da2ea15e28d72fa51563db9f1d46345"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260127110000_20260127115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260127110000_20260127115501.csv",
+      "publish_time": "2026-01-29T01:00:02",
+      "sha256": "6be1cc822fd5f035b67ed2a2a6c70a2cf59909efc17d9a7ac59d38d7e13aea78"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260128110000_20260128115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260128110000_20260128115502.csv",
+      "publish_time": "2026-01-30T01:00:02",
+      "sha256": "44d0844a9948174c2195aa6a39a7b7b74f0815701d244ba419419e14ad86af0b"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260129110000_20260129120003.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260129110000_20260129120003.csv",
+      "publish_time": "2026-01-31T01:00:02",
+      "sha256": "ec7ffb70f85e351fcf4ff37dc95fd60e0419cc55c3823233073e91ec3b60c8b0"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260130110000_20260130115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260130110000_20260130115501.csv",
+      "publish_time": "2026-02-01T01:00:03",
+      "sha256": "bc0bf5d44501bed5fd0ba285984d52a211e7f8f6ef856bf0f0e12f5712a7819e"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260131110000_20260131115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260131110000_20260131115501.csv",
+      "publish_time": "2026-02-02T01:00:02",
+      "sha256": "05116df4fd2d988c3461434fa6ce6bd817fb251a368a35a1024f76875b7fdfb0"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260201110000_20260201115504.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260201110000_20260201115504.csv",
+      "publish_time": "2026-02-03T01:00:02",
+      "sha256": "cc96a20be5c6c8336f0c977f6f97de79c26ef7c1fcb2d22f17f87aef4afe3512"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260202110000_20260202115610.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260202110000_20260202115610.csv",
+      "publish_time": "2026-02-04T01:00:03",
+      "sha256": "3844ebd4c7f04f63d81f502a697e749c47e7c96202f20ae70140dc44df0f5da1"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260203110000_20260203115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260203110000_20260203115501.csv",
+      "publish_time": "2026-02-05T01:00:04",
+      "sha256": "8917863d62f253a119949f7d7352a7fe1350dd8557dc54a901199376da2a5824"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260204110000_20260204115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260204110000_20260204115501.csv",
+      "publish_time": "2026-02-06T01:00:02",
+      "sha256": "69ede100397fa0603c18774b5da481d8ef81fecbcc3f16473335ac870d013c5f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260205110000_20260205115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260205110000_20260205115501.csv",
+      "publish_time": "2026-02-07T01:00:02",
+      "sha256": "f5aab56bc36449be2750b46d3e8f1e148f902dd8f9bab4839fb0b9fb990869e5"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260206110000_20260206115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260206110000_20260206115501.csv",
+      "publish_time": "2026-02-08T01:00:02",
+      "sha256": "a19a95139d510c8d651703e6f0e3b6e7fde1718dcff67ad2d7825f4890844bda"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260207110000_20260207115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260207110000_20260207115501.csv",
+      "publish_time": "2026-02-09T01:00:03",
+      "sha256": "90254f1a1b6ba637664c3c424adb9e8a7a7d284e858d153efb24a6c06d8c15a0"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260208110000_20260208115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260208110000_20260208115502.csv",
+      "publish_time": "2026-02-10T01:00:03",
+      "sha256": "64222be4266f7d59ff03792aa56b75f3b4a5600192fdf4d33285e84917e7c5d2"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260209110000_20260209115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260209110000_20260209115501.csv",
+      "publish_time": "2026-02-11T01:00:02",
+      "sha256": "a51b3257a34194f8bc7f92da19709e869e32a9a7519e9357b5e53fec50fb947b"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260210110000_20260210115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260210110000_20260210115501.csv",
+      "publish_time": "2026-02-12T01:00:03",
+      "sha256": "770709500157f0614796603f39c8e1da087432f084b3d936869e40dc26a519f4"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260211110000_20260211115503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260211110000_20260211115503.csv",
+      "publish_time": "2026-02-13T01:00:03",
+      "sha256": "c0690af16a6eb93f40698480ec6849d2f7595389d1a64d8abf03ca39f10d568d"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260212110000_20260212115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260212110000_20260212115501.csv",
+      "publish_time": "2026-02-14T01:00:02",
+      "sha256": "7227f69b3b587ca409d9b2896d2c2f9ef4abd4af8be086b31173330ee69a39e3"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260213110000_20260213120919.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260213110000_20260213120919.csv",
+      "publish_time": "2026-02-15T01:00:02",
+      "sha256": "8ce8b3c5351206ad7ed8a168493993553cbad8a4166e20478795a03010fb8adf"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260214110000_20260214115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260214110000_20260214115501.csv",
+      "publish_time": "2026-02-16T01:00:03",
+      "sha256": "b4526ee0aa812655c5dcf4051a8c8eb726fcecf3ee5ee63e677463f550566bb2"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260215110000_20260215115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260215110000_20260215115501.csv",
+      "publish_time": "2026-02-17T01:00:02",
+      "sha256": "fa2b903669718d7267943f69313872cd8b406afb4c8f95fcb27da2f78eb106ad"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260216110000_20260216120829.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260216110000_20260216120829.csv",
+      "publish_time": "2026-02-18T01:00:03",
+      "sha256": "0cb2d2b74350aa6690097e6d48eeea7060942840eb010510ecd62917e2dfad13"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260217110000_20260217115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260217110000_20260217115502.csv",
+      "publish_time": "2026-02-19T01:00:02",
+      "sha256": "d5ea136f09757d04d5fcb572b15beb0935f906465e578beb09f33d98f6a04674"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260218110000_20260218115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260218110000_20260218115501.csv",
+      "publish_time": "2026-02-20T01:00:03",
+      "sha256": "7c23cf24a84ed6616315e6678307b31b8774219ad0e1fe789ee1d117b0f74990"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260219110000_20260219115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260219110000_20260219115501.csv",
+      "publish_time": "2026-02-21T01:00:02",
+      "sha256": "c773dd2f88feb6f0e0c93891e3d1571caaf14073f8ba51161b729bdb5504ab89"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260220110000_20260220115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260220110000_20260220115502.csv",
+      "publish_time": "2026-02-22T01:00:03",
+      "sha256": "edc22de74fb794bb9a30d7323411e0e905d9b2f8c97bb4ac9549cb7bcc449ecd"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260221110000_20260221115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260221110000_20260221115501.csv",
+      "publish_time": "2026-02-23T01:00:03",
+      "sha256": "c88a9ff3a810244f0221abb8f18ebdeeb899e8ac8911f1f98ba9aa29fc6d386b"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260222110000_20260222115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260222110000_20260222115501.csv",
+      "publish_time": "2026-02-24T01:00:03",
+      "sha256": "6734bd0af61b4a1e86b9e0ff83713272d6da460554b99bc564a02e5315678260"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260223110000_20260223115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260223110000_20260223115501.csv",
+      "publish_time": "2026-02-25T01:00:03",
+      "sha256": "f9327278305f547d88440b9d4eb92b1d536da5b999b3610d8afe22810273f0d9"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260224110000_20260224115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260224110000_20260224115501.csv",
+      "publish_time": "2026-02-26T01:00:03",
+      "sha256": "a3acd48e5f22c6dea71b812690e21cf956f05c9a1324712094bb7b88cde069aa"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260225110000_20260225115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260225110000_20260225115502.csv",
+      "publish_time": "2026-02-27T01:00:03",
+      "sha256": "e1b5d22370681234e6ede72c5dde2db1e5a4061adbf102ee80abc7d94d264b10"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260226110000_20260226115503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260226110000_20260226115503.csv",
+      "publish_time": "2026-02-28T01:00:02",
+      "sha256": "9f681651b1dd9a0e15c21e2a869200eeae6065dedc4fb8619dddadf6dfa3dbec"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260227110000_20260227115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260227110000_20260227115501.csv",
+      "publish_time": "2026-03-01T01:00:02",
+      "sha256": "0c9fa29ea876ddd27ad80805274a89faeab4954d9886c711fa47243cc5120a8e"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260228110000_20260228115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260228110000_20260228115501.csv",
+      "publish_time": "2026-03-02T01:00:03",
+      "sha256": "6c6b1ec9b782e609d13acd4215c862116dc58d57f6abd3fe06c47cbb4f0d723a"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260301110000_20260301115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260301110000_20260301115502.csv",
+      "publish_time": "2026-03-03T01:00:02",
+      "sha256": "ca5dbfe50fe8b46d5d7b9873184cc73b0db8bf0994d319b37f232bf0a2348bda"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260302110000_20260302115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260302110000_20260302115502.csv",
+      "publish_time": "2026-03-04T01:00:03",
+      "sha256": "085f68fcc829b17d46e20728da720bffcebc762cb2e66aafef37ecfc07846301"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260303110000_20260303115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260303110000_20260303115502.csv",
+      "publish_time": "2026-03-05T01:00:03",
+      "sha256": "116a9bec4fe98d8b2d376d1730e72e4d6d483fd3c90a96029c48796905c54457"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260304110000_20260304115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260304110000_20260304115501.csv",
+      "publish_time": "2026-03-06T01:00:02",
+      "sha256": "bb42607e4f45d1cd8df120e1d470897740f1f552e0cc64cee6c3a3bf32a0b1d9"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260305110000_20260305115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260305110000_20260305115502.csv",
+      "publish_time": "2026-03-07T01:00:02",
+      "sha256": "3482e48f9758d1ffa59f1e5dca997ffa9771eac19a48c015a949bd92b18207d4"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260306110000_20260306115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260306110000_20260306115502.csv",
+      "publish_time": "2026-03-08T01:00:02",
+      "sha256": "40b6aa15c1eeead2f1b5fc65af0b68b59df7552eebd40b9efe878ce80212cf08"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260307110000_20260307115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260307110000_20260307115501.csv",
+      "publish_time": "2026-03-09T01:00:03",
+      "sha256": "ea1f03ab48f0d3acd1392707621e3783cfeca1d4f145feac551c4bb53c1b8fba"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260308110000_20260308115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260308110000_20260308115501.csv",
+      "publish_time": "2026-03-10T01:00:02",
+      "sha256": "6974fe0754817d827b7059ad4768cc6cb75cf45fac449bc51d67e0f75fe1ae93"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260309110000_20260309115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260309110000_20260309115501.csv",
+      "publish_time": "2026-03-11T01:00:02",
+      "sha256": "140c690b2936f7ef536ac783d864bf1c9cce780351a80b16149ebdae1b623fff"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260310110000_20260310115503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260310110000_20260310115503.csv",
+      "publish_time": "2026-03-12T01:00:03",
+      "sha256": "296fc83785bd747ca58e304abe43a96b696542d65cbf087b6b1753d985fb5df8"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260311110000_20260311115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260311110000_20260311115502.csv",
+      "publish_time": "2026-03-13T01:00:02",
+      "sha256": "518df75d2677af1610ae25b92755e7d9b848fecae145efe63d97f3b4d5cc0df9"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260312110000_20260312115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260312110000_20260312115501.csv",
+      "publish_time": "2026-03-14T01:00:03",
+      "sha256": "63eb25dcaff71e046f1d1457275a304ca1e86a04b3f3bf546901d60d0d293dc8"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260313110000_20260313115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260313110000_20260313115501.csv",
+      "publish_time": "2026-03-15T01:00:02",
+      "sha256": "85893c297f3cc8891f3288e804333e4b4bf44129e1b1b3bbfeddba31fd30e87a"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260314110000_20260314115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260314110000_20260314115502.csv",
+      "publish_time": "2026-03-16T01:00:02",
+      "sha256": "50e21e681a70436255cacbccff2aba107e6fd9006b5a757e34c47b3e27d76ff9"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260315110000_20260315115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260315110000_20260315115502.csv",
+      "publish_time": "2026-03-17T01:00:03",
+      "sha256": "cc87cab5471aa920dc3c30664d9de6179114d5deabf56119e8b01a3c63552eac"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260316110000_20260316120053.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260316110000_20260316120053.csv",
+      "publish_time": "2026-03-18T01:00:02",
+      "sha256": "98c0ee6e7babbe80abd282a526646322b79467aa045fa03e3abe998a13c0971c"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260317110000_20260317115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260317110000_20260317115502.csv",
+      "publish_time": "2026-03-19T01:00:03",
+      "sha256": "b9451131d27d25a665534d4d81733dde65d136e611f848c71ce9ea9ac96b52f4"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260318110000_20260318115503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260318110000_20260318115503.csv",
+      "publish_time": "2026-03-20T01:00:03",
+      "sha256": "a847ac013ba3e10b83e1e307c3c425a584588358a045410e7151474c6ae8eda4"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260319110000_20260319115703.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260319110000_20260319115703.csv",
+      "publish_time": "2026-03-21T01:00:02",
+      "sha256": "f35ebe08b2284cf3fdcc634e9c5b8d02dbf8e8ebb5d9de2d1b354be6dde36100"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260320110000_20260320115503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260320110000_20260320115503.csv",
+      "publish_time": "2026-03-22T01:00:03",
+      "sha256": "5ad15c56f0102f2d61da45635f24799f00fd02d7a43d09fb98f1e3905bf13de3"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260321110000_20260321115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260321110000_20260321115501.csv",
+      "publish_time": "2026-03-23T01:00:02",
+      "sha256": "286ce901902644699f279f5ea89d1b0f4a52728c7bd0eb46caf61839783376dd"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260322110000_20260322115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260322110000_20260322115501.csv",
+      "publish_time": "2026-03-24T01:00:03",
+      "sha256": "986fe63048c6b468a2740064f7e9327e143837b6c0190a25f479e75e3c8678c5"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260323110000_20260323115501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260323110000_20260323115501.csv",
+      "publish_time": "2026-03-25T01:00:03",
+      "sha256": "5199c454b356dd432621f77fef75372f7abc712fc943b84e709a28765a62a815"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260324110000_20260324115503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260324110000_20260324115503.csv",
+      "publish_time": "2026-03-26T01:00:02",
+      "sha256": "c876aeed62191178dec6fc5b328fc1b57697e5ea56d5bd2654eb0eaa587cfc75"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260325110000_20260325120304.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260325110000_20260325120304.csv",
+      "publish_time": "2026-03-27T01:00:02",
+      "sha256": "aecdd2632fa0009cb77baf7c5eb3c442d7e53b680af695df34cfe429a9185625"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260326110000_20260326115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260326110000_20260326115502.csv",
+      "publish_time": "2026-03-28T01:00:03",
+      "sha256": "59dee14565292b224a743f0bb53440025ac6425311b25b60768e216d799e8076"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260327110000_20260327115502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260327110000_20260327115502.csv",
+      "publish_time": "2026-03-29T01:00:05",
+      "sha256": "28c96eaa08ad42b87551daae32498ddae2dcfee542dae2d508d86ca4054a0b4d"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260328110000_20260328120025.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260328110000_20260328120025.csv",
+      "publish_time": "2026-03-30T00:00:02",
+      "sha256": "dfc785d62d3b7afd875f46694105ddf66569f62174b8300d25e746c561eaa19a"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260329100000_20260329105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260329100000_20260329105502.csv",
+      "publish_time": "2026-03-31T00:00:03",
+      "sha256": "8066ae7499310998abfdaa70ec38f97e72c2aae5d06b2420980250113004b7b7"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260330100000_20260330105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260330100000_20260330105502.csv",
+      "publish_time": "2026-04-01T00:00:03",
+      "sha256": "46f350b9067363d20c70515a94608768edd3768a6a041312b3a73cec33339aaf"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260331100000_20260331114303.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260331100000_20260331114303.csv",
+      "publish_time": "2026-04-02T00:00:02",
+      "sha256": "dc04a821631143bc6d3023d4b4e549377e3c8fd305afce4d930708fa5e5119c8"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260401100000_20260401105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260401100000_20260401105502.csv",
+      "publish_time": "2026-04-03T00:00:03",
+      "sha256": "afce3995b85f35cb4da358fd043ad17e40f362aeb801c34da449cb25b32e8a74"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260402100000_20260402105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260402100000_20260402105502.csv",
+      "publish_time": "2026-04-04T00:00:03",
+      "sha256": "bf402ac20b5a55d87adc304b919dd8a59e5b9563c5ecc357d81f95373290f2e7"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260403100000_20260403105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260403100000_20260403105501.csv",
+      "publish_time": "2026-04-05T00:00:02",
+      "sha256": "8069051ee0bbc55d53eb743ff736a7103df0e0546369a890d311144c7672384f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260404100000_20260404105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260404100000_20260404105501.csv",
+      "publish_time": "2026-04-06T00:00:03",
+      "sha256": "0997aa5c04aab1fe433bb638a78321e8e1243061ba1eb4a492798d7dceb5be74"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260405100000_20260405105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260405100000_20260405105502.csv",
+      "publish_time": "2026-04-07T00:00:02",
+      "sha256": "9549e1c0ce0621508fc13b700265643510e463f819b8a72dc31c75e93729cec8"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260406100000_20260406105823.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260406100000_20260406105823.csv",
+      "publish_time": "2026-04-08T00:00:02",
+      "sha256": "968ba5393f33083739aeb62ec365952f997fcf3373eb9ffaa3afd0780548185a"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260407100000_20260407105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260407100000_20260407105502.csv",
+      "publish_time": "2026-04-09T00:00:03",
+      "sha256": "7796b8cfb8dd17af9969f79d1257e18bb36b801c44e7bae4c4cdccbde48f6675"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260408100000_20260408105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260408100000_20260408105502.csv",
+      "publish_time": "2026-04-10T00:00:03",
+      "sha256": "e9a6249f02a1540e89820225caf85388f6883bf46d389c1794159f95b7014806"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260409100000_20260409105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260409100000_20260409105502.csv",
+      "publish_time": "2026-04-11T00:00:02",
+      "sha256": "cebb89b2559e67ac7ac031a2e6bf950a6808928433829a3f3f1f746d5b00f02b"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260410100000_20260410105503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260410100000_20260410105503.csv",
+      "publish_time": "2026-04-12T00:00:04",
+      "sha256": "ceffdac39fd7cf355411ee8b7411b45cd993ba68a1de02fd2b14fb18434eaa11"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260411100000_20260411105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260411100000_20260411105501.csv",
+      "publish_time": "2026-04-13T00:00:02",
+      "sha256": "e4e63269217e1935f355aa3bbdb11820028fe637ab7f16a736d9b9c19cab0310"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260412100000_20260412105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260412100000_20260412105502.csv",
+      "publish_time": "2026-04-14T00:00:04",
+      "sha256": "2d5e88e9c5e22c625cb676b27c977ca992c5be8ad8af850a2fdfeb1ccc65b79f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260413100000_20260413105504.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260413100000_20260413105504.csv",
+      "publish_time": "2026-04-15T00:00:02",
+      "sha256": "5a37c27b66237399a356d9919e2f9f979184647afcb19364a51ccbdfa29395c5"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260414100000_20260414105503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260414100000_20260414105503.csv",
+      "publish_time": "2026-04-16T00:00:02",
+      "sha256": "0937bc988544f3a1d07733884a5bafc61e8f5723a2573f1af7ebd043aaa9895e"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260415100000_20260415105503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260415100000_20260415105503.csv",
+      "publish_time": "2026-04-17T00:00:03",
+      "sha256": "f8d451553b8b3b95d7585f81b44e580d84092947913310f7987269da483cedae"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260416100000_20260416105925.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260416100000_20260416105925.csv",
+      "publish_time": "2026-04-18T00:00:03",
+      "sha256": "07899e1dfedbd130b86e4977a15844b091c532264bd376f1e37d0293f5736c55"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260417100000_20260417105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260417100000_20260417105502.csv",
+      "publish_time": "2026-04-19T00:00:04",
+      "sha256": "53985df1808cfebcce72766830b49039aafb3ce369b5d0a9d7828fed5c09d3c9"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260418100000_20260418105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260418100000_20260418105502.csv",
+      "publish_time": "2026-04-20T00:00:03",
+      "sha256": "9272c22ba35bb0ba5b7328d79d1cf7e85013721a5609151dd22fc7715d11d482"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260419100000_20260419105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260419100000_20260419105502.csv",
+      "publish_time": "2026-04-21T00:00:04",
+      "sha256": "3cfa312f28ba5c7648c460e351c190991d95ff774c54642293b3042e85a7c37b"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260420100000_20260420105503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260420100000_20260420105503.csv",
+      "publish_time": "2026-04-22T00:00:02",
+      "sha256": "1b8189f40b5f65c6cbdebc494586d3827aa23ee165849319eb08aa61dad92e69"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260421100000_20260421105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260421100000_20260421105501.csv",
+      "publish_time": "2026-04-23T00:00:02",
+      "sha256": "ace68cd7e24090790c24e3acab51111fa5fc2b7be4073dd6f766030ee329f086"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260422100000_20260422105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260422100000_20260422105502.csv",
+      "publish_time": "2026-04-24T00:00:02",
+      "sha256": "d9e1670b97ccc65715cdb67ef9e25353c854f6ee25f6db78efe24a6d80704c17"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260423100000_20260423105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260423100000_20260423105502.csv",
+      "publish_time": "2026-04-25T00:00:02",
+      "sha256": "bf5097a012f30e9dd4801d70c13dfa88ef91f8880d6f030cd930bc2e77b287a0"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260424100000_20260424105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260424100000_20260424105502.csv",
+      "publish_time": "2026-04-26T00:00:02",
+      "sha256": "535c3c8d0792f319976c110e23dc2d8afd188404722c356d8be8bfa0e6eb15aa"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260425100000_20260425105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260425100000_20260425105502.csv",
+      "publish_time": "2026-04-27T00:00:02",
+      "sha256": "d5c4e6eff68568f56a6f67d3962fc8178b6965a25afd1068b7420653ac025933"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260426100000_20260426105503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260426100000_20260426105503.csv",
+      "publish_time": "2026-04-28T00:00:03",
+      "sha256": "1a487cd5e091a58ee53b13c2dcf22116eeca8d5d8ceead6ae3d8889d0c1338cb"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260427100000_20260427110810.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260427100000_20260427110810.csv",
+      "publish_time": "2026-04-29T00:00:03",
+      "sha256": "20decdd4e4081a4b6800527f61a22793b0d25d4703e6dcfc921f65d86de6d98e"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260428100000_20260428105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260428100000_20260428105502.csv",
+      "publish_time": "2026-04-30T00:00:02",
+      "sha256": "284bec2d36210d6470850bc9e04370b307a301fa6540981438514fc6a058486b"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260429100000_20260429110445.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260429100000_20260429110445.csv",
+      "publish_time": "2026-05-01T00:00:03",
+      "sha256": "b675abc12aaafcb83d97b88d1492be7ce33e0374b2dce9af54c4ae31c7d57dc2"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260430100000_20260430105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260430100000_20260430105501.csv",
+      "publish_time": "2026-05-02T00:00:03",
+      "sha256": "feea1a2bc5f107d3ab29bd260a61ddad847d89fb1626331103ea4df2cf9d570f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260501100000_20260501105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260501100000_20260501105502.csv",
+      "publish_time": "2026-05-03T00:00:03",
+      "sha256": "5ecaa881eb2a0a96a26828faeeb18a59ec60270db61e423370daf96fe146782e"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260502100000_20260502105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260502100000_20260502105502.csv",
+      "publish_time": "2026-05-04T00:00:03",
+      "sha256": "28a45ce58afe889eae5e6081f32a4a476fcdad2e76a9f7ac9b121c2d1016d140"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260503100000_20260503105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260503100000_20260503105502.csv",
+      "publish_time": "2026-05-05T00:00:03",
+      "sha256": "545905a82ef23a4ccbcba12a0abd68a38dff26f972ccc17ac5ba12dc0ca8c17a"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260504100000_20260504105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260504100000_20260504105502.csv",
+      "publish_time": "2026-05-06T00:00:02",
+      "sha256": "7f4a0ff6e9262649382be7da30dbe758a61bdfc3b29bee1c798b960af03258e6"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260505100000_20260505105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260505100000_20260505105501.csv",
+      "publish_time": "2026-05-07T00:00:03",
+      "sha256": "d4fa04c8330fa2f515975c0e6af7e3c6dc6fb777f1bb2277158369494a62e538"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260506100000_20260506105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260506100000_20260506105502.csv",
+      "publish_time": "2026-05-08T00:00:03",
+      "sha256": "4f9b210b834990ef279817301cc425395d290f7688e136fd2d87f016d1cb03af"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260507100000_20260507105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260507100000_20260507105501.csv",
+      "publish_time": "2026-05-09T00:00:03",
+      "sha256": "0c707575e593f106c76fa7b12773517a35145c5ef17ffe7b6307a37552fac5d5"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260508100000_20260508105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260508100000_20260508105502.csv",
+      "publish_time": "2026-05-10T00:00:02",
+      "sha256": "0841380c53b133aeeb13d137240b67ce4d8d97a98f724471fa7c87f1a12ac9dc"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260509100000_20260509105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260509100000_20260509105502.csv",
+      "publish_time": "2026-05-11T00:00:03",
+      "sha256": "bf51fc92dc79d549f58b64759045d02809f608c78ea0dae04c2415941372cd9f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260510100000_20260510105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260510100000_20260510105501.csv",
+      "publish_time": "2026-05-12T00:00:03",
+      "sha256": "56890faca8321c155ec1a0b203c170d2c3fbd903e319767a8f7b091bb20e621a"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260511100000_20260511105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260511100000_20260511105502.csv",
+      "publish_time": "2026-05-13T00:00:03",
+      "sha256": "8198780b009787ca226d0009ed15d891552bbfb1b1e7c6f54b0e201490aa8538"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260512100000_20260512111242.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260512100000_20260512111242.csv",
+      "publish_time": "2026-05-14T00:00:03",
+      "sha256": "624d44d0b42b84de0e0ba5b0da1dd2839454f13ea83650c8d3dde0a60fdefbd6"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260513100000_20260513105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260513100000_20260513105501.csv",
+      "publish_time": "2026-05-15T00:00:03",
+      "sha256": "2571c76226fe27edd357b10258ac374814f26d4df9ab21c99f3b11a101df6d39"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260514100000_20260514105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260514100000_20260514105502.csv",
+      "publish_time": "2026-05-16T00:00:02",
+      "sha256": "fd07068953dbbc583e9f8e1ecb129fa1a450ad424a46c47302684ee972d8261b"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260515100000_20260515105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260515100000_20260515105501.csv",
+      "publish_time": "2026-05-17T00:00:03",
+      "sha256": "f803cec4dd4f7f4bf01ed2fcef32cfa63a412e744efb0ec0dcc2890bab4c7048"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260516100000_20260516105503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260516100000_20260516105503.csv",
+      "publish_time": "2026-05-18T00:00:02",
+      "sha256": "34c4bea91db96c5c8ee6a2d69c29cc4d8d51d1927b9af4a09d7f3bc7b7096db6"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260517100000_20260517122958.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260517100000_20260517122958.csv",
+      "publish_time": "2026-05-19T00:00:02",
+      "sha256": "fa1250d48b58da237ce2ec9e4561738fa57f165e7daddae4cd7ea7c6ecaad87d"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260518100000_20260518105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260518100000_20260518105502.csv",
+      "publish_time": "2026-05-20T00:00:03",
+      "sha256": "804b011dccad7d0cda7ce40bdf55765e1e56731109d4a51b688b9410b751f935"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260519100000_20260519105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260519100000_20260519105501.csv",
+      "publish_time": "2026-05-21T00:00:03",
+      "sha256": "71e84f752fb0616056d99b74686358fe258bfbe873d250c7c163f77b0f75ded2"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260520100000_20260520105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260520100000_20260520105502.csv",
+      "publish_time": "2026-05-22T00:00:02",
+      "sha256": "98a576ffc2e5f232329ef3c9ea056f2d1b4f13c8a87c6ce4b1228ce26d99f183"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260521100000_20260521105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260521100000_20260521105501.csv",
+      "publish_time": "2026-05-23T00:00:02",
+      "sha256": "98d9f34b857835575952ba466a71aa91c36ac8a316e68daebef0400fb15bc862"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260522100000_20260522105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260522100000_20260522105502.csv",
+      "publish_time": "2026-05-24T00:00:03",
+      "sha256": "bedda8b423bf6084fdcff533db261ddb43a3cce572a49c37b986f39b55136d04"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260523100000_20260523105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260523100000_20260523105502.csv",
+      "publish_time": "2026-05-25T00:00:02",
+      "sha256": "ea11908832b79b1bb344b36d56eaf29b7d41aa67e9a91cb05ccfd702273fa381"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260524100000_20260524105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260524100000_20260524105501.csv",
+      "publish_time": "2026-05-26T00:00:02",
+      "sha256": "919dbf8825a6ddfc419397745442c470cca13730a3f6b65615d90eb0e778526c"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260525100000_20260525105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260525100000_20260525105502.csv",
+      "publish_time": "2026-05-27T00:00:03",
+      "sha256": "5f78ae088749501a0812c3b706536d79e2138caf29fa43d05731a6cf3807954d"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260526100000_20260526105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260526100000_20260526105501.csv",
+      "publish_time": "2026-05-28T00:00:03",
+      "sha256": "6a12053f9d3c4fad9d15654dca5228bc4469727a82f4135630c95b814c3a229f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260527100000_20260527105503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260527100000_20260527105503.csv",
+      "publish_time": "2026-05-29T00:00:02",
+      "sha256": "88e52e909348c21fa0a64d280411e49a05c6153538c1520af4e4985df15fb718"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260528100000_20260528105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260528100000_20260528105502.csv",
+      "publish_time": "2026-05-30T00:00:02",
+      "sha256": "0dd21d6dbde4cb611f35fbff643ace16430199ce6c92d7236f5ba24be68034e1"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260529100000_20260529105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260529100000_20260529105502.csv",
+      "publish_time": "2026-05-31T00:00:03",
+      "sha256": "e6b518106b5ef6d3bc056cbc4b3452c501ae4b77eec3e30d2e380a1f584370cb"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260530100000_20260530105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260530100000_20260530105501.csv",
+      "publish_time": "2026-06-01T00:00:03",
+      "sha256": "957decc3a352bf93ddb07c9b4000e6942bd695ba8640e2558ceae699b5c11ea6"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260531100000_20260531105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260531100000_20260531105501.csv",
+      "publish_time": "2026-06-02T00:00:02",
+      "sha256": "e4b5f2861be43511213b275cc7a7bfd199679719cdacc972826eb7ddb7077643"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260601100000_20260601105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260601100000_20260601105501.csv",
+      "publish_time": "2026-06-03T00:00:03",
+      "sha256": "43659cb4da23b190e44bc00d09cd09802e18e9352f6e2745203f7c089b8d83c9"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260602100000_20260602105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260602100000_20260602105501.csv",
+      "publish_time": "2026-06-04T00:00:03",
+      "sha256": "4aee76f1917a15a73e01311537def23b21c0347e5ce5beb05d07b0858a200827"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260603100000_20260603105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260603100000_20260603105501.csv",
+      "publish_time": "2026-06-05T00:00:02",
+      "sha256": "5e89b6b87b83c5d73ef3c779ac0b1d5e2c0127964d8497b21ed2cdbfc9afcb98"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260604100000_20260604105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260604100000_20260604105501.csv",
+      "publish_time": "2026-06-06T00:00:03",
+      "sha256": "c30068f9aa7ac32c0dabc708f3019920392845a5eaa64667066d418c2b5d60d2"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260605100000_20260605105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260605100000_20260605105502.csv",
+      "publish_time": "2026-06-07T00:00:03",
+      "sha256": "d02c9106f53ae6dfeeae8ff4dfa0880193a2fff08c9b74d2d244d47c01bdac62"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260606100000_20260606105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260606100000_20260606105501.csv",
+      "publish_time": "2026-06-08T00:00:03",
+      "sha256": "bbeda310bfde114fb7f6d613531736e3862c06cbccbaf45d299862cf1fac35da"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260607100000_20260607105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260607100000_20260607105501.csv",
+      "publish_time": "2026-06-09T00:00:03",
+      "sha256": "e324cb9033bb8ab5e7114f217ef2d995d04c54f0f855431227602e35c8b8c56c"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260608100000_20260608105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260608100000_20260608105501.csv",
+      "publish_time": "2026-06-10T00:00:04",
+      "sha256": "143ad5fcce6d0cf19b31a0957d5b387c6c27029bffc9faa79956b5b78b6073e9"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260609100000_20260609105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260609100000_20260609105502.csv",
+      "publish_time": "2026-06-11T00:00:03",
+      "sha256": "b89cea58a2f4dad5317cbdfd710ba258ce6705022dc602a5dd401b3c0d8a54b3"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260610100000_20260610105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260610100000_20260610105501.csv",
+      "publish_time": "2026-06-12T00:00:03",
+      "sha256": "b11c2645fe4d27fcb85abe4217f22e01c92111fb0543dfa55334d4eb887128b0"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260611100000_20260611105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260611100000_20260611105501.csv",
+      "publish_time": "2026-06-13T00:00:02",
+      "sha256": "124fbd847874e2485441fab658ff3b9807fd21bb919414b522280b2f1b77b5f8"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260612100000_20260612105503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260612100000_20260612105503.csv",
+      "publish_time": "2026-06-14T00:00:03",
+      "sha256": "c4596694a823275d3a8babea264af5a01ee07b70e02ad2b611ed69acdcdb68d7"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260613100000_20260613105603.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260613100000_20260613105603.csv",
+      "publish_time": "2026-06-15T00:00:03",
+      "sha256": "f01da3eb1f5d7ecc85f69089450355482190d76f3178c07e8f699a565ece165e"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260614100000_20260614105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260614100000_20260614105501.csv",
+      "publish_time": "2026-06-16T00:00:02",
+      "sha256": "630aa01a797c069d6402ee486762342026704e6a18b63cbe82497e3dfa5bf8c0"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260615100000_20260615105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260615100000_20260615105501.csv",
+      "publish_time": "2026-06-17T00:00:03",
+      "sha256": "c7754fec8ec1b4fd9c55d5450eab9ce4a0546fb7236ff6797035b56050cfb96a"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260616100000_20260616105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260616100000_20260616105501.csv",
+      "publish_time": "2026-06-18T00:00:04",
+      "sha256": "38a11f0be427e450dc0e8d1b6854c5c5d2402f6a57724523ce2257db5bd9c797"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260617100000_20260617105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260617100000_20260617105501.csv",
+      "publish_time": "2026-06-19T00:00:04",
+      "sha256": "7e5b38f8d85cac834de073babca02f9666bc5a43eee921f4dceb1d4c6fdb0b49"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260618100000_20260618105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260618100000_20260618105501.csv",
+      "publish_time": "2026-06-20T00:00:03",
+      "sha256": "b6323450869effeebe815e9dba9988c6a7eaaf5b0c70c672cffac40866c55f06"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260619100000_20260619105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260619100000_20260619105501.csv",
+      "publish_time": "2026-06-21T00:00:03",
+      "sha256": "f5a182723943b8bc8816008746ce378ce99f8b5db844fb6f6807b7bf1624d520"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260620100000_20260620105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260620100000_20260620105501.csv",
+      "publish_time": "2026-06-22T00:00:03",
+      "sha256": "64bdc2886d754b5fc0faa0b08f37ce947bb0ad5b74ed83140271fbd17a634d0b"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260621100000_20260621105503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260621100000_20260621105503.csv",
+      "publish_time": "2026-06-23T00:00:02",
+      "sha256": "f2795f49d1d4771015da3897455693e0c7c6fe79b46ff128a2061aebaee38997"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260622100000_20260622105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260622100000_20260622105501.csv",
+      "publish_time": "2026-06-24T00:00:03",
+      "sha256": "127c55c436f0f0362aba0bc8e5c91c3e81f2665fdb69dbaea118162b455d02c6"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260623100000_20260623105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260623100000_20260623105501.csv",
+      "publish_time": "2026-06-25T00:00:02",
+      "sha256": "773d23f0975300267b5e364efc4b06d4c92653c2af0d4e2b46703235d4bb5240"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260624100000_20260624110403.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260624100000_20260624110403.csv",
+      "publish_time": "2026-06-26T00:00:03",
+      "sha256": "42a2bc1aef3c4dd306b27b795ecb605b8f9c1a56868f0f1a0c396c328ebd8144"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260625100000_20260625105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260625100000_20260625105501.csv",
+      "publish_time": "2026-06-27T00:00:03",
+      "sha256": "891c6a8afbc6212520e10d4f80b4571e7b27bc048cb1cd37ef940aa12e6c344b"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260626100000_20260626105725.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260626100000_20260626105725.csv",
+      "publish_time": "2026-06-28T00:00:02",
+      "sha256": "7b8398b99b7257a329e63ed2b92f351b0fbca8aac34f5901b08e79a31765af09"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260627100000_20260627105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260627100000_20260627105501.csv",
+      "publish_time": "2026-06-29T00:00:02",
+      "sha256": "8023cb6b98e155b59e22b427e46230afbf5e117e54eaef4e81d786bf4513bede"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260628100000_20260628105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260628100000_20260628105501.csv",
+      "publish_time": "2026-06-30T00:00:03",
+      "sha256": "031ccf204eb2a53f0f96a4d70153ce667c963837292a8062169d16831557c9c9"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260629100000_20260629105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260629100000_20260629105501.csv",
+      "publish_time": "2026-07-01T00:00:02",
+      "sha256": "79908cc437963e493aa4352e6c574a48710b52b97c95f25d3adb59acbcc09f11"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260630100000_20260630105838.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260630100000_20260630105838.csv",
+      "publish_time": "2026-07-02T00:00:02",
+      "sha256": "a177cb98a9547092c52861798840c8b87269cd6bcf68dac60800975d49dc912c"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260701100000_20260701105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260701100000_20260701105501.csv",
+      "publish_time": "2026-07-03T00:00:03",
+      "sha256": "34889a88d33fc210841b7b0a079949e139c2ce9ef1ca08573266941ee9bff45c"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260702100000_20260702105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260702100000_20260702105501.csv",
+      "publish_time": "2026-07-04T00:00:02",
+      "sha256": "3f3805b90428aa115dd2451d2006e26fcf6c4fe3740dba66e0579af7fe2b622d"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260703100000_20260703105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260703100000_20260703105501.csv",
+      "publish_time": "2026-07-05T00:00:03",
+      "sha256": "7fd51b37601a61b743be6f96054ffb7e283e9821953cfc7b0edf2ad057053884"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260704100000_20260704105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260704100000_20260704105501.csv",
+      "publish_time": "2026-07-06T00:00:03",
+      "sha256": "63ce6f5432b829943136313ff8641ad0ada5732719ac338e63d6e715155ac784"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260705100000_20260705105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260705100000_20260705105501.csv",
+      "publish_time": "2026-07-07T00:00:03",
+      "sha256": "ded5a6880de8fa626a259cf1967b1c933120262c8430e7580a478183034460bb"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260706100000_20260706105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260706100000_20260706105501.csv",
+      "publish_time": "2026-07-08T00:00:03",
+      "sha256": "fe25533877ca3a2a7474db8b606db82da09158516abc49983df9b9ef551f5ccd"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260707100000_20260707110023.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260707100000_20260707110023.csv",
+      "publish_time": "2026-07-09T00:00:04",
+      "sha256": "074bc96ef67ae97fa06d6e0ef6f69faf02d4309e2bce7497e464a0cfcebbe428"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260708100000_20260708105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260708100000_20260708105501.csv",
+      "publish_time": "2026-07-10T00:00:03",
+      "sha256": "3651d65c7f88415feff4d66631078382f54b0682166236743cd19ce29a8437c1"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260709100000_20260709105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260709100000_20260709105501.csv",
+      "publish_time": "2026-07-11T00:00:03",
+      "sha256": "09330905688fb040c397d33466d09c5b9da861f5911ef3f3a9a8081419cb1fb6"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260710100000_20260710105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260710100000_20260710105501.csv",
+      "publish_time": "2026-07-12T00:00:03",
+      "sha256": "ece05f1cdb7488fe20cd7d5b8b6d8d0bd3323d826979f6589f908ea7e094d2b1"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260711100000_20260711105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260711100000_20260711105501.csv",
+      "publish_time": "2026-07-13T00:00:03",
+      "sha256": "600cb567b96142bde97cc2fd1d3616cfe0a5cd6ebb87b37ae0bf514172482920"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260712100000_20260712105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260712100000_20260712105501.csv",
+      "publish_time": "2026-07-14T00:00:04",
+      "sha256": "158aebdddae6e2f8243ebc489d463b2143c70df555106b2e469b42d99fbcb604"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260713100000_20260713105602.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260713100000_20260713105602.csv",
+      "publish_time": "2026-07-15T00:00:03",
+      "sha256": "a7b30ed4e23f5de2dd5db629b38bc22e801cdc8ee86beb16620329cfb77e70f1"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260714100000_20260714105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260714100000_20260714105501.csv",
+      "publish_time": "2026-07-16T00:00:03",
+      "sha256": "82bd42521133b81747da04b4c620141ba4e73f1d550dfa2243673b9d7d2eab03"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260715100000_20260715105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260715100000_20260715105501.csv",
+      "publish_time": "2026-07-17T00:00:03",
+      "sha256": "b49a3c99852d92fd9eef494f228c51da269b159490bb64ba28938e814f9d1518"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260716100000_20260716105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260716100000_20260716105501.csv",
+      "publish_time": "2026-07-18T00:00:03",
+      "sha256": "941eaa6289e18bb744b65f66be59f3c430db29d59784ac9513c2ef52f60c7fe8"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260717100000_20260717105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260717100000_20260717105501.csv",
+      "publish_time": "2026-07-19T00:00:03",
+      "sha256": "34429f5fb9f839168321a35ea63a707eae7955d0928ddbae74153dfa8501a4dd"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260718100000_20260718105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260718100000_20260718105501.csv",
+      "publish_time": "2026-07-20T00:00:02",
+      "sha256": "525f47bc197d02e2fd5be94ee691ecc49840b06273bce734cfd0d9fbc868e3a0"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260719100000_20260719105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260719100000_20260719105501.csv",
+      "publish_time": "2026-07-21T00:00:03",
+      "sha256": "0fb55cdc9bf7abda3acccbbd42c8aa1d876b9bdb9f35b18b922c2064e8ffa24c"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260720100000_20260720105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260720100000_20260720105501.csv",
+      "publish_time": "2026-07-22T00:00:03",
+      "sha256": "f97ac130212de98a7ce7da4a6c79a03b43575e3aa3a2120e7e4a46d4c153eee3"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260721100000_20260721105615.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260721100000_20260721105615.csv",
+      "publish_time": "2026-07-23T00:00:03",
+      "sha256": "074e4636abe088321f6218cfe927cead5a803ef1bf03eb8665120be146e2c2a8"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260722100000_20260722105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260722100000_20260722105501.csv",
+      "publish_time": "2026-07-24T00:00:02",
+      "sha256": "d710a23934f646ea306841f50455293da40169c40764fea01e7b97a330cf05bc"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260723100000_20260723114603.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260723100000_20260723114603.csv",
+      "publish_time": "2026-07-25T00:00:02",
+      "sha256": "831c1f477188ac59e281568114d48dab033d513c948dd561e0f0a8dee5ef18c3"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260724100000_20260724105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260724100000_20260724105501.csv",
+      "publish_time": "2026-07-26T00:00:03",
+      "sha256": "aad4b828d83e358a8e50a3cf1bc82be26676466d7d41edbbdd5cc5b6d00c5852"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260725100000_20260725105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260725100000_20260725105501.csv",
+      "publish_time": "2026-07-27T00:00:03",
+      "sha256": "8fea36a10af17785b8f123b9005fa7272655c8eed5a89ea7ca552600d75ecbbb"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260726100000_20260726105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260726100000_20260726105501.csv",
+      "publish_time": "2026-07-28T00:00:02",
+      "sha256": "24b0d3ba79ef1dbc4aeb93ad3eb8759424c4b9c889bc803e5e370de64e5a3328"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260727100000_20260727105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260727100000_20260727105501.csv",
+      "publish_time": "2026-07-29T00:00:03",
+      "sha256": "9b983f261e25efc4ae71752371f1e91cfecd4ea54a91a9ffabf961b1a019b7f2"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260728100000_20260728105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260728100000_20260728105502.csv",
+      "publish_time": "2026-07-30T00:00:03",
+      "sha256": "f042022c840a927a42f812a605e40501ed7a924113dd7cb7391941fc447b6a8e"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260729100000_20260729105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260729100000_20260729105502.csv",
+      "publish_time": "2026-07-31T00:00:03",
+      "sha256": "ab90c8631f55262bd6cfdd9859b2976f0d6cdd4debe175b867f26be91496ba2f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260730100000_20260730105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260730100000_20260730105501.csv",
+      "publish_time": "2026-08-01T00:00:02",
+      "sha256": "d33141f999973e495fb096c20f4cfc6813e9be1fc7347aa22adc9dd5e0c237f5"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260731100000_20260731105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260731100000_20260731105502.csv",
+      "publish_time": "2026-08-02T00:00:03",
+      "sha256": "c4b5e32a2a859ac5e16c82acedaf254d209145552601931cd9e243071bbad24a"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260801100000_20260801105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260801100000_20260801105501.csv",
+      "publish_time": "2026-08-03T00:00:03",
+      "sha256": "1535b98f1f44357bf5e48a3263a629e260621f6bf5c1cc94445e38bbe1a0a306"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260802100000_20260802105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260802100000_20260802105501.csv",
+      "publish_time": "2026-08-04T00:00:02",
+      "sha256": "6a8aa892c0c783854b7ffea3ba80647336e37d229889cd4f5fd7a0341fce5383"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260803100000_20260803105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260803100000_20260803105501.csv",
+      "publish_time": "2026-08-05T00:00:03",
+      "sha256": "4148bd412b8c0250e814a603afefc11025c52bc861daf1c834022641ce8913ab"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260804100000_20260804105703.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260804100000_20260804105703.csv",
+      "publish_time": "2026-08-06T00:00:03",
+      "sha256": "38da6bde4070a4ed025981c6ff7b641a6d1ff42b5108ad4c5fd4418dca11dae8"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260805100000_20260805105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260805100000_20260805105501.csv",
+      "publish_time": "2026-08-07T00:00:02",
+      "sha256": "1afdae2b0b6f13c940b4ef69bfccb8ee858a1f13b94a95d5ae550fcaf74e9da9"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260806100000_20260806105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260806100000_20260806105502.csv",
+      "publish_time": "2026-08-08T00:00:03",
+      "sha256": "6d40826ba7425cfc42f88f6b5b1591f18d213d960cf48cdbc6548961d2dcb1a4"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260807100000_20260807105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260807100000_20260807105501.csv",
+      "publish_time": "2026-08-09T00:00:03",
+      "sha256": "071511cddb929cf618687cd931b654085a5cd0d2015c1302d24d739152282276"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260808100000_20260808105503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260808100000_20260808105503.csv",
+      "publish_time": "2026-08-10T00:00:03",
+      "sha256": "4254d16e1959e75630959e54c0063ff4bfba5b1f6c4c4bb4b763ebc671c4b50b"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260809100000_20260809105503.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260809100000_20260809105503.csv",
+      "publish_time": "2026-08-11T00:00:03",
+      "sha256": "510dc29b74b1fde848e767df8c4bf3e6d49d7f02515477a298f5355438841e4b"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260810100000_20260810105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260810100000_20260810105501.csv",
+      "publish_time": "2026-08-12T00:00:03",
+      "sha256": "d7ff370224006cfe6525293d24948ec58ffde3c2261963b6a6a9006516568a9f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260811100000_20260811105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260811100000_20260811105501.csv",
+      "publish_time": "2026-08-13T00:00:03",
+      "sha256": "91758d3a5b084d4993c0478e1014522bdc7594992ad0bb031a24dfe9b998179e"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260812100000_20260812105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260812100000_20260812105501.csv",
+      "publish_time": "2026-08-14T00:00:03",
+      "sha256": "1ba0d4c1ad2e864559aa52d11ece224d5fa72b7d88482f13b3cdfa09f42fdb94"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260813100000_20260813105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260813100000_20260813105501.csv",
+      "publish_time": "2026-08-15T00:00:03",
+      "sha256": "ea68a6012717f618dd1f63b49ba1e6933f7f5f53b576c6befe1dbbf3993024c4"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260814100000_20260814105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260814100000_20260814105501.csv",
+      "publish_time": "2026-08-16T00:00:03",
+      "sha256": "3bf6686865300a5fe2c0e86eaae8777f8579de8c0885c855feacd5249af559ad"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260815100000_20260815105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260815100000_20260815105501.csv",
+      "publish_time": "2026-08-17T00:00:03",
+      "sha256": "cabf292398eb8d28a4c12b07d0a18aded40f6e7d179ba8b4f1c0479e1f8cde4d"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260816100000_20260816105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260816100000_20260816105501.csv",
+      "publish_time": "2026-08-18T00:00:03",
+      "sha256": "4073eb120ead6ec9a9f0bd3ff71367fbb8efd88060045148b63131b710a04235"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260817100000_20260817105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260817100000_20260817105501.csv",
+      "publish_time": "2026-08-19T00:00:03",
+      "sha256": "e464f31fe1077fa02217f5b23ac4ef9f1a71d4536e96968553b292455d1e1032"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260818100000_20260818105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260818100000_20260818105501.csv",
+      "publish_time": "2026-08-20T00:00:03",
+      "sha256": "669b41d914188410dd7c17263557950a5382c8e5eab0d6635a321e0eef4f9014"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260819100000_20260819105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260819100000_20260819105501.csv",
+      "publish_time": "2026-08-21T00:00:03",
+      "sha256": "47c26b5f1e83fe08bb5428a9a3537791c3c20a67f7973b2a8ef98dbe20691bae"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260820100000_20260820105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260820100000_20260820105501.csv",
+      "publish_time": "2026-08-22T00:00:03",
+      "sha256": "e9e7b8a7f13ae6904a8dec86acf76261541e50485d74afe161b0c5ec84e2e79f"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260821100000_20260821105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260821100000_20260821105501.csv",
+      "publish_time": "2026-08-23T00:00:03",
+      "sha256": "bf23f33ebf4833439edac249242ca716e013ad342b5a1048ccfa5de2d9106b26"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260822100000_20260822105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260822100000_20260822105501.csv",
+      "publish_time": "2026-08-24T00:00:07",
+      "sha256": "a49f77a3f6494f9033d6bcd06757faf16f32abbb9e6eae3107761830db4d5dc9"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260823100000_20260823105625.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260823100000_20260823105625.csv",
+      "publish_time": "2026-08-25T00:00:05",
+      "sha256": "c57b0ee87867b5cc310fbd16fa1e7ec9c193f9091039905449863bb28c75d96b"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260824100000_20260824105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260824100000_20260824105501.csv",
+      "publish_time": "2026-08-26T00:00:04",
+      "sha256": "34dd8ad25c239416f768665d0e8acc844e81815d5373e5d351f2c40606adc242"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260825100000_20260825105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260825100000_20260825105501.csv",
+      "publish_time": "2026-08-27T00:00:03",
+      "sha256": "bad9866b3f2438244be91f096cb50e7c2a80e7053b76d7041cf6d1c1552aa6a8"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260826100000_20260826105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260826100000_20260826105501.csv",
+      "publish_time": "2026-08-28T00:00:03",
+      "sha256": "d1c7bd56bc41ce6fa91745211ec2adad99982cbd9e21288f77a9f1d161e3be81"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260827100000_20260827110835.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260827100000_20260827110835.csv",
+      "publish_time": "2026-08-29T00:00:03",
+      "sha256": "b32f889a474d6530136a7a66b81764404bda1c4c50e5c3600708cad91f80d0c5"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260828100000_20260828105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260828100000_20260828105501.csv",
+      "publish_time": "2026-08-30T00:00:03",
+      "sha256": "643f267073c3bd76104dc9af8cf75821c438fa0ad0c6d0d56f0c1893de8889a8"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260829100000_20260829105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260829100000_20260829105501.csv",
+      "publish_time": "2026-08-31T00:00:03",
+      "sha256": "67d72f586f1eb6b6d7d4f5ddb1559f7e770a7081421ba9171d2b3ab9a6b76a8c"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260830100000_20260830105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260830100000_20260830105502.csv",
+      "publish_time": "2026-09-01T00:00:03",
+      "sha256": "3bb552decb1e1b215982a993b726e426770afcbe67ba19a49457630ae7285d5a"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260831100000_20260831105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260831100000_20260831105501.csv",
+      "publish_time": "2026-09-02T00:00:03",
+      "sha256": "6d5eef55cfd515e2a3b3bb25f838d4694ba34fc481638d15f08996ce97798f89"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260901100000_20260901105805.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260901100000_20260901105805.csv",
+      "publish_time": "2026-09-03T00:00:03",
+      "sha256": "656b6a63d0bbbb1fe9fbc3cfde323cb1b860f2910c4d28a8e41277aac511bcb3"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260902100000_20260902105902.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260902100000_20260902105902.csv",
+      "publish_time": "2026-09-04T00:00:03",
+      "sha256": "8daa5f6861871ede1e7509f348e75e10e0435c645051c4f3686c5bb33903bcc7"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260903100000_20260903105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260903100000_20260903105501.csv",
+      "publish_time": "2026-09-05T00:00:04",
+      "sha256": "0a073c2b502febb1690c3aff0ce538c65aa6ff5f5d49d6f381ed61aedb004e62"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260904100000_20260904105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260904100000_20260904105501.csv",
+      "publish_time": "2026-09-06T00:00:03",
+      "sha256": "9d47406bcfce4abdb6839e27e214296cfe2dab11acd975a6940d97452a103ad1"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260905100000_20260905105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260905100000_20260905105501.csv",
+      "publish_time": "2026-09-07T00:00:04",
+      "sha256": "4a3c841ba262cf597107da99e12e978eb238a8c982264247de9ce8c8241565b5"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260906100000_20260906105502.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260906100000_20260906105502.csv",
+      "publish_time": "2026-09-08T00:00:03",
+      "sha256": "ccc29ae7bbd3a39fdfd050f3839105ca883134bb07615730c31c666f228f672b"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260907100000_20260907105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260907100000_20260907105501.csv",
+      "publish_time": "2026-09-09T00:00:06",
+      "sha256": "67ad03bd91d9fbeb9fd041b2313319d426d6ffb8676ccb5e300ef124cfd89875"
+    },
+    {
+      "resource_name": "MarketResult_SEM-DA_PWR-MRC-D+1_20260908100000_20260908105501.csv",
+      "url": "https://reports.semopx.com/documents/MarketResult_SEM-DA_PWR-MRC-D%2B1_20260908100000_20260908105501.csv",
+      "publish_time": "2026-09-10T00:00:03",
+      "sha256": "191c813579ee63870b09b4bbb8c52a2aab50a5c84e83982538c93114cb6e27a6"
+    }
+  ],
+  "datasets": [
+    {
+      "file": "semopx_dam_2019.csv",
+      "sha256": "08791cf28b66d01816d1efa677d2c9f2cceb5c982d9ab8d66b6418e550cb15aa",
+      "rows": 8760,
+      "covered_hours": 8760.0,
+      "first_utc": "2018-12-31T23:00:00Z",
+      "end_exclusive_utc": "2019-12-31T23:00:00Z",
+      "span_hours": 8760.0,
+      "first_market_date": "2019-01-01",
+      "last_market_date": "2019-12-31",
+      "market_days": 365,
+      "duration_hours_values": [
+        1.0
+      ],
+      "non_24_hour_market_days": {
+        "2019-03-31": 23.0,
+        "2019-10-27": 25.0
+      },
+      "gaps": [],
+      "mean_eur_mwh": 50.25802294520548,
+      "min_eur_mwh": -11.86,
+      "max_eur_mwh": 365.04,
+      "expected_year_hours": 8760.0,
+      "complete_market_year": true
+    },
+    {
+      "file": "semopx_dam_2020.csv",
+      "sha256": "10494b7a9483e8218c33c94e01c02ff337359cb18451684ef849f85b9a9591ae",
+      "rows": 8784,
+      "covered_hours": 8784.0,
+      "first_utc": "2019-12-31T23:00:00Z",
+      "end_exclusive_utc": "2020-12-31T23:00:00Z",
+      "span_hours": 8784.0,
+      "first_market_date": "2020-01-01",
+      "last_market_date": "2020-12-31",
+      "market_days": 366,
+      "duration_hours_values": [
+        1.0
+      ],
+      "non_24_hour_market_days": {
+        "2020-03-29": 23.0,
+        "2020-10-25": 25.0
+      },
+      "gaps": [],
+      "mean_eur_mwh": 37.63485371129326,
+      "min_eur_mwh": -41.09,
+      "max_eur_mwh": 378.12,
+      "expected_year_hours": 8784.0,
+      "complete_market_year": true
+    },
+    {
+      "file": "semopx_dam_2021.csv",
+      "sha256": "4f3fb4de64b4aacb194f00ba6c2e03e3d2d3630446bbf062ab5b097a1b79d95f",
+      "rows": 8760,
+      "covered_hours": 8760.0,
+      "first_utc": "2020-12-31T23:00:00Z",
+      "end_exclusive_utc": "2021-12-31T23:00:00Z",
+      "span_hours": 8760.0,
+      "first_market_date": "2021-01-01",
+      "last_market_date": "2021-12-31",
+      "market_days": 365,
+      "duration_hours_values": [
+        1.0
+      ],
+      "non_24_hour_market_days": {
+        "2021-03-28": 23.0,
+        "2021-10-31": 25.0
+      },
+      "gaps": [],
+      "mean_eur_mwh": 136.07136872146117,
+      "min_eur_mwh": -20.43,
+      "max_eur_mwh": 500.0,
+      "expected_year_hours": 8760.0,
+      "complete_market_year": true
+    },
+    {
+      "file": "semopx_dam_2022_partial.csv",
+      "sha256": "8f4fedac507cf0af1247ad826ad8e2b411dff94863f8123ea5f915725cab8231",
+      "rows": 8664,
+      "covered_hours": 8664.0,
+      "first_utc": "2021-12-31T23:00:00Z",
+      "end_exclusive_utc": "2022-12-31T23:00:00Z",
+      "span_hours": 8760.0,
+      "first_market_date": "2022-01-01",
+      "last_market_date": "2022-12-31",
+      "market_days": 361,
+      "duration_hours_values": [
+        1.0
+      ],
+      "non_24_hour_market_days": {
+        "2022-03-27": 23.0,
+        "2022-10-30": 25.0
+      },
+      "gaps": [
+        {
+          "after": "2022-02-18T22:00:00Z",
+          "before": "2022-02-19T23:00:00Z",
+          "missing_hours": 24.0
+        },
+        {
+          "after": "2022-06-29T21:00:00Z",
+          "before": "2022-07-02T22:00:00Z",
+          "missing_hours": 72.0
+        }
+      ],
+      "mean_eur_mwh": 226.43279547553092,
+      "min_eur_mwh": -30.0,
+      "max_eur_mwh": 705.47,
+      "expected_year_hours": 8760.0,
+      "complete_market_year": false
+    },
+    {
+      "file": "semopx_dam_2023.csv",
+      "sha256": "a12ded8730bf35ab184485bf4c8ed2450419becfa5c47ac9abdd39a6d41a274a",
+      "rows": 8760,
+      "covered_hours": 8760.0,
+      "first_utc": "2022-12-31T23:00:00Z",
+      "end_exclusive_utc": "2023-12-31T23:00:00Z",
+      "span_hours": 8760.0,
+      "first_market_date": "2023-01-01",
+      "last_market_date": "2023-12-31",
+      "market_days": 365,
+      "duration_hours_values": [
+        1.0
+      ],
+      "non_24_hour_market_days": {
+        "2023-03-26": 23.0,
+        "2023-10-29": 25.0
+      },
+      "gaps": [],
+      "mean_eur_mwh": 121.92295776255709,
+      "min_eur_mwh": -10.19,
+      "max_eur_mwh": 348.0,
+      "expected_year_hours": 8760.0,
+      "complete_market_year": true
+    },
+    {
+      "file": "semopx_dam_recent.csv",
+      "sha256": "e09c210fbc61de192302cf4ed33d3a7711e169ed8281ee00f81163d4ea777b12",
+      "rows": 16968,
+      "covered_hours": 8712.0,
+      "first_utc": "2025-09-11T22:00:00Z",
+      "end_exclusive_utc": "2026-09-09T22:00:00Z",
+      "span_hours": 8712.0,
+      "first_market_date": "2025-09-12",
+      "last_market_date": "2026-09-09",
+      "market_days": 363,
+      "duration_hours_values": [
+        0.5,
+        1.0
+      ],
+      "non_24_hour_market_days": {
+        "2025-10-26": 25.0,
+        "2026-03-29": 23.0
+      },
+      "gaps": [],
+      "mean_eur_mwh": 129.50472623966942,
+      "min_eur_mwh": -18.42,
+      "max_eur_mwh": 465.77,
+      "complete_market_year": false,
+      "requested_start": "2025-09-12",
+      "requested_end_exclusive": "2026-09-10",
+      "annualization_warning": "363 observed market days; not a full calendar year or full trailing year"
+    }
+  ],
+  "revisions": [],
+  "method": "UTC delivery starts and source durations preserved. D+1 market day from auction timestamp. No forward filling/interpolation. Contemporary capacity and service rules are separate scenarios."
+}

@@ -1,0 +1,197 @@
+{
+  "config": {
+    "as_of": "2026-09-10",
+    "planning_commissioning_year": 2033,
+    "money_basis": "constant_2024_EUR",
+    "lifetime_years": 15,
+    "real_discount_rate": 0.07,
+    "battery": {
+      "power_mw": 85.0,
+      "energy_dc_mwh": 310.0,
+      "soc_min": 0.1,
+      "soc_max": 0.9,
+      "round_trip_efficiency": 0.85,
+      "capability_fraction": 0.97,
+      "max_efc_per_day": 1.0,
+      "wear_bid_eur_per_mwh_throughput": 2.0,
+      "execution_fee_eur_per_mwh": 1.0,
+      "import_adder_eur_per_mwh": 3.0,
+      "reserve_duration_hours": 1.0,
+      "reserve_activation_fraction_each_way": 0.01,
+      "reserve_payment_capture": 0.9,
+      "crm_delivery_hours": 4.0
+    },
+    "cost_basis": {
+      "nrel_2024_energy_usd_per_usable_ac_kwh": 241,
+      "nrel_2024_power_usd_per_kw": 372,
+      "nrel_2024_four_hour_usd_per_usable_ac_kwh": 334,
+      "usd_per_eur_2024_average": 1.082,
+      "fixed_opex_fraction_of_installed_plant": 0.04,
+      "fixed_opex_includes_augmentation": true,
+      "end_of_life_decommission_fraction": 0.03,
+      "house_load_and_incremental_fees_eur_year": 100000,
+      "scope": "US installed cost benchmark scaled by inferred duration split; Ireland uplift, connection allowance, discount rate and house load are analyst sensitivities, not quotes"
+    },
+    "cost_scenarios": {
+      "low_cost": {
+        "nrel_2033_usd_per_ac_kwh_4h": 171,
+        "ireland_installation_multiplier": 1.0,
+        "connection_allowance_eur2024": 2000000,
+        "gtuos_eur2026_per_kw_year": 10.2533
+      },
+      "reference_cost": {
+        "nrel_2033_usd_per_ac_kwh_4h": 257,
+        "ireland_installation_multiplier": 1.15,
+        "connection_allowance_eur2024": 5000000,
+        "gtuos_eur2026_per_kw_year": 11.2269
+      },
+      "high_cost": {
+        "nrel_2033_usd_per_ac_kwh_4h": 345,
+        "ireland_installation_multiplier": 1.3,
+        "connection_allowance_eur2024": 10000000,
+        "gtuos_eur2026_per_kw_year": 11.8005
+      }
+    },
+    "market_cases": [
+      {
+        "name": "energy_only",
+        "reserve_eur2024_per_mw_h": 0,
+        "capacity_reference": null
+      },
+      {
+        "name": "capacity_t1_reference",
+        "reserve_eur2024_per_mw_h": 0,
+        "capacity_reference": "2026_2027_T1"
+      },
+      {
+        "name": "capacity_t4_reference",
+        "reserve_eur2024_per_mw_h": 0,
+        "capacity_reference": "2029_2030_T4"
+      },
+      {
+        "name": "services_2",
+        "reserve_eur2024_per_mw_h": 2,
+        "capacity_reference": null
+      },
+      {
+        "name": "services_4",
+        "reserve_eur2024_per_mw_h": 4,
+        "capacity_reference": null
+      },
+      {
+        "name": "services_6",
+        "reserve_eur2024_per_mw_h": 6,
+        "capacity_reference": null
+      },
+      {
+        "name": "stack_t1_services4",
+        "reserve_eur2024_per_mw_h": 4,
+        "capacity_reference": "2026_2027_T1"
+      },
+      {
+        "name": "stack_t4_services4",
+        "reserve_eur2024_per_mw_h": 4,
+        "capacity_reference": "2029_2030_T4"
+      }
+    ],
+    "capacity_award_fraction_if_conditional": 1.0,
+    "capacity_strike_eur2024_mwh_sensitivity": 500,
+    "contract_term_cases_years": [
+      1,
+      15
+    ],
+    "secured_capacity_and_service_revenue_eur": 0,
+    "forward_energy_pattern_repeat_is_sensitivity": true,
+    "system_savings_added_to_cashflow": false,
+    "ds3_legacy_tariffs_used_for_2033": false,
+    "notes": [
+      "One EFC/day follows the operating premise behind the NREL maintained-capacity FOM benchmark; commercial warranty still required.",
+      "15-year case repeats assumed awards/service prices; no 15-year FASS contract or capacity renewal is claimed.",
+      "Strike 500 is a disclosed sensitivity, not an official future CRM strike formula. DA proxy difference charges cannot reproduce imbalance settlement.",
+      "Capacity headroom and four-hour energy reserve are protected at every interval, an intentionally conservative availability stress policy.",
+      "Year-one cash includes only specified conditional awards. No tolling, balancing uplift, local flexibility, carbon credits, loss savings or curtailment credit without a priced contract."
+    ]
+  },
+  "source_sha256": {
+    "src\\bess_market\\pipeline.py": "3c147f3955e46a9608b844885188bc507d1770eabe91aa7886a6da5ce1e8042a",
+    "src\\bess_market\\dispatch.py": "d62223b3c10ed9c7f261c6ce6592899ee28722b9acdd07402204c6a993eca3f6",
+    "src\\bess_market\\finance.py": "e93993faae5a90ec38e0ae010591f92e046c3b5d4b843d7823ff3ce42b11d018",
+    "configs\\bess_market_public_benchmarks.json": "77b49709bff910d8b76dd104b79b3ceec8559b242e445bcf3ed8de16e66589ab",
+    "data\\market\\ireland_cpi_monthly.csv": "40adf620484be388becf2d007e093b9d8df4cb59a6dad2940249b5e963086083"
+  },
+  "datasets": {
+    "2023": {
+      "price_file_sha256": "a12ded8730bf35ab184485bf4c8ed2450419becfa5c47ac9abdd39a6d41a274a",
+      "start_utc": "2022-12-31 23:00:00+00:00",
+      "end_utc_exclusive": "2023-12-31 23:00:00+00:00",
+      "observed_hours": 8760.0,
+      "cpi_proxy_hours": 0.0,
+      "actual_price_gaps_filled": false,
+      "current_money_deflation_factor": 0.9376163873370577
+    },
+    "recent": {
+      "price_file_sha256": "e09c210fbc61de192302cf4ed33d3a7711e169ed8281ee00f81163d4ea777b12",
+      "start_utc": "2025-09-11 22:00:00+00:00",
+      "end_utc_exclusive": "2026-09-09 22:00:00+00:00",
+      "observed_hours": 8712.0,
+      "cpi_proxy_hours": 216.0,
+      "actual_price_gaps_filled": false,
+      "current_money_deflation_factor": 0.9376163873370577
+    },
+    "2019": {
+      "price_file_sha256": "08791cf28b66d01816d1efa677d2c9f2cceb5c982d9ab8d66b6418e550cb15aa",
+      "start_utc": "2018-12-31 23:00:00+00:00",
+      "end_utc_exclusive": "2019-12-31 23:00:00+00:00",
+      "observed_hours": 8760.0,
+      "cpi_proxy_hours": 0.0,
+      "actual_price_gaps_filled": false,
+      "current_money_deflation_factor": 0.9376163873370577
+    },
+    "2020": {
+      "price_file_sha256": "10494b7a9483e8218c33c94e01c02ff337359cb18451684ef849f85b9a9591ae",
+      "start_utc": "2019-12-31 23:00:00+00:00",
+      "end_utc_exclusive": "2020-12-31 23:00:00+00:00",
+      "observed_hours": 8784.0,
+      "cpi_proxy_hours": 0.0,
+      "actual_price_gaps_filled": false,
+      "current_money_deflation_factor": 0.9376163873370577
+    },
+    "2021": {
+      "price_file_sha256": "4f3fb4de64b4aacb194f00ba6c2e03e3d2d3630446bbf062ab5b097a1b79d95f",
+      "start_utc": "2020-12-31 23:00:00+00:00",
+      "end_utc_exclusive": "2021-12-31 23:00:00+00:00",
+      "observed_hours": 8760.0,
+      "cpi_proxy_hours": 0.0,
+      "actual_price_gaps_filled": false,
+      "current_money_deflation_factor": 0.9376163873370577
+    }
+  },
+  "battery": {
+    "power_mw": 85.0,
+    "energy_dc_mwh": 310.0,
+    "soc_min": 0.1,
+    "soc_max": 0.9,
+    "round_trip_efficiency": 0.85,
+    "capability_fraction": 0.97,
+    "max_efc_per_day": 1.0,
+    "wear_bid_eur_per_mwh_throughput": 2.0,
+    "execution_fee_eur_per_mwh": 1.0,
+    "import_adder_eur_per_mwh": 3.0,
+    "reserve_duration_hours": 1.0,
+    "reserve_activation_fraction_each_way": 0.01,
+    "reserve_payment_capture": 0.9,
+    "crm_delivery_hours": 4.0
+  },
+  "deliverable_ac_mwh": 228.64470254086362,
+  "deliverable_hours": 2.689937676951337,
+  "finance_revaluation": {
+    "existing_npv_values_reproduced": true,
+    "dispatch_configuration_and_price_hashes_verified": true,
+    "source_sha256": {
+      "src/bess_market/pipeline.py": "3155e1191cb6b1f19d0ef7ef4e2b0fbf4b04ffca40327f8062d4f5751781a044",
+      "src/bess_market/finance.py": "e93993faae5a90ec38e0ae010591f92e046c3b5d4b843d7823ff3ce42b11d018",
+      "scripts/revalue_bess_cashflows.py": "8328c4b36c3f14b690896364db4f65f2a1d83c7e67c7d6c2e13086a2cd825011"
+    },
+    "note": "Added alternative whole-asset toll hurdle; no rescheduling or change to existing NPV values."
+  }
+}

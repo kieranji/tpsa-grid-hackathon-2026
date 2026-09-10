@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Public raw market downloads are large; normalized data and hashes are versioned.
+.codex_work/market_data/
+
+# Detailed interval dispatch is reproducible and supplied in the full study archive.
+/results/bess_market_public_benchmarks/dispatch_*.csv.gz
+/results/bess_duration_sensitivity/dispatch_*.csv.gz

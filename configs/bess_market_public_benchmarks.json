@@ -1,0 +1,56 @@
+{
+  "as_of": "2026-09-10",
+  "planning_commissioning_year": 2033,
+  "money_basis": "constant_2024_EUR",
+  "lifetime_years": 15,
+  "real_discount_rate": 0.07,
+  "battery": {
+    "power_mw": 85.0, "energy_dc_mwh": 310.0,
+    "soc_min": 0.1, "soc_max": 0.9, "round_trip_efficiency": 0.85,
+    "capability_fraction": 0.97, "max_efc_per_day": 1.0,
+    "wear_bid_eur_per_mwh_throughput": 2.0,
+    "execution_fee_eur_per_mwh": 1.0, "import_adder_eur_per_mwh": 3.0,
+    "reserve_duration_hours": 1.0, "reserve_activation_fraction_each_way": 0.01,
+    "reserve_payment_capture": 0.9, "crm_delivery_hours": 4.0
+  },
+  "cost_basis": {
+    "nrel_2024_energy_usd_per_usable_ac_kwh": 241,
+    "nrel_2024_power_usd_per_kw": 372,
+    "nrel_2024_four_hour_usd_per_usable_ac_kwh": 334,
+    "usd_per_eur_2024_average": 1.0820,
+    "fixed_opex_fraction_of_installed_plant": 0.04,
+    "fixed_opex_includes_augmentation": true,
+    "end_of_life_decommission_fraction": 0.03,
+    "house_load_and_incremental_fees_eur_year": 100000,
+    "scope": "US installed cost benchmark scaled by inferred duration split; Ireland uplift, connection allowance, discount rate and house load are analyst sensitivities, not quotes"
+  },
+  "cost_scenarios": {
+    "low_cost": {"nrel_2033_usd_per_ac_kwh_4h": 171, "ireland_installation_multiplier": 1.0, "connection_allowance_eur2024": 2000000, "gtuos_eur2026_per_kw_year": 10.2533},
+    "reference_cost": {"nrel_2033_usd_per_ac_kwh_4h": 257, "ireland_installation_multiplier": 1.15, "connection_allowance_eur2024": 5000000, "gtuos_eur2026_per_kw_year": 11.2269},
+    "high_cost": {"nrel_2033_usd_per_ac_kwh_4h": 345, "ireland_installation_multiplier": 1.30, "connection_allowance_eur2024": 10000000, "gtuos_eur2026_per_kw_year": 11.8005}
+  },
+  "market_cases": [
+    {"name": "energy_only", "reserve_eur2024_per_mw_h": 0, "capacity_reference": null},
+    {"name": "capacity_t1_reference", "reserve_eur2024_per_mw_h": 0, "capacity_reference": "2026_2027_T1"},
+    {"name": "capacity_t4_reference", "reserve_eur2024_per_mw_h": 0, "capacity_reference": "2029_2030_T4"},
+    {"name": "services_2", "reserve_eur2024_per_mw_h": 2, "capacity_reference": null},
+    {"name": "services_4", "reserve_eur2024_per_mw_h": 4, "capacity_reference": null},
+    {"name": "services_6", "reserve_eur2024_per_mw_h": 6, "capacity_reference": null},
+    {"name": "stack_t1_services4", "reserve_eur2024_per_mw_h": 4, "capacity_reference": "2026_2027_T1"},
+    {"name": "stack_t4_services4", "reserve_eur2024_per_mw_h": 4, "capacity_reference": "2029_2030_T4"}
+  ],
+  "capacity_award_fraction_if_conditional": 1.0,
+  "capacity_strike_eur2024_mwh_sensitivity": 500,
+  "contract_term_cases_years": [1, 15],
+  "secured_capacity_and_service_revenue_eur": 0,
+  "forward_energy_pattern_repeat_is_sensitivity": true,
+  "system_savings_added_to_cashflow": false,
+  "ds3_legacy_tariffs_used_for_2033": false,
+  "notes": [
+    "One EFC/day follows the operating premise behind the NREL maintained-capacity FOM benchmark; commercial warranty still required.",
+    "15-year case repeats assumed awards/service prices; no 15-year FASS contract or capacity renewal is claimed.",
+    "Strike 500 is a disclosed sensitivity, not an official future CRM strike formula. DA proxy difference charges cannot reproduce imbalance settlement.",
+    "Capacity headroom and four-hour energy reserve are protected at every interval, an intentionally conservative availability stress policy.",
+    "Year-one cash includes only specified conditional awards. No tolling, balancing uplift, local flexibility, carbon credits, loss savings or curtailment credit without a priced contract."
+  ]
+}

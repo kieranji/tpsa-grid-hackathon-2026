@@ -19,6 +19,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
 import pandas as pd
+from network_validation import scale_thermal_limits
 
 
 SCRIPT_PATH = Path(__file__).resolve()
@@ -180,9 +181,9 @@ def run_all_branch_rating_case(
     multiplier: float,
 ) -> dict[str, float | int]:
     network = load_network(scenario, REGIONAL_SCOPE)
+    # s_nom is also the base of Transformer.x/r; keep impedance unchanged.
     network.lines.loc[:, "s_nom"] *= float(multiplier)
-    if len(network.transformers):
-        network.transformers.loc[:, "s_nom"] *= float(multiplier)
+    scale_thermal_limits(network, float(multiplier), tables=("transformers",))
 
     solve_checked(network, f"regional all-rating case ×{multiplier:.2f}")
     return {

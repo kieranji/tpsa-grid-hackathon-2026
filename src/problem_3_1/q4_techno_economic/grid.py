@@ -15,6 +15,10 @@ import warnings
 import numpy as np
 import pandas as pd
 from .types import Design, Dispatch
+try:
+    from ..network_validation import scale_thermal_limits
+except ImportError:  # CLI entry points put problem_3_1 on sys.path.
+    from network_validation import scale_thermal_limits
 
 WIND_NAME = "Q4_NEW_WIND"
 BATTERY_NAME = "Q4_NEW_BESS"
@@ -263,9 +267,7 @@ class PyPSABackend:
         if WIND_NAME in n.generators.index or any(str(name).startswith(BATTERY_NAME) for name in n.storage_units.index):
             raise ValueError("Q4 reserved component names already occur in the supplied network")
         if relax_passive_limits:
-            for table in ("lines", "transformers"):
-                f = getattr(n, table)
-                f.loc[:, "s_nom"] = f.s_nom * cfg["grid"]["relaxed_rating_multiplier"]
+            scale_thermal_limits(n, cfg["grid"]["relaxed_rating_multiplier"])
         if design.wind_mw:
             profile = self.profile(design.bus) * wind_factor
             mc = float(n.generators.loc[self.wind_ids, "marginal_cost"].median())
