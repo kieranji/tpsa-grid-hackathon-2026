@@ -1,0 +1,301 @@
+{
+  "report_version": "1.1.0",
+  "generated_utc": "2026-09-10T06:52:41.590796+00:00",
+  "repository_root": "/workspaces/tpsa-grid-hackathon-2026",
+  "branch": "problem/3.1-north-west-analysis",
+  "commit": "8c506d655ba9e4df6b2bd9ac1869d625c89a359b",
+  "dirty_worktree": true,
+  "git_status": "## problem/3.1-north-west-analysis...origin/problem/3.1-north-west-analysis\n M results/problem_3_1/question_2/tables/04_single_site_screening.csv\n M results/problem_3_1/question_2/tables/05_two_site_screening.csv\n M results/problem_3_1/question_2/tables/06_theoretical_sizing_trials.csv\n M results/problem_3_1/question_2/tables/07_health_aware_sizing_trials.csv\n M results/problem_3_1/question_2/tables/09_health_aware_pareto_frontier.csv\n M results/problem_3_1/question_2/tables/10_recommendation_summary.csv\n M results/problem_3_1/question_2/tables/_trial_cache.csv\n M src/problem_3_1/constrained_lines.py\n M src/problem_3_1/question_2_battery_siting_sizing.py\n M src/problem_3_1/question_3_dynamic_line_rating.py\n?? .codex_work/\n?? FINAL_AUDIT_BUILD_STATUS.txt\n?? FINAL_RUN_STATUS_A.txt\n?? Q32_CHECK_LOG.txt\n?? Q32_CHECK_STATUS.txt\n?? Q32_REPORTING_AFTER.txt\n?? Q32_REPORTING_DISK.txt\n?? Q32_REPORTING_DISK2.txt\n?? Q32_SMOKE_V5_STATUS.txt\n?? Q4_CONFIGS.txt\n?? RUN_STATUS_PROBE.txt\n?? check_parallel_lines.py\n?? configs/\n?? requirements-q4.txt\n?? results/final_audit_20260910/\n?? results/problem_3_1/question_1_final/\n?? results/problem_3_1/question_2_final/\n?? results/problem_3_1/question_3_final/\n?? results/problem_3_1/question_4_distributed_bess_168h_20260910/\n?? results/problem_3_1/question_4_distributed_bess_gap005_168h_20260910/\n?? results/problem_3_1/question_4_distributed_bess_strict_45mw_168h_20260910/\n?? results/problem_3_1/question_4_distributed_bess_strict_45mw_168h_20260910_v2/\n?? results/problem_3_1/question_4_distributed_smoke_final_20260910/\n?? results/problem_3_1/question_4_economic_downsizing_168h_20260910/\n?? results/problem_3_1/question_4_economic_downsizing_168h_20260910_v2/\n?? results/problem_3_1/question_4_economic_downsizing_dlr_168h_20260910/\n?? results/problem_3_1/question_4_final_comparison_20260910/\n?? results/problem_3_1/question_4_final_comparison_20260910_v2/\n?? results/problem_3_1/question_4_final_comparison_20260910_v3/\n?? results/problem_3_1/question_4_smoke/\n?? results/problem_3_1/question_4_smoke_final_20260910/\n?? results/problem_3_1/question_4_smoke_final_20260910_v2/\n?? results/problem_3_1/question_5_final/\n?? results/problem_3_1/question_5_smoke_20260910/\n?? results/problem_3_1/question_5_smoke_final_20260910/\n?? results/problem_3_1/question_6_final_20260910_v2/\n?? results/problem_3_1/question_6_smoke_20260910_v2/\n?? results/problem_3_1/question_6_smoke_final_20260910/\n?? results/problem_3_1/validation/\n?? results/problem_3_1/verification_20260909T154123Z/\n?? results/problem_3_2/\n?? src/final_audit_report.py\n?? src/problem_3_1/q4_techno_economic/\n?? src/problem_3_1/q5_shift_factors/\n?? src/problem_3_1/q6_priority_dispatch/\n?? src/problem_3_1/question_4_compare_results.py\n?? src/problem_3_1/question_4_techno_economics.py\n?? src/problem_3_1/question_5_shift_factors.py\n?? src/problem_3_1/question_6_priority_status.py\n?? src/problem_3_2/\n?? tests/",
+  "git_remotes": "origin\thttps://github.com/kieranji/tpsa-grid-hackathon-2026 (fetch)\norigin\thttps://github.com/kieranji/tpsa-grid-hackathon-2026 (push)",
+  "head_changed_by_report_generation": false,
+  "agent_actions": {
+    "commit_executed": false,
+    "merge_executed": false,
+    "push_executed": false,
+    "note": "Local Git metadata cannot prove that no push ever occurred; this records actions taken by this work session."
+  },
+  "instruction_files": {
+    "AGENTS.md_at_repository_root": false,
+    "CODEX_Q4_HANDOFF.md_at_repository_root": false
+  },
+  "runtime": {
+    "python": "3.12.1",
+    "platform": "Linux-6.8.0-1064-azure-x86_64-with-glibc2.39",
+    "pandas": "3.0.5"
+  },
+  "canonical_result_directories": [
+    "results/problem_3_1/question_4_economic_downsizing_168h_20260910_v2",
+    "results/problem_3_1/question_4_distributed_bess_strict_45mw_168h_20260910_v2",
+    "results/problem_3_1/question_4_final_comparison_20260910_v3",
+    "results/problem_3_1/question_5_final",
+    "results/problem_3_1/question_6_final_20260910_v2",
+    "results/problem_3_2/constraint_groups_final_20260910_v3"
+  ],
+  "runs": [
+    {
+      "run_id": "RUN-Q4-CHECK",
+      "area": "Q4",
+      "mode": "check",
+      "command": ".venv/bin/python -u src/problem_3_1/question_4_techno_economics.py --check",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": null,
+      "acceptance": "configuration and official network preflight",
+      "log_file": ".codex_work/final_q4_check.log"
+    },
+    {
+      "run_id": "RUN-Q4-SMOKE",
+      "area": "Q4",
+      "mode": "official-network smoke",
+      "command": ".venv/bin/python -u src/problem_3_1/question_4_techno_economics.py --smoke --allow-illustrative-economics --out results/problem_3_1/question_4_smoke_final_20260910_v2",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": null,
+      "acceptance": "24-hour official-network solve",
+      "log_file": ".codex_work/final_q4_smoke.log"
+    },
+    {
+      "run_id": "RUN-Q4-TESTS",
+      "area": "Q4",
+      "mode": "unit/regression tests",
+      "command": ".venv/bin/python -m unittest discover -s tests/q4 -p 'test_*.py' -v",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": 14,
+      "acceptance": "14 tests expected",
+      "log_file": ".codex_work/final_q4_tests.log"
+    },
+    {
+      "run_id": "RUN-Q4-DOWNSIZING",
+      "area": "Q4",
+      "mode": "168-hour full",
+      "command": ".venv/bin/python -u src/problem_3_1/question_4_techno_economics.py --config configs/problem_3_1/question_4_q2_economic_downsizing.json --run --allow-illustrative-economics --out results/problem_3_1/question_4_economic_downsizing_168h_20260910_v2",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": null,
+      "acceptance": "all configured sizes completed",
+      "log_file": ".codex_work/q4_downsizing_v2.log"
+    },
+    {
+      "run_id": "RUN-Q4-DISTRIBUTED",
+      "area": "Q4",
+      "mode": "168-hour full",
+      "command": ".venv/bin/python -u src/problem_3_1/question_4_techno_economics.py --config configs/problem_3_1/question_4_distributed_bess_strict_tie_break.json --run --allow-illustrative-economics --out results/problem_3_1/question_4_distributed_bess_strict_45mw_168h_20260910_v2",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": null,
+      "acceptance": "four portfolio cases completed",
+      "log_file": ".codex_work/q4_distributed_v2.log"
+    },
+    {
+      "run_id": "RUN-Q5-CHECK",
+      "area": "Q5",
+      "mode": "check",
+      "command": ".venv/bin/python -u src/problem_3_1/question_5_shift_factors.py --check",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": null,
+      "acceptance": "topology/component preflight",
+      "log_file": ".codex_work/final_q5_check.log"
+    },
+    {
+      "run_id": "RUN-Q5-SMOKE",
+      "area": "Q5",
+      "mode": "official-network smoke",
+      "command": ".venv/bin/python -u src/problem_3_1/question_5_shift_factors.py --smoke --out results/problem_3_1/question_5_smoke_final_20260910",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": null,
+      "acceptance": "limited validation solve",
+      "log_file": ".codex_work/final_q5_smoke.log"
+    },
+    {
+      "run_id": "RUN-Q5-TESTS",
+      "area": "Q5",
+      "mode": "unit/regression tests",
+      "command": ".venv/bin/python -m unittest discover -s tests/q5 -p 'test_*.py' -v",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": 9,
+      "acceptance": "9 tests expected",
+      "log_file": ".codex_work/final_q5_tests.log"
+    },
+    {
+      "run_id": "RUN-Q6-CHECK",
+      "area": "Q6",
+      "mode": "check",
+      "command": ".venv/bin/python -u src/problem_3_1/question_6_priority_status.py --check",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": null,
+      "acceptance": "policy/status preflight",
+      "log_file": ".codex_work/final_q6_check.log"
+    },
+    {
+      "run_id": "RUN-Q6-SMOKE",
+      "area": "Q6",
+      "mode": "official-network smoke",
+      "command": ".venv/bin/python -u src/problem_3_1/question_6_priority_status.py --smoke --out results/problem_3_1/question_6_smoke_final_20260910",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": null,
+      "acceptance": "24-hour lexicographic solve",
+      "log_file": ".codex_work/final_q6_smoke.log"
+    },
+    {
+      "run_id": "RUN-Q6-TESTS",
+      "area": "Q6",
+      "mode": "unit/regression tests",
+      "command": ".venv/bin/python -m unittest discover -s tests/q6 -p 'test_*.py' -v",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": 8,
+      "acceptance": "8 tests expected",
+      "log_file": ".codex_work/final_q6_tests.log"
+    },
+    {
+      "run_id": "RUN-Q6-FULL",
+      "area": "Q6",
+      "mode": "168-hour full",
+      "command": ".venv/bin/python -u src/problem_3_1/question_6_priority_status.py --run --out results/problem_3_1/question_6_final_20260910_v2",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": null,
+      "acceptance": "seven scenarios completed",
+      "log_file": ".codex_work/q6_full_v2.log"
+    },
+    {
+      "run_id": "RUN-Q32-CHECK",
+      "area": "Problem 3.2",
+      "mode": "check",
+      "command": ".venv/bin/python -u src/problem_3_2/constraint_group_generation.py --check",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": null,
+      "acceptance": "national topology/PTDF preflight",
+      "log_file": ".codex_work/q32_check_complete_link.log"
+    },
+    {
+      "run_id": "RUN-Q32-SMOKE",
+      "area": "Problem 3.2",
+      "mode": "official-network smoke",
+      "command": ".venv/bin/python -u src/problem_3_2/constraint_group_generation.py --smoke --out results/problem_3_2/constraint_groups_smoke_20260910_v5",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": null,
+      "acceptance": "24-hour national solve",
+      "log_file": ".codex_work/q32_smoke_v5.log"
+    },
+    {
+      "run_id": "RUN-Q32-TESTS",
+      "area": "Problem 3.2",
+      "mode": "unit/regression tests",
+      "command": ".venv/bin/python -m unittest discover -s tests/q32 -p 'test_*.py' -v",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": 13,
+      "acceptance": "13 tests expected",
+      "log_file": ".codex_work/final_q32_tests.log"
+    },
+    {
+      "run_id": "RUN-Q32-FULL",
+      "area": "Problem 3.2",
+      "mode": "168-hour national full",
+      "command": ".venv/bin/python -u src/problem_3_2/constraint_group_generation.py --run --out results/problem_3_2/constraint_groups_final_20260910_v3",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": null,
+      "acceptance": "full all-island outputs 00-18",
+      "log_file": ".codex_work/q32_full_v3.log"
+    },
+    {
+      "run_id": "RUN-AUDIT-TESTS",
+      "area": "Audit",
+      "mode": "unit/regression tests",
+      "command": ".venv/bin/python -m unittest discover -s tests/audit -p 'test_*.py' -v",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": 5,
+      "acceptance": "default-root and RC-marker regressions",
+      "log_file": ".codex_work/final_audit_tests.log"
+    },
+    {
+      "run_id": "RUN-ALL-TESTS",
+      "area": "Cross-cutting",
+      "mode": "combined full regression",
+      "command": ".venv/bin/python -m unittest discover -s tests/q4 -p 'test_*.py' -v && .venv/bin/python -m unittest discover -s tests/q5 -p 'test_*.py' -v && .venv/bin/python -m unittest discover -s tests/q6 -p 'test_*.py' -v && .venv/bin/python -m unittest discover -s tests/q32 -p 'test_*.py' -v && .venv/bin/python -m unittest discover -s tests/audit -p 'test_*.py' -v",
+      "exit_code": 0,
+      "status": "PASS",
+      "test_count": 49,
+      "acceptance": "all Q4/Q5/Q6/Q3.2/audit tests in one fail-fast chain",
+      "log_file": ".codex_work/final_all_tests.log"
+    }
+  ],
+  "protected_preexisting_files": [
+    {
+      "path": "results/problem_3_1/question_2/tables/04_single_site_screening.csv",
+      "expected_sha256": "329a856ff33f24d75f3d44c347e0c7863c4a9caf34f87c055a822460ca0c87d6",
+      "actual_sha256": "329a856ff33f24d75f3d44c347e0c7863c4a9caf34f87c055a822460ca0c87d6",
+      "matches_baseline": true
+    },
+    {
+      "path": "results/problem_3_1/question_2/tables/05_two_site_screening.csv",
+      "expected_sha256": "db5db4d91c4330f0340e4b4d1102e21b5890b2f6d139532c77439c4b6b3fe296",
+      "actual_sha256": "db5db4d91c4330f0340e4b4d1102e21b5890b2f6d139532c77439c4b6b3fe296",
+      "matches_baseline": true
+    },
+    {
+      "path": "results/problem_3_1/question_2/tables/06_theoretical_sizing_trials.csv",
+      "expected_sha256": "257bb8e1a2aaa1cfed6aef413b8a57385dbb574a17ec4e92f6820280a58fd85b",
+      "actual_sha256": "257bb8e1a2aaa1cfed6aef413b8a57385dbb574a17ec4e92f6820280a58fd85b",
+      "matches_baseline": true
+    },
+    {
+      "path": "results/problem_3_1/question_2/tables/07_health_aware_sizing_trials.csv",
+      "expected_sha256": "a1b5f119e7c51f4b0c473834a35791fb99be23c4aea57e2fab9d58f46752c680",
+      "actual_sha256": "a1b5f119e7c51f4b0c473834a35791fb99be23c4aea57e2fab9d58f46752c680",
+      "matches_baseline": true
+    },
+    {
+      "path": "results/problem_3_1/question_2/tables/09_health_aware_pareto_frontier.csv",
+      "expected_sha256": "391db6b9655ca311e1df784dfd0ed9ac624db4e4fe0edc0e05d7baa1d0a2057c",
+      "actual_sha256": "391db6b9655ca311e1df784dfd0ed9ac624db4e4fe0edc0e05d7baa1d0a2057c",
+      "matches_baseline": true
+    },
+    {
+      "path": "results/problem_3_1/question_2/tables/10_recommendation_summary.csv",
+      "expected_sha256": "91420697371250f1e4eeb66a0e89ac17ebd81eace89b9d19b00b3b213a61744c",
+      "actual_sha256": "91420697371250f1e4eeb66a0e89ac17ebd81eace89b9d19b00b3b213a61744c",
+      "matches_baseline": true
+    },
+    {
+      "path": "results/problem_3_1/question_2/tables/_trial_cache.csv",
+      "expected_sha256": "6cd4409dad96456c0076ef1e31cdb99da79c4687a72cd7efb089077f23b4125a",
+      "actual_sha256": "6cd4409dad96456c0076ef1e31cdb99da79c4687a72cd7efb089077f23b4125a",
+      "matches_baseline": true
+    },
+    {
+      "path": "src/problem_3_1/constrained_lines.py",
+      "expected_sha256": "64ec0564ea241c11fc1c4b47fc4fa8c6820f827c43f5c5d6b24f4b9766e710ce",
+      "actual_sha256": "64ec0564ea241c11fc1c4b47fc4fa8c6820f827c43f5c5d6b24f4b9766e710ce",
+      "matches_baseline": true
+    },
+    {
+      "path": "src/problem_3_1/question_2_battery_siting_sizing.py",
+      "expected_sha256": "04ae1273725f1a3ac202c3d924599c762bfdb385da0cbc798b74c073e65ec04d",
+      "actual_sha256": "04ae1273725f1a3ac202c3d924599c762bfdb385da0cbc798b74c073e65ec04d",
+      "matches_baseline": true
+    },
+    {
+      "path": "src/problem_3_1/question_3_dynamic_line_rating.py",
+      "expected_sha256": "979c964f6e2564c82fd5c803c5b33f354192959a2811744bf552f670e5f10916",
+      "actual_sha256": "979c964f6e2564c82fd5c803c5b33f354192959a2811744bf552f670e5f10916",
+      "matches_baseline": true
+    }
+  ],
+  "official_input_git_status": "",
+  "source_checksum_file": "SOURCE_CHECKSUMS.csv",
+  "evidence_ledger": "EVIDENCE_LEDGER.csv",
+  "calculation_ledger": "CALCULATION_LEDGER.csv",
+  "test_matrix": "TEST_MATRIX.csv"
+}

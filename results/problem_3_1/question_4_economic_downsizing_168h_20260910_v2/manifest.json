@@ -1,0 +1,276 @@
+{
+  "signature": "7fe5685ef88aba6343e3e0b40c4d4cffedc974707a4a4d5cc76f220b8b903d27",
+  "config": {
+    "schema_version": 1,
+    "assumptions_status": "illustrative_q2_derived_economic_downsizing_not_market_quotes",
+    "currency_basis": "real EUR, 2026 purchasing power; pre-tax unlevered",
+    "years": 20,
+    "real_discount_rate": 0.07,
+    "annualisation": {
+      "mode": "repeat_block",
+      "hours_per_year": 8760.0
+    },
+    "grid": {
+      "scenario": "WP2033",
+      "scope": "north-west",
+      "minimum_bus_kv": 110,
+      "excluded_buses": [],
+      "wind_profile_mode": "common",
+      "wind_profile_csv": null,
+      "relaxed_rating_multiplier": 1000.0,
+      "counterfactual_first_year": true,
+      "binding_threshold": 0.999,
+      "max_unserved_mwh": 0.001,
+      "mip_gap": 1e-06,
+      "solver_time_limit_s": 180.0,
+      "dlr_multiplier_csv": null,
+      "dlr_label": "none"
+    },
+    "designs": {
+      "wind_mw": [],
+      "bess_mw_mwh": [
+        [
+          22.5,
+          110
+        ],
+        [
+          45,
+          220
+        ],
+        [
+          62.22,
+          226.92
+        ],
+        [
+          67.5,
+          330
+        ],
+        [
+          85,
+          310
+        ],
+        [
+          90,
+          440
+        ]
+      ],
+      "hybrid_wind_bess_mw_mwh": [],
+      "maintenance_policies": [
+        "replace"
+      ],
+      "bess_portfolios": [
+        {
+          "label": "q2-final-single-site",
+          "sites": [
+            "Croaghonagh"
+          ],
+          "allocations": [
+            1
+          ]
+        }
+      ]
+    },
+    "battery": {
+      "round_trip_efficiency": 0.9,
+      "soc_min": 0.1,
+      "soc_max": 0.9,
+      "calendar_fade_per_year": 0.008,
+      "cycle_fade_per_efc": 3.333333333333333e-05,
+      "replacement_soh": 0.8,
+      "retire_soh": 0.6,
+      "augmentation_trigger_soh": 0.9,
+      "augmentation_target_soh": 1.0,
+      "max_c_rate_per_hour": 1.0,
+      "dispatch_wear_penalty_eur_mwh": 0.5
+    },
+    "wind": {
+      "annual_output_degradation": 0.003
+    },
+    "costs": {
+      "battery_energy_eur_kwh": 140.0,
+      "battery_power_eur_kw": 250.0,
+      "battery_other_bop_eur_kw": 80.0,
+      "wind_eur_kw": 1300.0,
+      "shared_site_fixed_eur": 300000.0,
+      "connection_fixed_eur": 250000.0,
+      "connection_eur_kw": 60.0,
+      "contingency_fraction": 0.1,
+      "battery_fixed_om_eur_kw_year": 7.0,
+      "wind_fixed_om_eur_kw_year": 35.0,
+      "site_rent_admin_eur_year": 30000.0,
+      "insurance_fraction_initial_capex_year": 0.0025,
+      "battery_variable_om_eur_mwh_discharged": 0.5,
+      "wind_variable_om_eur_mwh_generated": 0.0,
+      "real_om_escalation": 0.0,
+      "replacement_energy_cost_fraction": 1.1,
+      "augmentation_energy_cost_fraction": 1.15,
+      "real_cell_cost_escalation": 0.0,
+      "inverter_replacement_years": [
+        12
+      ],
+      "inverter_replacement_fraction_power_capex": 0.4,
+      "wind_overhaul_years": [
+        15
+      ],
+      "wind_overhaul_fraction_wind_capex": 0.03,
+      "decommission_fraction_initial_capex": 0.03,
+      "residual_fraction_initial_capex": 0.01,
+      "site_overrides": {}
+    },
+    "prices": {
+      "mode": "flat",
+      "flat_eur_mwh": 70.0,
+      "csv": null,
+      "import_adder_eur_mwh": 0.0,
+      "export_fee_eur_mwh": 0.0,
+      "real_escalation": 0.0,
+      "grid_service_payment_eur_kw_year": 0.0
+    },
+    "sensitivity": {
+      "enabled": true,
+      "capex_multipliers": [
+        0.8,
+        1.0,
+        1.2
+      ],
+      "om_multipliers": [
+        0.8,
+        1.0,
+        1.2
+      ],
+      "price_multipliers": [
+        0.7,
+        1.0,
+        1.3
+      ],
+      "discount_rates": [
+        0.04,
+        0.07,
+        0.1
+      ]
+    }
+  },
+  "network": {
+    "backend": "pypsa",
+    "pypsa_version": "1.3.0",
+    "origin": "/workspaces/tpsa-grid-hackathon-2026/data/participant-kit/gridkit.py:load",
+    "network_hash": "09a142114df9f5d7e53cbd8d68331debe2c4aec489d71126509c8f67a6d7ba19",
+    "network_meta": {
+      "scenario": "WP2033",
+      "scope": "north-west",
+      "tytfs_case": "TYTFS2024_WP2033_V35",
+      "anchor_snapshot": "2030-01-17 18:00:00",
+      "profiles": "synthetic, seed 42 - see LIMITATIONS in the README"
+    },
+    "buses": 15,
+    "lines": 18,
+    "transformers": 0,
+    "links": 0,
+    "snapshots": 168,
+    "scope_validation_status": "NOT certified by Q4; use your separate 15/16/all-island audit",
+    "dispatch_policy": "official system-cost optimum, same-bus wind pro-rata, battery exclusive charge/discharge",
+    "economic_interpretation": "NPV conditional on operator dispatch, not merchant dispatch optimum",
+    "dlr_label": "none",
+    "dlr_lines": [],
+    "dlr_mean_multiplier": 1.0,
+    "dlr_max_multiplier": 1.0,
+    "dlr_source_sha256": null
+  },
+  "designs": [
+    {
+      "bus": "Croaghonagh",
+      "wind_mw": 0.0,
+      "battery_mw": 22.5,
+      "battery_mwh": 110.0,
+      "maintenance": "replace",
+      "connection_export_mw": null,
+      "connection_import_mw": null,
+      "battery_placements": [
+        [
+          "Croaghonagh",
+          1.0
+        ]
+      ]
+    },
+    {
+      "bus": "Croaghonagh",
+      "wind_mw": 0.0,
+      "battery_mw": 45.0,
+      "battery_mwh": 220.0,
+      "maintenance": "replace",
+      "connection_export_mw": null,
+      "connection_import_mw": null,
+      "battery_placements": [
+        [
+          "Croaghonagh",
+          1.0
+        ]
+      ]
+    },
+    {
+      "bus": "Croaghonagh",
+      "wind_mw": 0.0,
+      "battery_mw": 62.22,
+      "battery_mwh": 226.92,
+      "maintenance": "replace",
+      "connection_export_mw": null,
+      "connection_import_mw": null,
+      "battery_placements": [
+        [
+          "Croaghonagh",
+          1.0
+        ]
+      ]
+    },
+    {
+      "bus": "Croaghonagh",
+      "wind_mw": 0.0,
+      "battery_mw": 67.5,
+      "battery_mwh": 330.0,
+      "maintenance": "replace",
+      "connection_export_mw": null,
+      "connection_import_mw": null,
+      "battery_placements": [
+        [
+          "Croaghonagh",
+          1.0
+        ]
+      ]
+    },
+    {
+      "bus": "Croaghonagh",
+      "wind_mw": 0.0,
+      "battery_mw": 85.0,
+      "battery_mwh": 310.0,
+      "maintenance": "replace",
+      "connection_export_mw": null,
+      "connection_import_mw": null,
+      "battery_placements": [
+        [
+          "Croaghonagh",
+          1.0
+        ]
+      ]
+    },
+    {
+      "bus": "Croaghonagh",
+      "wind_mw": 0.0,
+      "battery_mw": 90.0,
+      "battery_mwh": 440.0,
+      "maintenance": "replace",
+      "connection_export_mw": null,
+      "connection_import_mw": null,
+      "battery_placements": [
+        [
+          "Croaghonagh",
+          1.0
+        ]
+      ]
+    }
+  ],
+  "code_sha256": "bd242de3fdd44737c115a0deac27333b35d7b105b17460cd1264d0bd6385a9bd",
+  "prices_sha256": "4df066bdb1dd0b240f4eaa2e7ba97b93fccb511facce445d15963c2c8aea7dae",
+  "smoke": false,
+  "version": "0.1.0",
+  "python": "3.12.1"
+}

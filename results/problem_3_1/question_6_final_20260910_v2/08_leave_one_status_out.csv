@@ -1,0 +1,5 @@
+generator_changed_to_non_priority,full_priority_dispatch_down_mwh,counterfactual_dispatch_down_mwh,dispatch_down_reduction_mwh,physical_cost_change_eur,non_additive
+Croaghonagh wind,3660.590272802747,3660.5902728027468,4.547473508864641e-13,0.0,True
+Binbane wind,3660.590272802747,3660.5902728027463,9.094947017729282e-13,-4.656612873077393e-10,True
+Drumkeen wind,3660.590272802747,3660.5902728027468,4.547473508864641e-13,-4.656612873077393e-10,True
+Ardnagappary wind,3660.590272802747,3660.5902728027468,4.547473508864641e-13,0.0,True

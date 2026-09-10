@@ -1,0 +1,15 @@
+snapshot,branch,bus0,bus1,flow_mw_bus0_to_bus1,rating_mva,loading_pu,flow_direction_sign,highest_relief_priority_generator,priority_relief_mw_per_mw,highest_relief_nonpriority_generator,nonpriority_relief_mw_per_mw,relief_advantage_priority_minus_nonpriority,dominated_dispatch_pair_possible
+2030-01-14 07:00:00,5041-17010-2,Srananagh 220,Cathaleen's Fall,-210.0,210.0,1.0,-1,Ardnagappary wind,0.23839570238694585,Tievebrack wind,0.23839570238694296,2.886579864025407e-15,False
+2030-01-14 08:00:00,5041-17010-2,Srananagh 220,Cathaleen's Fall,-210.0,210.0,1.0,-1,Ardnagappary wind,0.23839570238694585,Tievebrack wind,0.23839570238694296,2.886579864025407e-15,False
+2030-01-14 09:00:00,5041-17010-2,Srananagh 220,Cathaleen's Fall,-210.0,210.0,1.0,-1,Ardnagappary wind,0.23839570238694585,Tievebrack wind,0.23839570238694296,2.886579864025407e-15,False
+2030-01-14 10:00:00,5041-17010-2,Srananagh 220,Cathaleen's Fall,-210.0,210.0,1.0,-1,Ardnagappary wind,0.23839570238694585,Tievebrack wind,0.23839570238694296,2.886579864025407e-15,False
+2030-01-14 11:00:00,5041-17010-2,Srananagh 220,Cathaleen's Fall,-210.0,210.0,1.0,-1,Ardnagappary wind,0.23839570238694585,Tievebrack wind,0.23839570238694296,2.886579864025407e-15,False
+2030-01-14 15:00:00,5041-17010-2,Srananagh 220,Cathaleen's Fall,-210.0,210.0,1.0,-1,Ardnagappary wind,0.23839570238694585,Tievebrack wind,0.23839570238694296,2.886579864025407e-15,False
+2030-01-14 17:00:00,5041-17010-2,Srananagh 220,Cathaleen's Fall,-210.0,210.0,1.0,-1,Ardnagappary wind,0.23839570238694585,Tievebrack wind,0.23839570238694296,2.886579864025407e-15,False
+2030-01-14 23:00:00,5041-17010-2,Srananagh 220,Cathaleen's Fall,-210.0,210.0,1.0,-1,Ardnagappary wind,0.23839570238694585,Tievebrack wind,0.23839570238694296,2.886579864025407e-15,False
+2030-01-15 00:00:00,5041-17010-2,Srananagh 220,Cathaleen's Fall,-210.0,210.0,1.0,-1,Ardnagappary wind,0.23839570238694585,Tievebrack wind,0.23839570238694296,2.886579864025407e-15,False
+2030-01-15 01:00:00,5041-17010-2,Srananagh 220,Cathaleen's Fall,-210.0,210.0,1.0,-1,Ardnagappary wind,0.23839570238694585,Tievebrack wind,0.23839570238694296,2.886579864025407e-15,False
+2030-01-15 02:00:00,5041-17010-2,Srananagh 220,Cathaleen's Fall,-210.0,210.0,1.0,-1,Ardnagappary wind,0.23839570238694585,Tievebrack wind,0.23839570238694296,2.886579864025407e-15,False
+2030-01-15 03:00:00,5041-17010-2,Srananagh 220,Cathaleen's Fall,-210.0,210.0,1.0,-1,Ardnagappary wind,0.23839570238694585,Tievebrack wind,0.23839570238694296,2.886579864025407e-15,False
+2030-01-15 04:00:00,5041-17010-2,Srananagh 220,Cathaleen's Fall,-210.0,210.0,1.0,-1,Ardnagappary wind,0.23839570238694585,Tievebrack wind,0.23839570238694296,2.886579864025407e-15,False
+2030-01-15 05:00:00,5041-17010-2,Srananagh 220,Cathaleen's Fall,-210.0,210.0,1.0,-1,Ardnagappary wind,0.23839570238694585,Tievebrack wind,0.23839570238694296,2.886579864025407e-15,False

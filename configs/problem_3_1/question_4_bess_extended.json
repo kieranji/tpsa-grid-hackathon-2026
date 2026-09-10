@@ -1,0 +1,8 @@
+{
+  "assumptions_status": "illustrative_extended_bess_sizing_not_market_quotes",
+  "years": 20,
+  "designs": {
+    "bess_mw_mwh": [[25,50],[25,100],[50,100],[50,200],[75,300],[90,440],[100,400],[150,600]],
+    "maintenance_policies": ["replace"]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "q32_model_version": "1.0.0",
+  "created_utc": "2026-09-10T04:39:09.409605+00:00",
+  "mode": "full",
+  "config": {
+    "scenario": "WP2033",
+    "scope": "all-island",
+    "primary_reference": "load",
+    "comparison_reference": "uniform",
+    "near_congestion_threshold_pu": 0.9,
+    "binding_threshold_pu": 0.999,
+    "constraint_group_threshold": 0.05,
+    "mode_merge_jaccard_threshold": 0.8,
+    "mode_merge_cosine_threshold": 0.98,
+    "maximum_zones_per_component": 8,
+    "nonlocal_minimum_distance_km": 150.0,
+    "nonlocal_minimum_cosine_similarity": 0.95,
+    "nonlocal_pair_limit": 100,
+    "lpf_validation_bus_count": 6,
+    "lpf_delta_mw": 1.0,
+    "lpf_tolerance": 1e-06,
+    "q5_result_csv": "results/problem_3_1/question_5_final/03_target_line_ranking.csv",
+    "q5_target_line": "5041-17010-2",
+    "q3_dlr_csv": "results/problem_3_1/question_3_final/tables/06_selected_dlr_multipliers.csv",
+    "q6_result_dir": "results/problem_3_1/question_6_final_20260910_v2"
+  },
+  "network": {
+    "scenario": "WP2033",
+    "scope": "all-island",
+    "source": "/workspaces/tpsa-grid-hackathon-2026/data/participant-kit/networks/WP2033_all-island.nc",
+    "source_sha256": "58cf5260839c43d9c49cdb25a7e019c7ccce771732ef5f8dfc585da0fe447164",
+    "buses": 754,
+    "lines": 755,
+    "transformers": 225,
+    "links": 4,
+    "passive_branches": 980,
+    "passive_ac_components": 4,
+    "snapshots": 168
+  },
+  "results": {
+    "directional_mode_count": 16,
+    "overlapping_membership_count": 2168,
+    "buses_in_any_constraint_group": 746,
+    "maximum_groups_per_bus": 8,
+    "merged_constraint_group_count": 16,
+    "response_zone_count": 5,
+    "nonlocal_similar_pair_count": 100
+  },
+  "numerical_checks": {
+    "dispatch_status": "ok",
+    "dispatch_condition": "optimal",
+    "all_lpf_checks_passed": true,
+    "maximum_lpf_absolute_error": 6.035588695496585e-13,
+    "maximum_north_west_q5_recalculation_error": 8.326672684688674e-17,
+    "maximum_centered_reference_response_change": 1.1102230246251565e-16,
+    "all_buses_have_exactly_one_response_zone": true
+  },
+  "validation_buses": [
+    "35862",
+    "89516",
+    "89517",
+    "89510",
+    "89515",
+    "1541"
+  ],
+  "packages": {
+    "python": "3.12.1",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "scipy": "1.18.1",
+    "pypsa": "1.3.0"
+  },
+  "code_sha256": "ea5745dd693873921f52ccb69a5444e97cc5356970c3c246d19d9ac521c7b7f3",
+  "git": {
+    "branch": "problem/3.1-north-west-analysis",
+    "commit": "8c506d655ba9e4df6b2bd9ac1869d625c89a359b",
+    "dirty": true
+  }
+}

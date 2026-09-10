@@ -1,0 +1,11 @@
+line,generator,bus,network_hops,p_nom_mw,proxy_weight,selection
+5041-17010-2,Corderry wind,Corderry,1,161.603,80.8015,local
+5041-17010-2,Clogher wind,Clogher,1,98.25,49.125,local
+5041-17010-2,Croaghonagh wind,Croaghonagh,2,139.2,46.4,local
+5041-17010-2,Cathaleen's Fall wind,Cathaleen's Fall,0,55.0,55.0,local
+5041-17010-2,Binbane wind,Binbane,1,89.3,44.65,local
+5041-17010-2,Letterkenny wind,Letterkenny,2,90.77000000000001,30.25666666666667,local
+5041-17010-2,Drumkeen wind,Drumkeen,2,84.96,28.319999999999997,local
+5041-17010-2,Glenree wind,Glenree,2,77.3,25.766666666666666,local
+5041-17010-2,Sligo wind,Sligo,1,52.529999999999994,26.264999999999997,local
+5041-17010-2,Tievebrack wind,Tievebrack,2,29.9,9.966666666666667,local

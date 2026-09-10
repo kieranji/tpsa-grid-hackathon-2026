@@ -1,0 +1,15 @@
+wind_farm,nearest_substation,target_line,q5_reported_north_west_ptdf,q32_recalculated_north_west_ptdf,north_west_absolute_error,q32_all_island_ptdf,all_island_minus_north_west_ptdf,interpretation
+Corderry wind,Corderry,5041-17010-2,0.5787987642873462,0.5787987642873462,0.0,,,North-West equality is a code-consistency check; the all-island value may differ because model scope and topology differ
+Glenree wind,Glenree,5041-17010-2,0.5787987642873477,0.5787987642873477,0.0,,,North-West equality is a code-consistency check; the all-island value may differ because model scope and topology differ
+Sligo wind,Sligo,5041-17010-2,0.5787987642873477,0.5787987642873477,0.0,,,North-West equality is a code-consistency check; the all-island value may differ because model scope and topology differ
+Ardnagappary wind,Ardnagappary,5041-17010-2,-0.2383957023869458,-0.23839570238694588,8.326672684688674e-17,,,North-West equality is a code-consistency check; the all-island value may differ because model scope and topology differ
+Binbane wind,Binbane,5041-17010-2,-0.2383957023869426,-0.23839570238694266,5.551115123125783e-17,,,North-West equality is a code-consistency check; the all-island value may differ because model scope and topology differ
+Cathaleen's Fall wind,Cathaleen's Fall,5041-17010-2,-0.2383957023869412,-0.23839570238694127,8.326672684688674e-17,,,North-West equality is a code-consistency check; the all-island value may differ because model scope and topology differ
+Clogher wind,Clogher,5041-17010-2,-0.2383957023869408,-0.23839570238694086,5.551115123125783e-17,,,North-West equality is a code-consistency check; the all-island value may differ because model scope and topology differ
+Croaghonagh wind,Croaghonagh,5041-17010-2,-0.2383957023869407,-0.23839570238694077,8.326672684688674e-17,,,North-West equality is a code-consistency check; the all-island value may differ because model scope and topology differ
+Drumkeen wind,Drumkeen,5041-17010-2,-0.2383957023869402,-0.2383957023869402,0.0,,,North-West equality is a code-consistency check; the all-island value may differ because model scope and topology differ
+Letterkenny wind,Letterkenny,5041-17010-2,-0.23839570238694,-0.23839570238694,0.0,,,North-West equality is a code-consistency check; the all-island value may differ because model scope and topology differ
+Sorne Hill wind,Sorne Hill,5041-17010-2,-0.2383957023869395,-0.23839570238693952,2.7755575615628914e-17,,,North-West equality is a code-consistency check; the all-island value may differ because model scope and topology differ
+Tievebrack wind,Tievebrack,5041-17010-2,-0.238395702386943,-0.238395702386943,0.0,,,North-West equality is a code-consistency check; the all-island value may differ because model scope and topology differ
+Trillick wind,Trillick,5041-17010-2,-0.2383957023869395,-0.2383957023869395,0.0,,,North-West equality is a code-consistency check; the all-island value may differ because model scope and topology differ
+Moy wind,Moy,5041-17010-2,0.0,0.0,0.0,,,North-West equality is a code-consistency check; the all-island value may differ because model scope and topology differ

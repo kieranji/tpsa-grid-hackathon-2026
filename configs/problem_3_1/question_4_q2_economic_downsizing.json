@@ -1,0 +1,48 @@
+{
+  "assumptions_status": "illustrative_q2_derived_economic_downsizing_not_market_quotes",
+  "years": 20,
+  "designs": {
+    "wind_mw": [],
+    "bess_mw_mwh": [
+      [
+        22.5,
+        110
+      ],
+      [
+        45,
+        220
+      ],
+      [
+        62.22,
+        226.92
+      ],
+      [
+        67.5,
+        330
+      ],
+      [
+        85,
+        310
+      ],
+      [
+        90,
+        440
+      ]
+    ],
+    "hybrid_wind_bess_mw_mwh": [],
+    "maintenance_policies": [
+      "replace"
+    ],
+    "bess_portfolios": [
+      {
+        "label": "q2-final-single-site",
+        "sites": [
+          "Croaghonagh"
+        ],
+        "allocations": [
+          1
+        ]
+      }
+    ]
+  }
+}

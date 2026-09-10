@@ -1,0 +1,9 @@
+# Preserve byte-level provenance on Windows and Linux. These inputs/results carry
+# SHA256 checksums; automatic CRLF conversion would invalidate the snapshot.
+/data/market/** -text
+/src/bess_market/** -text
+/scripts/** -text
+/configs/bess_market_public_benchmarks.json -text
+/results/bess_market_public_benchmarks/** -text
+/results/bess_duration_sensitivity/** -text
+/results/network_validation/** -text

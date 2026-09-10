@@ -1,0 +1,2 @@
+permutation,seed,priority_generators,priority_capacity_mw,wind_dispatch_down_mwh,physical_generator_cost_eur,unserved_mwh
+1,42,Cathaleen's Fall wind;Corderry wind;Moy wind;Sligo wind,305.133,696.3733535705701,-841361.760720219,0.0

@@ -1,0 +1,19 @@
+line,bus0,bus1,rating_mva,length_km,x_ohm,x_per_km,inferred_asset_type,wind_cooling_dlr_eligible
+1571-5191-1,Ardnagappary,Tievebrack,91.0,35.0,14.568399999999999,0.41623999999999994,overhead_like,True
+1341-1701-1,Binbane,Cathaleen's Fall,210.0,34.3,13.4915,0.3933381924198251,overhead_like,True
+1341-5191-1,Binbane,Tievebrack,159.0,23.2,9.3654,0.4036810344827586,overhead_like,True
+2870-17010-1,Clogher,Cathaleen's Fall,209.0,26.07,10.691076,0.41009113924050633,overhead_like,True
+1701-28712-2,Cathaleen's Fall,Clogher,210.0,25.74,10.691076,0.415348717948718,overhead_like,True
+1701-5041-1,Cathaleen's Fall,Srananagh 220,191.0,52.63,21.6227,0.41084362530875923,overhead_like,True
+5041-17010-2,Srananagh 220,Cathaleen's Fall,210.0,49.67,19.3479,0.3895288906784779,overhead_like,True
+28710-51911-1,Clogher,Croaghonagh,183.0,9.61,0.968,0.10072840790842873,cable_like,False
+2321-28710-1,Drumkeen,Clogher,123.0,27.0,10.998899999999999,0.40736666666666665,overhead_like,True
+3581-28019-1,Letterkenny,Clogher,121.0,38.4,15.923599999999999,0.4146770833333333,overhead_like,True
+1631-5041-1,Corderry,Srananagh 220,210.0,12.7,5.287700000000001,0.4163543307086615,overhead_like,True
+2321-3581-1,Drumkeen,Letterkenny,123.0,8.35,3.3396,0.39995209580838326,overhead_like,True
+1931-4371-1,Sligo,Glenree,210.0,26.29,10.940456999999999,0.4161451882845188,overhead_like,True
+3591-5191-1,Letterkenny,Tievebrack,159.0,33.13,13.3826,0.40394204648354964,overhead_like,True
+3581-5361-1,Letterkenny,Trillick,123.0,34.05,14.152764999999999,0.41564654919236416,overhead_like,True
+4981-5041-1,Sligo,Srananagh 220,123.0,10.77,4.4891000000000005,0.4168152274837512,overhead_like,True
+4981-5041-2,Sligo,Srananagh 220,123.0,11.19,4.622199999999999,0.413065236818588,overhead_like,True
+4991-5361-1,Sorne Hill,Trillick,123.0,4.4,1.8392,0.4179999999999999,overhead_like,True

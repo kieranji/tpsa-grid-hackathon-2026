@@ -1,0 +1,39 @@
+## problem/3.1-north-west-analysis...origin/problem/3.1-north-west-analysis
+ M results/problem_3_1/question_2/tables/04_single_site_screening.csv
+ M results/problem_3_1/question_2/tables/05_two_site_screening.csv
+ M results/problem_3_1/question_2/tables/06_theoretical_sizing_trials.csv
+ M results/problem_3_1/question_2/tables/07_health_aware_sizing_trials.csv
+ M results/problem_3_1/question_2/tables/09_health_aware_pareto_frontier.csv
+ M results/problem_3_1/question_2/tables/10_recommendation_summary.csv
+ M results/problem_3_1/question_2/tables/_trial_cache.csv
+ M src/problem_3_1/constrained_lines.py
+ M src/problem_3_1/question_2_battery_siting_sizing.py
+ M src/problem_3_1/question_3_dynamic_line_rating.py
+?? .codex_work/
+?? check_parallel_lines.py
+?? configs/
+?? requirements-q4.txt
+?? results/problem_3_1/question_1_final/
+?? results/problem_3_1/question_2_final/
+?? results/problem_3_1/question_3_final/
+?? results/problem_3_1/question_4_distributed_bess_168h_20260910/
+?? results/problem_3_1/question_4_distributed_bess_gap005_168h_20260910/
+?? results/problem_3_1/question_4_distributed_bess_strict_45mw_168h_20260910/
+?? results/problem_3_1/question_4_distributed_smoke_final_20260910/
+?? results/problem_3_1/question_4_economic_downsizing_168h_20260910/
+?? results/problem_3_1/question_4_economic_downsizing_dlr_168h_20260910/
+?? results/problem_3_1/question_4_final_comparison_20260910/
+?? results/problem_3_1/question_4_final_comparison_20260910_v2/
+?? results/problem_3_1/question_4_final_comparison_20260910_v3/
+?? results/problem_3_1/question_4_smoke/
+?? results/problem_3_1/question_4_smoke_final_20260910/
+?? results/problem_3_1/question_5_final/
+?? results/problem_3_1/question_5_smoke_20260910/
+?? results/problem_3_1/validation/
+?? results/problem_3_1/verification_20260909T154123Z/
+?? src/problem_3_1/q4_techno_economic/
+?? src/problem_3_1/q5_shift_factors/
+?? src/problem_3_1/question_4_compare_results.py
+?? src/problem_3_1/question_4_techno_economics.py
+?? src/problem_3_1/question_5_shift_factors.py
+?? tests/

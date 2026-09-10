@@ -1,0 +1,19 @@
+component,branch,bus0,bus1,peak_loading_pu,binding_hours
+Line,1571-5191-1,Ardnagappary,Tievebrack,0.27938792948669,0.0
+Line,1341-1701-1,Binbane,Cathaleen's Fall,0.4192849385577262,0.0
+Line,1341-5191-1,Binbane,Tievebrack,0.3716829001808272,0.0
+Line,2870-17010-1,Clogher,Cathaleen's Fall,0.5140952865320131,0.0
+Line,1701-28712-2,Cathaleen's Fall,Clogher,0.5116472137390035,0.0
+Line,1701-5041-1,Cathaleen's Fall,Srananagh 220,0.24595171057990084,0.0
+Line,5041-17010-2,Srananagh 220,Cathaleen's Fall,1.0,69.0
+Line,28710-51911-1,Clogher,Croaghonagh,0.6749610524533607,0.0
+Line,2321-28710-1,Drumkeen,Clogher,0.48511355161771913,0.0
+Line,3581-28019-1,Letterkenny,Clogher,0.45914873514639676,0.0
+Line,1631-5041-1,Corderry,Srananagh 220,0.7253482122984465,0.0
+Line,2321-3581-1,Drumkeen,Letterkenny,0.5559655097222022,0.0
+Line,1931-4371-1,Sligo,Glenree,0.6139339341536177,0.0
+Line,3591-5191-1,Letterkenny,Tievebrack,0.28579506834652885,0.0
+Line,3581-5361-1,Letterkenny,Trillick,0.6398080398445621,0.0
+Line,4981-5041-1,Sligo,Srananagh 220,0.5842694124670964,0.0
+Line,4981-5041-2,Sligo,Srananagh 220,0.5674449005897717,0.0
+Line,4991-5361-1,Sorne Hill,Trillick,0.4613280474038522,0.0

@@ -1,0 +1,11 @@
+{
+  "renewable_available_mwh": 13576.43923744339,
+  "renewable_dispatched_mwh": 12880.065883872818,
+  "renewable_dispatch_down_mwh": 696.3733535705701,
+  "project_wind_available_mwh": 0.0,
+  "battery_loss_mwh": 0.0,
+  "unserved_mwh": 0.0,
+  "generator_dispatch_cost_eur": -841361.760720219,
+  "max_passive_loading_pu": 1.0,
+  "binding_branch_hours": 13.0
+}

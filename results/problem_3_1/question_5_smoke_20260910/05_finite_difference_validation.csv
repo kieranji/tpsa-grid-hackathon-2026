@@ -1,0 +1,4 @@
+wind_farm,nearest_substation,source_ac_component,monitored_line,delta_mw,analytical_shift_factor,lpf_finite_difference_shift_factor,error,absolute_error,tolerance,passed
+Moy wind,Moy,0,5041-17010-2,1.0,0.0,0.0,0.0,0.0,1e-07,True
+Corderry wind,Corderry,1,5041-17010-2,1.0,0.5787987642873462,0.5787987642873486,2.3314683517128287e-15,2.3314683517128287e-15,1e-07,True
+Clogher wind,Clogher,1,5041-17010-2,1.0,-0.23839570238694086,-0.23839570238694097,-1.1102230246251565e-16,1.1102230246251565e-16,1e-07,True

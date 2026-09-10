@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "tolerance_mw": 0.0001,
+  "max_internal_flow_error_mw": 6.746603276042151e-11,
+  "max_implicit_slack_adjustment_mw": 1.1316636516767176e-10,
+  "source_snapshots": 168,
+  "buses": 38,
+  "lines": 40,
+  "transformers": 2,
+  "connected_components": 1,
+  "claim": "fixed-dispatch electrical replay only",
+  "site_connection_and_merchant_dispatch_validated": false,
+  "source_network": "C:\\Users\\JIZH\\Documents\\Codex\\2026-09-10\\https-github-com-kieranji-tpsa-grid\\work\\project\\data\\participant-kit\\networks\\WP2033_all-island.nc",
+  "source_file_sha256": "58cf5260839c43d9c49cdb25a7e019c7ccce771732ef5f8dfc585da0fe447164",
+  "source_input_sha256": "57a5308477b38ea9b48aed1578e5f78b18c36c34eb6b942171d1eed9702fe3cd",
+  "source_objective": 24824226.54538458,
+  "contains_firlough": true,
+  "contains_srananagh_110_and_220": true
+}

@@ -1,0 +1,4 @@
+wind_farm,nearest_substation,mapping_method,carrier,installed_capacity_mw,substation_voltage_kv,longitude,latitude
+Moy wind,Moy,official_model_generator_bus_assignment,wind,36.0,110.0,-9.195397150000002,54.1403967
+Corderry wind,Corderry,official_model_generator_bus_assignment,wind,161.603,110.0,-8.1950632,54.17466345
+Clogher wind,Clogher,official_model_generator_bus_assignment,wind,98.25,110.0,-7.974266485714286,54.68384601428571

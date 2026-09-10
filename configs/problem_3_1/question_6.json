@@ -1,0 +1,45 @@
+{
+  "scenario": "WP2033",
+  "scope": "north-west",
+  "wind_carriers": ["wind"],
+  "binding_threshold": 0.999,
+  "hotspot_threshold": 0.999,
+  "lexicographic_tolerance_mwh": 0.00001,
+  "solver_time_limit_s": 180.0,
+  "priority_assignment": {
+    "mode": "illustrative",
+    "priority_generators": [
+      "Ardnagappary wind",
+      "Binbane wind",
+      "Croaghonagh wind",
+      "Drumkeen wind"
+    ],
+    "csv": null,
+    "require_verified": false,
+    "source": "illustrative_q4_site_priority_scenario",
+    "assumption_note": "Q4 candidate-site wind farms are marked priority only to test the mechanism; this is not verified legal status."
+  },
+  "counterfactuals": {
+    "relaxed_rating_multiplier": 1000.0,
+    "permutation_count": 4,
+    "permutation_seed": 42,
+    "leave_one_out": true,
+    "line_relaxation_count": 3,
+    "line_relaxation_multiplier": 1000.0
+  },
+  "q3_dlr_csv": "results/problem_3_1/question_3_final/tables/06_selected_dlr_multipliers.csv",
+  "q4_economic_bridge": {
+    "size_run": "results/problem_3_1/question_4_economic_downsizing_168h_20260910",
+    "distributed_run": "results/problem_3_1/question_4_distributed_bess_strict_45mw_168h_20260910",
+    "size_pairs_mw_mwh": [
+      [22.5, 110.0],
+      [45.0, 220.0],
+      [67.5, 330.0],
+      [90.0, 440.0]
+    ],
+    "annual_hours": 8760.0,
+    "energy_value_eur_mwh": 70.0,
+    "years": 20,
+    "real_discount_rate": 0.07
+  }
+}

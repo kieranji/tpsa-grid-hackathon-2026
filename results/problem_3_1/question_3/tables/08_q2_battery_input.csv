@@ -1,0 +1,2 @@
+source,sites,allocations,power_mw,nameplate_energy_mwh,usable_energy_mwh,soc_min_pct,soc_max_pct,round_trip_efficiency_pct,state_of_health_pct,max_efc_per_day
+/workspaces/tpsa-grid-hackathon-2026/results/problem_3_1/question_2/tables/10_recommendation_summary.csv,Croaghonagh,1.000000,90.0,440.0,281.6,10.0,90.0,90.0,80.0,1.0

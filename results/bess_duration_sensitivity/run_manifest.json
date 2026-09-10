@@ -1,0 +1,275 @@
+{
+  "study": "three_point_energy_duration_sensitivity_at_fixed_85_MW",
+  "source_sha256": {
+    "src\\bess_market\\pipeline.py": "3155e1191cb6b1f19d0ef7ef4e2b0fbf4b04ffca40327f8062d4f5751781a044",
+    "src\\bess_market\\dispatch.py": "d62223b3c10ed9c7f261c6ce6592899ee28722b9acdd07402204c6a993eca3f6",
+    "src\\bess_market\\finance.py": "e93993faae5a90ec38e0ae010591f92e046c3b5d4b843d7823ff3ce42b11d018",
+    "configs\\bess_market_public_benchmarks.json": "77b49709bff910d8b76dd104b79b3ceec8559b242e445bcf3ed8de16e66589ab",
+    "data\\market\\ireland_cpi_monthly.csv": "40adf620484be388becf2d007e093b9d8df4cb59a6dad2940249b5e963086083",
+    "scripts\\bess_duration_sensitivity.py": "f3e781b09c0755491dcc77834c351996faff3a9e6d37c3378665d850ba82e134",
+    "data\\market\\semopx_dam_recent.csv": "e09c210fbc61de192302cf4ed33d3a7711e169ed8281ee00f81163d4ea777b12"
+  },
+  "config": {
+    "as_of": "2026-09-10",
+    "planning_commissioning_year": 2033,
+    "money_basis": "constant_2024_EUR",
+    "lifetime_years": 15,
+    "real_discount_rate": 0.07,
+    "battery": {
+      "power_mw": 85.0,
+      "energy_dc_mwh": 310.0,
+      "soc_min": 0.1,
+      "soc_max": 0.9,
+      "round_trip_efficiency": 0.85,
+      "capability_fraction": 0.97,
+      "max_efc_per_day": 1.0,
+      "wear_bid_eur_per_mwh_throughput": 2.0,
+      "execution_fee_eur_per_mwh": 1.0,
+      "import_adder_eur_per_mwh": 3.0,
+      "reserve_duration_hours": 1.0,
+      "reserve_activation_fraction_each_way": 0.01,
+      "reserve_payment_capture": 0.9,
+      "crm_delivery_hours": 4.0
+    },
+    "cost_basis": {
+      "nrel_2024_energy_usd_per_usable_ac_kwh": 241,
+      "nrel_2024_power_usd_per_kw": 372,
+      "nrel_2024_four_hour_usd_per_usable_ac_kwh": 334,
+      "usd_per_eur_2024_average": 1.082,
+      "fixed_opex_fraction_of_installed_plant": 0.04,
+      "fixed_opex_includes_augmentation": true,
+      "end_of_life_decommission_fraction": 0.03,
+      "house_load_and_incremental_fees_eur_year": 100000,
+      "scope": "US installed cost benchmark scaled by inferred duration split; Ireland uplift, connection allowance, discount rate and house load are analyst sensitivities, not quotes"
+    },
+    "cost_scenarios": {
+      "low_cost": {
+        "nrel_2033_usd_per_ac_kwh_4h": 171,
+        "ireland_installation_multiplier": 1.0,
+        "connection_allowance_eur2024": 2000000,
+        "gtuos_eur2026_per_kw_year": 10.2533
+      },
+      "reference_cost": {
+        "nrel_2033_usd_per_ac_kwh_4h": 257,
+        "ireland_installation_multiplier": 1.15,
+        "connection_allowance_eur2024": 5000000,
+        "gtuos_eur2026_per_kw_year": 11.2269
+      },
+      "high_cost": {
+        "nrel_2033_usd_per_ac_kwh_4h": 345,
+        "ireland_installation_multiplier": 1.3,
+        "connection_allowance_eur2024": 10000000,
+        "gtuos_eur2026_per_kw_year": 11.8005
+      }
+    },
+    "market_cases": [
+      {
+        "name": "energy_only",
+        "reserve_eur2024_per_mw_h": 0,
+        "capacity_reference": null
+      },
+      {
+        "name": "capacity_t1_reference",
+        "reserve_eur2024_per_mw_h": 0,
+        "capacity_reference": "2026_2027_T1"
+      },
+      {
+        "name": "capacity_t4_reference",
+        "reserve_eur2024_per_mw_h": 0,
+        "capacity_reference": "2029_2030_T4"
+      },
+      {
+        "name": "services_2",
+        "reserve_eur2024_per_mw_h": 2,
+        "capacity_reference": null
+      },
+      {
+        "name": "services_4",
+        "reserve_eur2024_per_mw_h": 4,
+        "capacity_reference": null
+      },
+      {
+        "name": "services_6",
+        "reserve_eur2024_per_mw_h": 6,
+        "capacity_reference": null
+      },
+      {
+        "name": "stack_t1_services4",
+        "reserve_eur2024_per_mw_h": 4,
+        "capacity_reference": "2026_2027_T1"
+      },
+      {
+        "name": "stack_t4_services4",
+        "reserve_eur2024_per_mw_h": 4,
+        "capacity_reference": "2029_2030_T4"
+      }
+    ],
+    "capacity_award_fraction_if_conditional": 1.0,
+    "capacity_strike_eur2024_mwh_sensitivity": 500,
+    "contract_term_cases_years": [
+      1,
+      15
+    ],
+    "secured_capacity_and_service_revenue_eur": 0,
+    "forward_energy_pattern_repeat_is_sensitivity": true,
+    "system_savings_added_to_cashflow": false,
+    "ds3_legacy_tariffs_used_for_2033": false,
+    "notes": [
+      "One EFC/day follows the operating premise behind the NREL maintained-capacity FOM benchmark; commercial warranty still required.",
+      "15-year case repeats assumed awards/service prices; no 15-year FASS contract or capacity renewal is claimed.",
+      "Strike 500 is a disclosed sensitivity, not an official future CRM strike formula. DA proxy difference charges cannot reproduce imbalance settlement.",
+      "Capacity headroom and four-hour energy reserve are protected at every interval, an intentionally conservative availability stress policy.",
+      "Year-one cash includes only specified conditional awards. No tolling, balancing uplift, local flexibility, carbon credits, loss savings or curtailment credit without a priced contract."
+    ]
+  },
+  "dataset": {
+    "price_file_sha256": "e09c210fbc61de192302cf4ed33d3a7711e169ed8281ee00f81163d4ea777b12",
+    "start_utc": "2025-09-11 22:00:00+00:00",
+    "end_utc_exclusive": "2026-09-09 22:00:00+00:00",
+    "observed_hours": 8712.0,
+    "cpi_proxy_hours": 216.0,
+    "actual_price_gaps_filled": false,
+    "current_money_deflation_factor": 0.9376163873370577
+  },
+  "energy_dc_mwh_candidates": [
+    170,
+    310,
+    510
+  ],
+  "cases": [
+    {
+      "name": "energy_only",
+      "reserve_eur2024_per_mw_h": 0,
+      "capacity_reference": null
+    },
+    {
+      "name": "stack_t4_services4",
+      "reserve_eur2024_per_mw_h": 4,
+      "capacity_reference": "2029_2030_T4"
+    }
+  ],
+  "policies": [
+    "causal",
+    "daily_oracle"
+  ],
+  "conditional_contract_term_years": 15,
+  "maintained_capacity_by_inclusive_augmentation_assumption": true,
+  "system_benefits_included_in_project_cashflow": false,
+  "no_build_npv_eur": 0,
+  "all_sizes_or_locations_optimized": false,
+  "repeated_historical_pattern_is_not_forward_forecast": true,
+  "capacity_and_services_secured_eur": 0,
+  "source_dispatches": [
+    {
+      "energy_dc_mwh": 170,
+      "policy": "causal",
+      "case": "energy_only",
+      "provenance": "fresh_run",
+      "dispatch_path_without_suffix": "results\\bess_duration_sensitivity\\dispatch_170_causal_energy_only_12662522cce0cba578ab",
+      "summary_sha256": "612ea6b20baa8774c95e4a26c1ef55131c2f606c238843f3c905e2dafa4d48e2",
+      "dispatch_sha256": "43efec66ea35e616ff69ed357d5e1fec7ecdad7f0bb5d337d025bf502f441ae5"
+    },
+    {
+      "energy_dc_mwh": 170,
+      "policy": "causal",
+      "case": "stack_t4_services4",
+      "provenance": "fresh_run",
+      "dispatch_path_without_suffix": "results\\bess_duration_sensitivity\\dispatch_170_causal_stack_t4_services4_c34d5f82debcc73298f1",
+      "summary_sha256": "42720db9c6062eba45439148e01439dee325cd210a55cd14f4c7211e458281c6",
+      "dispatch_sha256": "fadb45518f60af22d941a3960b948233b0b407538244583180f924a916b5148c"
+    },
+    {
+      "energy_dc_mwh": 170,
+      "policy": "daily_oracle",
+      "case": "energy_only",
+      "provenance": "fresh_run",
+      "dispatch_path_without_suffix": "results\\bess_duration_sensitivity\\dispatch_170_daily_oracle_energy_only_6c82fd7b3e6d30a444af",
+      "summary_sha256": "003fc10fb221a4d99117b025db69cfd32dbcd88bae6e7180ead9d2e6e12825e5",
+      "dispatch_sha256": "9f8bd3acebd3449cf68e647e9eb62d56c6b1b9f49ccaedfee572d4f8e8df772b"
+    },
+    {
+      "energy_dc_mwh": 170,
+      "policy": "daily_oracle",
+      "case": "stack_t4_services4",
+      "provenance": "fresh_run",
+      "dispatch_path_without_suffix": "results\\bess_duration_sensitivity\\dispatch_170_daily_oracle_stack_t4_services4_59a7a8a12295f622f535",
+      "summary_sha256": "79962c5123e1a0821f9c013ebac432737b30f4402c781c73fafd68f2833d9419",
+      "dispatch_sha256": "e7424006e271d743555dd4fcd40cc22a692a77b8eee301b9d99f5ca0f46591d5"
+    },
+    {
+      "energy_dc_mwh": 510,
+      "policy": "causal",
+      "case": "energy_only",
+      "provenance": "fresh_run",
+      "dispatch_path_without_suffix": "results\\bess_duration_sensitivity\\dispatch_510_causal_energy_only_a9a19a8aae86cea9bdc4",
+      "summary_sha256": "d5c11ef29727e6226f5ba87d78acb435ec8f084d7954ba4fab740aaa2781b34b",
+      "dispatch_sha256": "85bfb39cb6ccd6002e79dba1122cad7160710664a89df8ded092f4361ddf8616"
+    },
+    {
+      "energy_dc_mwh": 510,
+      "policy": "causal",
+      "case": "stack_t4_services4",
+      "provenance": "fresh_run",
+      "dispatch_path_without_suffix": "results\\bess_duration_sensitivity\\dispatch_510_causal_stack_t4_services4_686a8d236707de5f25e8",
+      "summary_sha256": "32a33b4f9637c6731e0c98bb888039db725e81b93c6f0810ff9fddba3ebc3ff1",
+      "dispatch_sha256": "2ee669a1599d4e2055b79cb88b74f162998ed9952505225b3041a7bd98cc79cd"
+    },
+    {
+      "energy_dc_mwh": 510,
+      "policy": "daily_oracle",
+      "case": "energy_only",
+      "provenance": "fresh_run",
+      "dispatch_path_without_suffix": "results\\bess_duration_sensitivity\\dispatch_510_daily_oracle_energy_only_a58655621d93291054fc",
+      "summary_sha256": "a3e6c9044374e3dbb24761a3cadd91c959f707089c9497a5cb5db10f1826b53b",
+      "dispatch_sha256": "29990e5b6323500aae60c77df5d28a5f0cb121869d79371507b692f4f2de83e3"
+    },
+    {
+      "energy_dc_mwh": 510,
+      "policy": "daily_oracle",
+      "case": "stack_t4_services4",
+      "provenance": "fresh_run",
+      "dispatch_path_without_suffix": "results\\bess_duration_sensitivity\\dispatch_510_daily_oracle_stack_t4_services4_206eeb8b7710c90cf76f",
+      "summary_sha256": "da19b3c30b9135b367bf7dfe0859ad4d187b5bdc4d0a94a4dff84b7355272f44",
+      "dispatch_sha256": "86d0341184a8fa3777a1cc4bfe4dc90ba6b7c44d405d7d01a68b18e30b07808a"
+    },
+    {
+      "energy_dc_mwh": 310,
+      "policy": "causal",
+      "case": "energy_only",
+      "provenance": "fresh_run",
+      "dispatch_path_without_suffix": "results\\bess_duration_sensitivity\\dispatch_310_causal_energy_only_df52ff1f6fb0da939e5d",
+      "summary_sha256": "452d63189157132f3199273c9c5096aba2a3b343e09b965a5b193235fc2de168",
+      "dispatch_sha256": "28e225bcc91f6f02b9a6b92ce399ab4eb97e4d08d7bbdcf1aee9e49990f310c2"
+    },
+    {
+      "energy_dc_mwh": 310,
+      "policy": "causal",
+      "case": "stack_t4_services4",
+      "provenance": "fresh_run",
+      "dispatch_path_without_suffix": "results\\bess_duration_sensitivity\\dispatch_310_causal_stack_t4_services4_9eb8070b1928c1b41af5",
+      "summary_sha256": "3b1b93f151a22b12dc9dcf212dad80f9537895c5e686a895f6afab1178d11827",
+      "dispatch_sha256": "6dc522897d84eaf4d0f15a9f69886d3c6f33c4f7eabbd7ae9facedda14d091cd"
+    },
+    {
+      "energy_dc_mwh": 310,
+      "policy": "daily_oracle",
+      "case": "energy_only",
+      "provenance": "fresh_run",
+      "dispatch_path_without_suffix": "results\\bess_duration_sensitivity\\dispatch_310_daily_oracle_energy_only_90a5217bee8ebe449bab",
+      "summary_sha256": "de7817756a31c0c50c2d91ccc3fe815eb9c09173d4da4611e42fc03d0181b061",
+      "dispatch_sha256": "204bf29f0d3bb06444fb5eef90c08ab52ca09d90adc135cdac89c728098737ec"
+    },
+    {
+      "energy_dc_mwh": 310,
+      "policy": "daily_oracle",
+      "case": "stack_t4_services4",
+      "provenance": "fresh_run",
+      "dispatch_path_without_suffix": "results\\bess_duration_sensitivity\\dispatch_310_daily_oracle_stack_t4_services4_2c1f57c526769364b028",
+      "summary_sha256": "7fb79ca3a50a8cf7f9da5b24041c49e2c3a9d1a479b0f63e614e018047eeb744",
+      "dispatch_sha256": "41c4fd07da2ee8aacfa14e61bf1733a984b23b436f9217705b7875ecbfaaa91c"
+    }
+  ],
+  "completed_dispatch_cases": 12,
+  "financial_scenarios": 36,
+  "elapsed_seconds": 201.45777583122253
+}

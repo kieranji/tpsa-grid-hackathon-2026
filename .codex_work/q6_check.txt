@@ -1,0 +1,9 @@
+=== Q6 INPUT CHECK ===
+Network: WP2033 north-west | 15 buses, 18 lines, 0 transformers
+Snapshots: 168 | wind farms: 14
+Priority scenario: 4 priority / 10 non-priority
+Verified priority columns in official generator table: none
+STATUS LABEL: SCENARIO_CHOICE
+CHECK PASSED: exact generator IDs, DLR timestamps, Q4 linkage, and status provenance are valid.
+
+RC=0

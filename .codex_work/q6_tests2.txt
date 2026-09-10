@@ -1,0 +1,747 @@
+test_assignment_requires_exact_complete_generator_ids (test_q6_core.PriorityDispatchTests.test_assignment_requires_exact_complete_generator_ids) ... /workspaces/tpsa-grid-hackathon-2026/.venv/lib/python3.12/site-packages/pypsa/network/io.py:2082: FutureWarning: pandas infers the `str` dtype for string data since its version 3.0. PyPSA still converts it back to numpy object dtype on import, but will keep it from PyPSA 2.0 on. Set `pypsa.options.api.legacy_string_dtype` explicitly to suppress this warning.
+  new_static = _coerce_string_dtypes(new_static)
+ok
+test_binding_hotspot_uses_signed_directional_relief (test_q6_core.PriorityDispatchTests.test_binding_hotspot_uses_signed_directional_relief) ... WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['A', 'B', 'C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following generators have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['Wind A', 'Wind B', 'Backup', 'shed C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have zero r, which could break the linear load flow:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+/home/codespace/.python/current/lib/python3.12/contextlib.py:81: FutureWarning: The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+  return func(*args, **kwds)
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 18 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 19 duals
+Objective: -1.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 20 duals
+Objective: -1.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+ - time_limit: 180.0
+INFO:linopy.io: Writing time: 0.04s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 21 duals
+Objective: 1.00e+03
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Kirchhoff-Voltage-Law, Q6-fix-unserved-energy, Q6-fix-priority-wind-energy, Q6-fix-total-wind-energy were not assigned to the network.
+ok
+test_equal_ptdf_changes_allocation_not_total (test_q6_core.PriorityDispatchTests.test_equal_ptdf_changes_allocation_not_total) ... WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['A', 'B', 'C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following generators have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['Wind A', 'Wind B', 'Backup', 'shed C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have zero r, which could break the linear load flow:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+/home/codespace/.python/current/lib/python3.12/contextlib.py:81: FutureWarning: The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+  return func(*args, **kwds)
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 18 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 19 duals
+Objective: -1.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+ - time_limit: 180.0
+INFO:linopy.io: Writing time: 0.03s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 20 duals
+Objective: 1.00e+03
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Kirchhoff-Voltage-Law, Q6-fix-unserved-energy, Q6-fix-total-wind-energy were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['A', 'B', 'C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following generators have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['Wind A', 'Wind B', 'Backup', 'shed C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have zero r, which could break the linear load flow:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+/home/codespace/.python/current/lib/python3.12/contextlib.py:81: FutureWarning: The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+  return func(*args, **kwds)
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 18 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 19 duals
+Objective: -1.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 20 duals
+Objective: -1.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+ - time_limit: 180.0
+INFO:linopy.io: Writing time: 0.04s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 21 duals
+Objective: 1.00e+03
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Kirchhoff-Voltage-Law, Q6-fix-unserved-energy, Q6-fix-priority-wind-energy, Q6-fix-total-wind-energy were not assigned to the network.
+FAIL
+test_known_unequal_relief_case_has_exact_ten_mwh_inefficiency (test_q6_core.PriorityDispatchTests.test_known_unequal_relief_case_has_exact_ten_mwh_inefficiency) ... WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['A', 'B', 'C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following generators have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['Wind A', 'Wind B', 'Backup', 'shed C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have zero r, which could break the linear load flow:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+/home/codespace/.python/current/lib/python3.12/contextlib.py:81: FutureWarning: The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+  return func(*args, **kwds)
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 18 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 19 duals
+Objective: -2.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+ - time_limit: 180.0
+INFO:linopy.io: Writing time: 0.03s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 20 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Kirchhoff-Voltage-Law, Q6-fix-unserved-energy, Q6-fix-total-wind-energy were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['A', 'B', 'C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following generators have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['Wind A', 'Wind B', 'Backup', 'shed C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have zero r, which could break the linear load flow:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+/home/codespace/.python/current/lib/python3.12/contextlib.py:81: FutureWarning: The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+  return func(*args, **kwds)
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 18 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 19 duals
+Objective: -1.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 20 duals
+Objective: -1.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+ - time_limit: 180.0
+INFO:linopy.io: Writing time: 0.04s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 21 duals
+Objective: 1.00e+03
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Kirchhoff-Voltage-Law, Q6-fix-unserved-energy, Q6-fix-priority-wind-energy, Q6-fix-total-wind-energy were not assigned to the network.
+ok
+test_observed_mode_rejects_unverified_assignment (test_q6_core.PriorityDispatchTests.test_observed_mode_rejects_unverified_assignment) ... ok
+test_one_status_class_matches_neutral_total (test_q6_core.PriorityDispatchTests.test_one_status_class_matches_neutral_total) ... WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['A', 'B', 'C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following generators have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['Wind A', 'Wind B', 'Backup', 'shed C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have zero r, which could break the linear load flow:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+/home/codespace/.python/current/lib/python3.12/contextlib.py:81: FutureWarning: The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+  return func(*args, **kwds)
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 18 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 19 duals
+Objective: -2.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+ - time_limit: 180.0
+INFO:linopy.io: Writing time: 0.03s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 20 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Kirchhoff-Voltage-Law, Q6-fix-unserved-energy, Q6-fix-total-wind-energy were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['A', 'B', 'C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following generators have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['Wind A', 'Wind B', 'Backup', 'shed C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have zero r, which could break the linear load flow:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+/home/codespace/.python/current/lib/python3.12/contextlib.py:81: FutureWarning: The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+  return func(*args, **kwds)
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 18 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 19 duals
+Objective: -2.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 20 duals
+Objective: -2.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+ - time_limit: 180.0
+INFO:linopy.io: Writing time: 0.03s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 21 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Kirchhoff-Voltage-Law, Q6-fix-unserved-energy, Q6-fix-priority-wind-energy, Q6-fix-total-wind-energy were not assigned to the network.
+ok
+test_solution_reconciles_and_status_cost_is_not_booked (test_q6_core.PriorityDispatchTests.test_solution_reconciles_and_status_cost_is_not_booked) ... WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['A', 'B', 'C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following generators have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['Wind A', 'Wind B', 'Backup', 'shed C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have zero r, which could break the linear load flow:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+/home/codespace/.python/current/lib/python3.12/contextlib.py:81: FutureWarning: The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+  return func(*args, **kwds)
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 18 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 19 duals
+Objective: -1.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 20 duals
+Objective: -1.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+ - time_limit: 180.0
+INFO:linopy.io: Writing time: 0.03s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 21 duals
+Objective: 1.00e+03
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Kirchhoff-Voltage-Law, Q6-fix-unserved-energy, Q6-fix-priority-wind-energy, Q6-fix-total-wind-energy were not assigned to the network.
+ok
+test_uncongested_case_has_no_priority_technical_penalty (test_q6_core.PriorityDispatchTests.test_uncongested_case_has_no_priority_technical_penalty) ... WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['A', 'B', 'C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following generators have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['Wind A', 'Wind B', 'Backup', 'shed C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have zero r, which could break the linear load flow:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+/home/codespace/.python/current/lib/python3.12/contextlib.py:81: FutureWarning: The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+  return func(*args, **kwds)
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 18 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 19 duals
+Objective: -2.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+ - time_limit: 180.0
+INFO:linopy.io: Writing time: 0.03s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 20 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Kirchhoff-Voltage-Law, Q6-fix-unserved-energy, Q6-fix-total-wind-energy were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['A', 'B', 'C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following generators have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['Wind A', 'Wind B', 'Backup', 'shed C'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+WARNING:pypsa.consistency:The following lines have zero r, which could break the linear load flow:
+Index(['AC target', 'AB', 'BC'], dtype='object', name='name')
+/home/codespace/.python/current/lib/python3.12/contextlib.py:81: FutureWarning: The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+  return func(*args, **kwds)
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 18 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 19 duals
+Objective: -1.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 20 duals
+Objective: -2.00e+01
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:linopy.model: Solve problem using Highs solver
+INFO:linopy.model:Solver options:
+ - output_flag: False
+ - time_limit: 180.0
+INFO:linopy.io: Writing time: 0.03s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7 primals, 21 duals
+Objective: 0.00e+00
+Solver: highs
+Runtime: 0.00s
+MIP gap: inf
+Dual bound: 0.00e+00
+Solver model: available
+Solver message: Optimal
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Kirchhoff-Voltage-Law, Q6-fix-unserved-energy, Q6-fix-priority-wind-energy, Q6-fix-total-wind-energy were not assigned to the network.
+ok
+
+======================================================================
+FAIL: test_equal_ptdf_changes_allocation_not_total (test_q6_core.PriorityDispatchTests.test_equal_ptdf_changes_allocation_not_total)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspaces/tpsa-grid-hackathon-2026/tests/q6/test_q6_core.py", line 121, in test_equal_ptdf_changes_allocation_not_total
+    self.assertGreater(float(impacts["additional_dispatch_down_mwh"].abs().sum()), 1.0)
+AssertionError: 0.0 not greater than 1.0
+
+----------------------------------------------------------------------
+Ran 8 tests in 10.540s
+
+FAILED (failures=1)
+
+RC=1

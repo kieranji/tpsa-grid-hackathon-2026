@@ -1,0 +1,14 @@
+{
+  "source_file_sha256": "58cf5260839c43d9c49cdb25a7e019c7ccce771732ef5f8dfc585da0fe447164",
+  "bus": "51911",
+  "bus_mapping": "51911=CROAGHONAGH in the official source network",
+  "claim": "N-0 fixed-power accommodation with full-island redispatch in the supplied synthetic168h model",
+  "battery_energy_soc_and_degradation_modelled": false,
+  "n_minus_1_security_validated": false,
+  "chronological_merchant_schedule_validated": false,
+  "formal_grid_connection_right_verified": false,
+  "cost_unit_interpretation": "official placeholder dispatch objective; not project income",
+  "all_cases_pass": true,
+  "unused_headroom_or_curtailment_free_access_validated": false,
+  "other_generators_may_be_redispatched_and_renewables_curtailed": true
+}

@@ -1,0 +1,19 @@
+{
+  "completed_dispatch_cases": 12,
+  "required_dispatch_cases": 12,
+  "elapsed_seconds": 201.4065864086151,
+  "last_case": {
+    "dataset": "recent",
+    "energy_dc_mwh": 310,
+    "power_mw": 85,
+    "nameplate_dc_hours": 3.6470588235294117,
+    "deliverable_ac_mwh_before_capability": 228.64470254086362,
+    "deliverable_ac_hours_before_capability": 2.689937676951337,
+    "reference_storage_derating_factor": 0.1889157620326909,
+    "conditional_capacity_awarded_mw": 15.576104579595365,
+    "policy": "daily_oracle",
+    "case": "stack_t4_services4",
+    "source_dispatch": "results\\bess_duration_sensitivity\\dispatch_310_daily_oracle_stack_t4_services4_2c1f57c526769364b028",
+    "source_identity": "2c1f57c526769364b028"
+  }
+}

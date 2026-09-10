@@ -1,0 +1,15 @@
+generator,bus,priority_status,neutral_dispatch_down_mwh,priority_dispatch_down_mwh,additional_dispatch_down_mwh,interpretation
+Letterkenny wind,Letterkenny,non_priority,64.8655695285733,1230.6128886988884,1165.747319170315,additional burden under priority policy
+Clogher wind,Clogher,non_priority,992.0990274656577,1893.2950697115948,901.1960422459372,additional burden under priority policy
+Trillick wind,Trillick,non_priority,0.0,333.69796708155553,333.69796708155553,additional burden under priority policy
+Sorne Hill wind,Sorne Hill,non_priority,0.0,174.57459591922924,174.57459591922924,additional burden under priority policy
+Corderry wind,Corderry,non_priority,0.0,28.40974139146556,28.40974139146556,additional burden under priority policy
+Ardnagappary wind,Ardnagappary,priority,0.0,0.0,0.0,no material allocation change
+Cathaleen's Fall wind,Cathaleen's Fall,non_priority,0.0,0.0,0.0,no material allocation change
+Glenree wind,Glenree,non_priority,0.0,0.0,0.0,no material allocation change
+Moy wind,Moy,non_priority,0.0,0.0,0.0,no material allocation change
+Sligo wind,Sligo,non_priority,0.0,0.0,0.0,no material allocation change
+Tievebrack wind,Tievebrack,non_priority,0.0,0.0,0.0,no material allocation change
+Binbane wind,Binbane,priority,452.395129239591,1.0000013340061287e-05,-452.39511923957764,energy protected under priority policy
+Croaghonagh wind,Croaghonagh,priority,772.4371420433802,0.0,-772.4371420433802,energy protected under priority policy
+Drumkeen wind,Drumkeen,priority,1378.7934045255445,0.0,-1378.7934045255445,energy protected under priority policy

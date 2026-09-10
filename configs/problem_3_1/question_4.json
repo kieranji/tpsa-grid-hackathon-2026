@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "assumptions_status": "illustrative_not_an_irish_market_forecast",
+  "currency_basis": "real EUR, 2026 purchasing power; pre-tax unlevered",
+  "years": 20,
+  "real_discount_rate": 0.07,
+  "annualisation": {
+    "mode": "repeat_block",
+    "hours_per_year": 8760.0
+  },
+  "grid": {
+    "scenario": "WP2033",
+    "scope": "north-west",
+    "minimum_bus_kv": 110,
+    "excluded_buses": [],
+    "wind_profile_mode": "common",
+    "wind_profile_csv": null,
+    "relaxed_rating_multiplier": 1000.0,
+    "counterfactual_first_year": true,
+    "binding_threshold": 0.999,
+    "max_unserved_mwh": 0.001,
+    "mip_gap": 1e-06,
+    "solver_time_limit_s": 180.0
+  },
+  "designs": {
+    "wind_mw": [
+      25,
+      50
+    ],
+    "bess_mw_mwh": [
+      [
+        25,
+        100
+      ],
+      [
+        50,
+        200
+      ]
+    ],
+    "hybrid_wind_bess_mw_mwh": [
+      [
+        50,
+        25,
+        100
+      ]
+    ],
+    "maintenance_policies": [
+      "replace"
+    ]
+  },
+  "battery": {
+    "round_trip_efficiency": 0.9,
+    "soc_min": 0.1,
+    "soc_max": 0.9,
+    "calendar_fade_per_year": 0.008,
+    "cycle_fade_per_efc": 3.333333333333333e-05,
+    "replacement_soh": 0.8,
+    "retire_soh": 0.6,
+    "augmentation_trigger_soh": 0.9,
+    "augmentation_target_soh": 1.0,
+    "max_c_rate_per_hour": 1.0,
+    "dispatch_wear_penalty_eur_mwh": 0.5
+  },
+  "wind": {
+    "annual_output_degradation": 0.003
+  },
+  "costs": {
+    "battery_energy_eur_kwh": 140.0,
+    "battery_power_eur_kw": 250.0,
+    "battery_other_bop_eur_kw": 80.0,
+    "wind_eur_kw": 1300.0,
+    "shared_site_fixed_eur": 300000.0,
+    "connection_fixed_eur": 250000.0,
+    "connection_eur_kw": 60.0,
+    "contingency_fraction": 0.1,
+    "battery_fixed_om_eur_kw_year": 7.0,
+    "wind_fixed_om_eur_kw_year": 35.0,
+    "site_rent_admin_eur_year": 30000.0,
+    "insurance_fraction_initial_capex_year": 0.0025,
+    "battery_variable_om_eur_mwh_discharged": 0.5,
+    "wind_variable_om_eur_mwh_generated": 0.0,
+    "real_om_escalation": 0.0,
+    "replacement_energy_cost_fraction": 1.1,
+    "augmentation_energy_cost_fraction": 1.15,
+    "real_cell_cost_escalation": 0.0,
+    "inverter_replacement_years": [
+      12
+    ],
+    "inverter_replacement_fraction_power_capex": 0.4,
+    "wind_overhaul_years": [
+      15
+    ],
+    "wind_overhaul_fraction_wind_capex": 0.03,
+    "decommission_fraction_initial_capex": 0.03,
+    "residual_fraction_initial_capex": 0.01,
+    "site_overrides": {}
+  },
+  "prices": {
+    "mode": "flat",
+    "flat_eur_mwh": 70.0,
+    "csv": null,
+    "import_adder_eur_mwh": 0.0,
+    "export_fee_eur_mwh": 0.0,
+    "real_escalation": 0.0,
+    "grid_service_payment_eur_kw_year": 0.0
+  },
+  "sensitivity": {
+    "enabled": true,
+    "capex_multipliers": [
+      0.8,
+      1.0,
+      1.2
+    ],
+    "om_multipliers": [
+      0.8,
+      1.0,
+      1.2
+    ],
+    "price_multipliers": [
+      0.7,
+      1.0,
+      1.3
+    ],
+    "discount_rates": [
+      0.04,
+      0.07,
+      0.1
+    ]
+  }
+}

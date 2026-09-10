@@ -1,0 +1,30 @@
+usage: question_5_shift_factors.py [-h] [--config CONFIG]
+                                   [--scenario SCENARIO] [--scope SCOPE]
+                                   [--network NETWORK] [--kit-dir KIT_DIR]
+                                   [--target-lines TARGET_LINES]
+                                   [--reference REFERENCE]
+                                   [--single-slack-bus SINGLE_SLACK_BUS]
+                                   [--out OUT] [--no-plots]
+                                   [--check | --smoke | --run]
+
+TPSA Problem 3.1 Q5 wind-farm shift-factor analysis
+
+options:
+  -h, --help            show this help message and exit
+  --config CONFIG
+  --scenario SCENARIO
+  --scope SCOPE
+  --network NETWORK
+  --kit-dir KIT_DIR
+  --target-lines TARGET_LINES
+                        Comma-separated exact line or transformer IDs;
+                        defaults to Q1/Q3 target
+  --reference REFERENCE
+                        Primary balancing reference: load, uniform, or an
+                        exact bus ID
+  --single-slack-bus SINGLE_SLACK_BUS
+  --out OUT
+  --no-plots
+  --check               Validate inputs only; default
+  --smoke               Run 24 hours and three farms
+  --run                 Run the full Q5 analysis
